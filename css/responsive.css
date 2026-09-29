@@ -169,18 +169,21 @@ table.table_hitl_reasons tbody tr.last td {
 
 /* A. Dashboard Claims Table (table_dash_wrap-copy) -> .5fr .5fr .5fr 1fr .25fr */
 table.table_dash_wrap-copy {
-  min-width: 720px;
+  min-width: 760px;
+}
+table.table_dash_wrap-copy thead th {
+  white-space: nowrap;
 }
 table.table_dash_wrap-copy th:nth-child(1),
-table.table_dash_wrap-copy td:nth-child(1) { width: 18%; }
+table.table_dash_wrap-copy td:nth-child(1) { width: 16%; }
 table.table_dash_wrap-copy th:nth-child(2),
-table.table_dash_wrap-copy td:nth-child(2) { width: 18%; }
+table.table_dash_wrap-copy td:nth-child(2) { width: 22%; }
 table.table_dash_wrap-copy th:nth-child(3),
-table.table_dash_wrap-copy td:nth-child(3) { width: 18%; }
+table.table_dash_wrap-copy td:nth-child(3) { width: 12%; }
 table.table_dash_wrap-copy th:nth-child(4),
-table.table_dash_wrap-copy td:nth-child(4) { width: 36%; }
+table.table_dash_wrap-copy td:nth-child(4) { width: 38%; }
 table.table_dash_wrap-copy th:nth-child(5),
-table.table_dash_wrap-copy td:nth-child(5) { width: 10%; text-align: right; }
+table.table_dash_wrap-copy td:nth-child(5) { width: 12%; text-align: right; }
 
 /* B. Evaluation History Table (table-history) -> 40px 20% 34% 22% 14% 60px */
 table.table-history {
@@ -1883,6 +1886,7 @@ a.button_gn.disabled {
     cursor: pointer !important;
     padding: 0 !important;
     gap: 5px !important;
+    position: relative !important;
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 
@@ -1912,17 +1916,23 @@ a.button_gn.disabled {
     transition: opacity 0.25s ease;
   }
 
-  /* Turn hamburger into animated 'X' when open */
-  .brix---hamburger-menu-wrapper.w--open .brix---hamburger-menu-bar-top {
-    transform: translateY(7px) rotate(45deg);
+  /* Turn hamburger into exact, centered animated 'X' when open */
+  .brix---hamburger-menu-wrapper.w--open::before {
+    opacity: 0 !important;
   }
 
-  .brix---hamburger-menu-wrapper.w--open::before {
-    opacity: 0;
+  .brix---hamburger-menu-wrapper.w--open .brix---hamburger-menu-bar-top {
+    position: absolute !important;
+    top: 20px !important;
+    left: 10px !important;
+    transform: rotate(45deg) !important;
   }
 
   .brix---hamburger-menu-wrapper.w--open .brix---hamburger-menu-bar-bottom {
-    transform: translateY(-7px) rotate(-45deg);
+    position: absolute !important;
+    top: 20px !important;
+    left: 10px !important;
+    transform: rotate(-45deg) !important;
   }
 
   /* Mobile Drawer Container */
@@ -1961,8 +1971,9 @@ a.button_gn.disabled {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    gap: 16px !important;
+    justify-content: flex-start !important;
+    row-gap: 14px !important;
+    column-gap: 8px !important;
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
@@ -1974,7 +1985,7 @@ a.button_gn.disabled {
     display: block !important;
     width: 100% !important;
     order: 1 !important;
-    margin: 0 0 4px 0 !important;
+    margin: 0 !important;
   }
 
   .brix---header-nav-menu-list .mobile-menu-search-item .searchwrap {
@@ -1993,7 +2004,6 @@ a.button_gn.disabled {
     display: inline-flex !important;
     align-items: center !important;
     order: 2 !important;
-    gap: 8px !important;
     margin: 0 !important;
   }
 
@@ -2003,7 +2013,6 @@ a.button_gn.disabled {
     align-items: center !important;
     order: 3 !important;
     margin-left: auto !important;
-    gap: 12px !important;
   }
 
   .filter {
