@@ -29,6 +29,11 @@
   background: #63578c;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
@@ -1854,8 +1859,17 @@ a.button_gn.disabled {
     position: relative;
     height: auto;
     min-height: 72px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .brix---container-default {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .div-block-36 {
@@ -1865,6 +1879,11 @@ a.button_gn.disabled {
     width: 100% !important;
     flex-wrap: nowrap !important;
     gap: 16px !important;
+  }
+
+  .brix---header-logo {
+    max-width: 190px !important;
+    height: auto !important;
   }
 
   /* Desktop search in header is hidden on mobile; moved into drawer */
@@ -1952,28 +1971,19 @@ a.button_gn.disabled {
   .brix---header-menu-wrapper[data-nav-menu-open],
   .brix---header-menu-wrapper.open {
     display: block !important;
-    animation: drawerSlideDown 0.22s ease-out;
-  }
-
-  @keyframes drawerSlideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* Drawer layout: top search bar, bottom row with left icons and right user */
   .brix---header-nav-menu-list {
     display: flex !important;
+    flex-direction: row !important;
     flex-wrap: wrap !important;
     align-items: center !important;
     justify-content: flex-start !important;
     row-gap: 14px !important;
-    column-gap: 8px !important;
+    column-gap: 10px !important;
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
@@ -1984,6 +1994,7 @@ a.button_gn.disabled {
   .brix---header-nav-menu-list .mobile-menu-search-item {
     display: block !important;
     width: 100% !important;
+    flex: 1 0 100% !important;
     order: 1 !important;
     margin: 0 !important;
   }
@@ -1999,20 +2010,49 @@ a.button_gn.disabled {
     border: 1px solid #49416a !important;
   }
 
-  /* Navigation icon links (Explainability & Rules) grouped on bottom left */
-  .brix---header-nav-menu-list > .brix---header-nav-list-item:not(.mobile-menu-search-item):not(:last-child) {
-    display: inline-flex !important;
-    align-items: center !important;
-    order: 2 !important;
-    margin: 0 !important;
+  /* Explicitly hide unused menu items like Resources on mobile */
+  .brix---header-nav-menu-list > .brix---header-nav-list-item.hide_menu_item,
+  .hide_menu_item {
+    display: none !important;
   }
 
-  /* User profile pill grouped on bottom right */
+  /* Navigation actions wrap (Explainability & Rules) grouped horizontally on bottom left */
+  .brix---header-nav-menu-list > .nav-actions-wrap,
+  .brix---header-nav-menu-list > .brix---header-nav-list-item:not(.mobile-menu-search-item):not(.hide_menu_item):not(:last-child) {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: auto !important;
+    max-width: max-content !important;
+    flex: 0 0 auto !important;
+    order: 2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* User profile pill grouped horizontally on bottom right */
   .brix---header-nav-menu-list > .brix---header-nav-list-item:last-child {
     display: inline-flex !important;
     align-items: center !important;
+    width: auto !important;
+    max-width: max-content !important;
+    flex: 0 0 auto !important;
     order: 3 !important;
     margin-left: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    gap: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  .brix---header-nav-menu-list > .brix---header-nav-list-item:last-child .div-block-75 {
+    display: none !important;
+  }
+
+  .brix---header-nav-menu-list > .brix---header-nav-list-item:last-child .user-wrap {
+    white-space: nowrap !important;
   }
 
   .filter {
