@@ -168,7 +168,7 @@
                     </svg></div>
                   <input type="text" class="search-input-field" placeholder="Search Items..." data-table-filter="codesTable">
                 </div>
-                <a href="#" class="btn_popup rework w-inline-block">
+                <a href="#" id="btnOpenAddItem" class="btn_popup rework w-inline-block">
                   <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
                       <path d="M5 12h14"></path>
                       <path d="M12 5v14"></path>
@@ -372,6 +372,54 @@
       </div>
     </div>
   </section>
+
+  <!-- Modal: Add New Reference Data Item -->
+  <div class="popup_wraper" id="addItemModal">
+    <div class="popup_close_overlay"></div>
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-sm">
+      <div class="header_wrapper">
+        <div class="div-block-69">
+          <h2 class="heading-1-copy" style="font-size: 1.25rem;"><span class="text-span-4">Add New Item</span></h2>
+          <div class="red-only">Reference Data Taxonomy<br></div>
+        </div>
+        <div class="div-block-68">
+          <button arial-label="close dialog" class="button btn-close-modal">
+            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">ITEM NAME <span style="color: #ee3b76;">*</span></div>
+          <div class="search_input _40">
+            <input type="text" id="newItemName" class="search-input-field" placeholder="e.g. ELECTRONICS or WATER_DAMAGE">
+          </div>
+        </div>
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">TYPE NAME <span style="color: #ee3b76;">*</span></div>
+          <div class="search_input _40">
+            <input type="text" id="newItemType" class="search-input-field" placeholder="e.g. User defined or System" value="User defined">
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content: flex-end;">
+        <div style="display: flex; gap: 8px;">
+          <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
+            <div>Cancel</div>
+          </a>
+          <a href="#" id="btnSaveNewItem" class="button_gn w-inline-block">
+            <div>Save Item</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>

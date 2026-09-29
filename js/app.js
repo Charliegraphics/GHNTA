@@ -1084,6 +1084,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- 10b. Reference Data Management (reference-data.html) ---
+  const btnOpenAddItem = document.getElementById('btnOpenAddItem');
+  const addItemModal = document.getElementById('addItemModal');
+  const btnSaveNewItem = document.getElementById('btnSaveNewItem');
+  const codesTable = document.getElementById('codesTable');
+
+  if (btnOpenAddItem && addItemModal) {
+    btnOpenAddItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      addItemModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const nameInput = document.getElementById('newItemName');
+      if (nameInput) {
+        nameInput.value = '';
+        setTimeout(() => nameInput.focus(), 50);
+      }
+    });
+
+    if (btnSaveNewItem && codesTable) {
+      btnSaveNewItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById('newItemName');
+        const typeInput = document.getElementById('newItemType');
+
+        const itemName = nameInput ? nameInput.value.trim().toUpperCase() : '';
+        const itemType = typeInput ? typeInput.value.trim() : 'User defined';
+
+        if (!itemName) {
+          alert('Please enter an Item Name.');
+          if (nameInput) nameInput.focus();
+          return;
+        }
+
+        const tbody = codesTable.querySelector('tbody');
+        if (tbody) {
+          const newRow = document.createElement('tr');
+          newRow.className = 'clean';
+          newRow.innerHTML = `
+            <td><div class="number">${itemName}</div></td>
+            <td>
+              <div class="column_wrap">
+                <div class="company-tag"><strong>${itemType}</strong></div>
+              </div>
+            </td>
+            <td>
+              <div class="column_wrap right">
+                <a href="#" class="btn_popup w-inline-block" title="Edit Item">
+                  <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                      <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                    </svg></div>
+                </a>
+              </div>
+            </td>
+          `;
+          tbody.insertBefore(newRow, tbody.firstChild);
+        }
+
+        // Reset and close
+        if (nameInput) nameInput.value = '';
+        addItemModal.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  }
+
   // Trace ID Copy to Clipboard handler
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('#btnCopyTraceId');
