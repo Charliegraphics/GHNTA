@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html data-wf-page="69f9f68b42fb301b6a081d4d" data-wf-site="69aa2784ca12161ae1c2893b" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>RULES_MANAGEMENT</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/gnotheia.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/responsive.css" rel="stylesheet" type="text/css">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+</head>
+<body class="body">
+  <div class="popup_wraper" id="claimModal">
+    <div class="popup_close_overlay"></div>
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup">
+      <div class="header_wrapper">
+        <div class="div-block-69">
+          <h2 class="heading-1-copy">CLAIM ID: <span class="text-span-4">CLM-9902: Accident Loss</span></h2>
+          <div class="red-only">POLYCONTEXT ID: <span class="white-text">264384944</span><br></div>
+        </div>
+        <div class="div-block-68"><button arial-label="close dialog" class="button">
+            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg></div>
+          </button></div>
+      </div>
+      <div class="div-block-86">
+        <p class="text-block-3">===========================================<br>       AI PRE-ASSESSMENT REPORT (POLYCONTEXT SUMMARY)<br>===========================================<br><br>### 1. HEADER &amp; CLAIM/POLICY AT A GLANCE ###<br># This section provides all key identification and governance information in one place for immediate context.<br><br>-- Governance --<br>Report ID:             [Polycontext_ID]           # Unique identifier for this specific Polycontext version.<br>Version:               [Version_Number]           # e.g., v4.1.0<br>Generated At:          [Timestamp]                # ISO 8601 format timestamp (e.g., 2025-11-26T13:10:00Z).<br>Claim Status:          [Claim_Status]             # The current, high-level status of the claim, e.g., Registration_InProgress, Validation_Rejected, Settlement_Approved.-- Claim Details --<br>Claim ID:              [Claim_ID]                 # The primary business identifier for the claim.<br>Insured Party:         [Insured_Name]             # Full name of the insured party or entity.<br>Date of Loss:          [Date_of_Loss]             # The date the incident occurred.<br>Incident Summary:      [Brief, one-line summary]  # A concise description of the incident, e.g., &quot;Water damage from broken washing machine.&quot;<br><br>-- Policy Details --<br>Policy ID:             [Policy_ID]                # The identifier of the relevant insurance policy.<br>Product:               [Product_Name]             # The name of the insurance product, e.g., &quot;Home Insurance Plus&quot;.<br>Policy Status:         [Policy_Status]            # Status of the policy at the time of loss, e.g., Active, Expired, Lapsed.<br>Coverage Period:       [Start_Date] to [End_Date] # The effective period of the policy.<br><br>---<br>### 2. PROCESS FLOW OVERVIEW (VALUE STREAM) ###<br># A visual representation of the claim&#x27;s journey through the formal process steps.<br># The current step is highlighted in bold.<br># Icons: ✔️ Completed, ❌ Blocked, ⚙️ In Progress, ⚪ Pending.<br>[PROCESS_STEP_1 (Icon)] -&gt; **[ CURRENT_PROCESS_STEP (Icon) ]** -&gt; [PROCESS_STEP_3 (Icon)] -&gt; ...</p>
+      </div><button arial-label="close dialog" class="button">
+        <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg></div>
+      </button>
+    </div>
+  </div>
+  <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="brix---header-wrapper-lenka w-nav">
+    <div class="brix---container-default w-container">
+      <div class="brix---header-content-wrapper">
+        <div class="div-block-36">
+          <a href="index.html" class="brix---header-logo-link w-nav-brand"><img width="254" src="images/GA_Logo_v2.svg" alt="Gnotheia" class="brix---header-logo"></a>
+          <div class="searchwrap">
+            <div class="search_input">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                  <path d="m21 21-4.34-4.34"></path>
+                  <circle cx="11" cy="11" r="8"></circle>
+                </svg></div>
+              <input type="search" class="search-input-field" placeholder="Search by Claim ID / Polycontext ID" aria-label="Search by Claim ID / Polycontext ID">
+            </div>
+          </div>
+          <div>
+            <nav role="navigation" class="brix---header-menu-wrapper w-nav-menu">
+              <ul role="list" class="brix---header-nav-menu-list">
+                <li class="brix---header-nav-list-item hide_menu_item">
+                  <div data-delay="0" data-hover="true" class="brix---dropdown-wrapper w-dropdown">
+                    <div class="brix---dropdown-toggle w-dropdown-toggle">
+                      <div>Resources</div><img alt="Icon Rounded Chevron Dark - BRIX Templates" src="images/line-rounded-chevron-down-black-brix-templates.svg" class="brix---dropdown-chevron">
+                    </div>
+                    <nav class="brix---dropdown-column-wrapper w-dropdown-list">
+                      <div class="brix---dropdown-card">
+                        <div class="brix---dropdown-pd">
+                          <div class="w-layout-grid brix---dropdown-links-grid">
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Mobile app</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Desktop app</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Multiple users</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Integrations</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Monthly reports</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Granular permissions</a>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <a href="explainability.html" class="user_btn w-inline-block" title="Explainability" aria-label="Explainability">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                        <path d="M5 3v4"></path>
+                        <path d="M19 17v4"></path>
+                        <path d="M3 5h4"></path>
+                        <path d="M17 19h4"></path>
+                      </svg></div>
+                  </a>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <a href="rules-management.html" aria-current="page" class="user_btn w-inline-block w--current" title="Rules Management" aria-label="Rules Management">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings">
+                        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg></div>
+                  </a>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <div class="div-block-75"></div>
+                  <div class="user-wrap">
+                    <div class="user_name">Sarah Jenkins</div>
+                    <div class="user_status">01.04.2026</div>
+                  </div>
+                  <a href="#" class="user_btn w-inline-block" aria-label="User Profile">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round">
+                        <circle cx="12" cy="8" r="5"></circle>
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                      </svg></div>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="brix---hamburger-menu-wrapper w-nav-button" aria-label="Toggle navigation" role="button" tabindex="0">
+              <div class="brix---hamburger-menu-bar-top"></div>
+              <div class="brix---hamburger-menu-bar-bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="Work-Packages" class="s_work_packages">
+    <div class="w-layout-blockcontainer container_new w-container">
+      <div class="special_header">
+        <div class="header_wrapper">
+          <div class="back_wrap">
+            <a href="old-home-2.html" class="button_back w-inline-block" title="Back">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-dash-icon lucide-arrow-big-left-dash">
+                  <path d="M13 9a1 1 0 0 1-1-1V4.707a.707.707 0 0 0-1.207-.5l-6.94 6.94a1.207 1.207 0 0 0 0 1.707l6.94 6.94a.707.707 0 0 0 1.207-.5V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"></path>
+                  <path d="M20 9v6"></path>
+                </svg></div>
+            </a>
+            <div class="div-block-69">
+              <h2 class="heading-1-copy"><span class="text-span-4">Rules &amp; Data Management</span></h2>
+              <div class="red-only">Search, filter, and manage business rules across all products.<br></div>
+            </div>
+          </div>
+          <div class="toggle_menu">
+            <a href="rules-management.html" class="button_gn_sec dark w-inline-block">
+              <div>Rules Management</div>
+            </a>
+            <a href="reference-data.html" class="button_gn_sec clear w-inline-block">
+              <div>Reference data</div>
+            </a>
+            <a href="hitl-reasons.html" class="button_gn_sec clear w-inline-block">
+              <div>HITL reasons</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="content-wrap">
+        <div class="object-box-copy">
+          <div class="filter">
+            <div class="chat-wrap">
+              <div class="input_wrap">
+                <div class="red-only">SEARCH IN RULE TEXT<br></div>
+                <div class="search_input _40">
+                  <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                      <path d="m21 21-4.34-4.34"></path>
+                      <circle cx="11" cy="11" r="8"></circle>
+                    </svg></div>
+                  <input type="text" class="search-input-field" placeholder="Search in rule" data-table-filter="rulesTable">
+                </div>
+              </div>
+            </div>
+            <div class="chat-wrap">
+              <div class="input_wrap">
+                <div class="red-only">PRODUCT CODE<br></div>
+                <div class="dropdown-3 w-dropdown" id="dropdownRuleProduct" data-dropdown="ruleProduct">
+                  <div class="input_labelup-_login w-dropdown-toggle" id="dropdownRuleProductToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" style="min-width: 160px;">
+                    <div class="text-block-8" id="dropdownRuleProductSelected">All Products</div>
+                    <div class="code-embed-16 w-embed">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                        <path d="m6 9 6 6 6-6"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="dropdown-list-7 w-dropdown-list" id="dropdownRuleProductList" role="listbox" tabindex="-1">
+                    <div class="dropdown-option-item selected" data-value="" role="option" aria-selected="true">
+                      <span>All Products</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="HHI" role="option">
+                      <span>HHI</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="CASCO" role="option">
+                      <span>CASCO</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="PZP" role="option">
+                      <span>PZP</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="LIFE" role="option">
+                      <span>LIFE</span>
+                    </div>
+                  </div>
+                  <input type="hidden" id="filterRuleProduct" value="">
+                </div>
+              </div>
+            </div>
+            <div class="input_wrap">
+              <div class="red-only">COVERAGE<br></div>
+              <div class="dropdown-3 w-dropdown" id="dropdownRuleCoverage" data-dropdown="ruleCoverage">
+                <div class="input_labelup-_login w-dropdown-toggle" id="dropdownRuleCoverageToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" style="min-width: 170px;">
+                  <div class="text-block-8" id="dropdownRuleCoverageSelected">All Coverages</div>
+                  <div class="code-embed-16 w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="dropdown-list-7 w-dropdown-list" id="dropdownRuleCoverageList" role="listbox" tabindex="-1">
+                  <div class="dropdown-option-item selected" data-value="" role="option" aria-selected="true">
+                    <span>All Coverages</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Basic Property" role="option">
+                    <span>Basic Property</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Natural Hazard" role="option">
+                    <span>Natural Hazard</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Theft" role="option">
+                    <span>Theft</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Third Party Liability" role="option">
+                    <span>Third Party Liability</span>
+                  </div>
+                </div>
+                <input type="hidden" id="filterRuleCoverage" value="">
+              </div>
+            </div>
+            <div class="input_wrap">
+              <div class="red-only">INSURED SUBJECT<br></div>
+              <div class="dropdown-3 w-dropdown" id="dropdownRuleSubject" data-dropdown="ruleSubject">
+                <div class="input_labelup-_login w-dropdown-toggle" id="dropdownRuleSubjectToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" style="min-width: 170px;">
+                  <div class="text-block-8" id="dropdownRuleSubjectSelected">All Subjects</div>
+                  <div class="code-embed-16 w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="dropdown-list-7 w-dropdown-list" id="dropdownRuleSubjectList" role="listbox" tabindex="-1">
+                  <div class="dropdown-option-item selected" data-value="" role="option" aria-selected="true">
+                    <span>All Subjects</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Building" role="option">
+                    <span>Building</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Household" role="option">
+                    <span>Household</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Vehicle" role="option">
+                    <span>Vehicle</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Person" role="option">
+                    <span>Person</span>
+                  </div>
+                </div>
+                <input type="hidden" id="filterRuleSubject" value="">
+              </div>
+            </div>
+            <div class="input_wrap">
+              <div class="button_wrap">
+                <a href="#" class="button_gn_sec w-inline-block" id="btnFilterRulesClear">
+                  <div>Clear</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="object-box-copy">
+          <div class="box_label_wrap space">
+            <div class="side-wrap-left">
+              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text">
+                  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+                  <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                  <path d="M10 9H8"></path>
+                  <path d="M16 13H8"></path>
+                  <path d="M16 17H8"></path>
+                </svg></div>
+              <div class="text-block-2">Rules Catalog</div>
+            </div>
+            <div class="button_wrap">
+              <div class="search_input _40">
+                <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                    <path d="m21 21-4.34-4.34"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                  </svg></div>
+                <input type="text" class="search-input-field" placeholder="Search Rules..." data-table-filter="rulesTable">
+              </div>
+              <a href="edit.html" class="button_gn icon w-inline-block">
+                <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5v14"></path>
+                  </svg></div>
+                <div>CREATE NEW RULE</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Semantic Responsive Rules Table -->
+          <div class="table-responsive">
+            <table class="table_rules" id="rulesTable">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">ID</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label"><strong>Rule Content</strong></div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">PRODUCT CODE</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">VALID FROMM</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap right">
+                      <div class="badge-label">ACTION</div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="clean" data-product="HHI" data-coverage="Basic Property" data-subject="Household">
+                  <td><div class="number">001</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="text-block-3">Temporary housing costs are covered up to 10% of the sum insured in case of...</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">Claims Handling</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag">HHI</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="text-block-3">28.04.2026</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Copy Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-plus-icon lucide-copy-plus">
+                            <line x1="15" x2="15" y1="12" y2="18"></line>
+                            <line x1="12" x2="18" y1="15" y2="15"></line>
+                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                          </svg></div>
+                      </a>
+                      <a href="#" class="user_btn_dark w-inline-block" title="Delete Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash">
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg></div>
+                      </a>
+                      <a href="edit.html" class="user_btn_dark w-inline-block" title="Edit Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-product="HHI" data-coverage="Natural Hazard" data-subject="Building">
+                  <td><div class="number">002</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="text-block-3">It is a fact that the scope of insurance covers damage caused by earthquake if...</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">Claims Handling</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag">HHI</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="red-only">28.04.2026</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Copy Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files-icon lucide-files">
+                            <path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"></path>
+                            <path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"></path>
+                            <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"></path>
+                          </svg></div>
+                      </a>
+                      <a href="#" class="user_btn_dark w-inline-block" title="Delete Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash">
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg></div>
+                      </a>
+                      <a href="edit.html" class="user_btn_dark w-inline-block" title="Edit Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-product="HHI" data-coverage="Basic Property" data-subject="Building">
+                  <td><div class="number">003</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="text-block-3">V prípade poškodenia budovy vodou z vodovodných zariadení je spoluúčasť fixná v výške 100 EUR.</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">Claims Handling</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag">HHI</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="red-only">28.04.2026</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Copy Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files-icon lucide-files">
+                            <path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"></path>
+                            <path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"></path>
+                            <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"></path>
+                          </svg></div>
+                      </a>
+                      <a href="#" class="user_btn_dark w-inline-block" title="Delete Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash">
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg></div>
+                      </a>
+                      <a href="edit.html" class="user_btn_dark w-inline-block" title="Edit Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean last" data-product="HHI" data-coverage="Basic Property" data-subject="Building">
+                  <td><div class="number">004</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="text-block-3">V prípade poškodenia budovy vodou z vodovodných zariadení je spoluúčasť fixná v výške 100 EUR.</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">Claims Handling</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag">HHI</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="red-only">28.04.2026</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Copy Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files-icon lucide-files">
+                            <path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8"></path>
+                            <path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z"></path>
+                            <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1"></path>
+                          </svg></div>
+                      </a>
+                      <a href="#" class="user_btn_dark w-inline-block" title="Delete Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash">
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                            <path d="M3 6h18"></path>
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                          </svg></div>
+                      </a>
+                      <a href="edit.html" class="user_btn_dark w-inline-block" title="Edit Rule">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen-icon lucide-square-pen">
+                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="spacer_div"></div>
+          <div class="button-wrap">
+            <div class="text-block-3">GNOTHEA automatically saving polycontext. The current version is also backed up.</div>
+            <a href="#" class="button_gn_sec w-inline-block">
+              <div>... Show more</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="Contacts" class="s_footer">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="div-block-23">
+        <div class="div-block-29">
+          <div class="div-block-63">
+            <p class="footer-description">Status system: Nominal</p>
+          </div>
+          <div class="div-block-63">
+            <p class="footer-description">
+              <a href="#" class="link_footer">Support</a>
+            </p>
+            <p class="footer-separator hide">|</p>
+            <a href="#" class="link_footer">Documentation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/app.js"></script>
+</body>
+</html>

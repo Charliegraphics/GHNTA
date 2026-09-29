@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html data-wf-page="69f9f68b42fb301b6a081d4d" data-wf-site="69aa2784ca12161ae1c2893b" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HITL Reasons Management — Gnotheia</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/gnotheia.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/responsive.css" rel="stylesheet" type="text/css">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+</head>
+<body class="body">
+  <!-- Top Navigation Header -->
+  <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="brix---header-wrapper-lenka w-nav">
+    <div class="brix---container-default w-container">
+      <div class="brix---header-content-wrapper">
+        <div class="div-block-36">
+          <a href="index.html" class="brix---header-logo-link w-nav-brand"><img width="254" src="images/GA_Logo_v2.svg" alt="Gnotheia" class="brix---header-logo"></a>
+        </div>
+        <div class="div-block-37">
+          <div class="brix---header-right-col">
+            <nav role="navigation" class="brix---header-menu-wrapper w-nav-menu">
+              <ul role="list" class="brix---header-nav-menu-list">
+                <li class="brix---header-nav-list-item">
+                  <div data-hover="false" data-delay="0" class="brix---dropdown-wrapper w-dropdown">
+                    <div class="brix---dropdown-toggle w-dropdown-toggle">
+                      <div>Resources</div><img alt="Icon Rounded Chevron Dark - BRIX Templates" src="images/line-rounded-chevron-down-black-brix-templates.svg" class="brix---dropdown-chevron">
+                    </div>
+                    <nav class="brix---dropdown-column-wrapper w-dropdown-list">
+                      <div class="brix---dropdown-card">
+                        <div class="brix---dropdown-pd">
+                          <div class="w-layout-grid brix---dropdown-links-grid">
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Mobile app</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Desktop app</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Multiple users</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Integrations</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Monthly reports</a>
+                            <a href="#" class="brix---dropdown-link w-dropdown-link">Granular permissions</a>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <a href="explainability.html" class="user_btn w-inline-block" title="Explainability" aria-label="Explainability">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                        <path d="M5 3v4"></path>
+                        <path d="M19 17v4"></path>
+                        <path d="M3 5h4"></path>
+                        <path d="M17 19h4"></path>
+                      </svg></div>
+                  </a>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <a href="rules-management.html" aria-current="page" class="user_btn w-inline-block w--current" title="Rules Management" aria-label="Rules Management">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-icon lucide-settings">
+                        <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg></div>
+                  </a>
+                </li>
+                <li class="brix---header-nav-list-item">
+                  <div class="div-block-75"></div>
+                  <div class="user-wrap">
+                    <div class="user_name">Sarah Jenkins</div>
+                    <div class="user_status">01.04.2026</div>
+                  </div>
+                  <a href="#" class="user_btn w-inline-block" aria-label="User Profile">
+                    <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round">
+                        <circle cx="12" cy="8" r="5"></circle>
+                        <path d="M20 21a8 8 0 0 0-16 0"></path>
+                      </svg></div>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="brix---hamburger-menu-wrapper w-nav-button" aria-label="Toggle navigation" role="button" tabindex="0">
+              <div class="brix---hamburger-menu-bar-top"></div>
+              <div class="brix---hamburger-menu-bar-bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Section -->
+  <section id="Work-Packages" class="s_work_packages">
+    <div class="w-layout-blockcontainer container_new w-container">
+      <div class="special_header">
+        <div class="header_wrapper">
+          <div class="back_wrap">
+            <a href="old-home-2.html" class="button_back w-inline-block" title="Back to Case">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-dash-icon lucide-arrow-big-left-dash">
+                  <path d="M13 9a1 1 0 0 1-1-1V4.707a.707.707 0 0 0-1.207-.5l-6.94 6.94a1.207 1.207 0 0 0 0 1.707l6.94 6.94a.707.707 0 0 0 1.207-.5V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"></path>
+                  <path d="M20 9v6"></path>
+                </svg></div>
+            </a>
+            <div class="div-block-69">
+              <h2 class="heading-1-copy"><span class="text-span-4">HITL Feedback Reasons</span></h2>
+              <div class="red-only">Manage Feedback Reason Codes<br></div>
+            </div>
+          </div>
+          <!-- Toggle Navigation Menu -->
+          <div class="toggle_menu">
+            <a href="rules-management.html" class="button_gn_sec clear w-inline-block">
+              <div>Rules Management</div>
+            </a>
+            <a href="reference-data.html" class="button_gn_sec clear w-inline-block">
+              <div>Reference data</div>
+            </a>
+            <a href="hitl-reasons.html" class="button_gn_sec dark w-inline-block">
+              <div>HITL reasons</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-wrap">
+        <!-- Filter Bar -->
+        <div class="object-box-copy">
+          <div class="filter">
+            <div class="chat-wrap">
+              <div class="input_wrap">
+                <div class="red-only">SEARCH IN REASONS<br></div>
+                <div class="search_input _40">
+                  <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                      <path d="m21 21-4.34-4.34"></path>
+                      <circle cx="11" cy="11" r="8"></circle>
+                    </svg></div>
+                  <input type="text" class="search-input-field" placeholder="Search by code, name, or description..." id="filterReasonSearch">
+                </div>
+              </div>
+            </div>
+            <div class="chat-wrap">
+              <div class="input_wrap">
+                <div class="red-only">GROUP<br></div>
+                <div class="dropdown-3 w-dropdown" id="dropdownReasonGroup" data-dropdown="reasonGroup">
+                  <div class="input_labelup-_login w-dropdown-toggle" id="dropdownReasonGroupToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" style="min-width: 170px;">
+                    <div class="text-block-8" id="dropdownReasonGroupSelected">All Groups</div>
+                    <div class="code-embed-16 w-embed">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                        <path d="m6 9 6 6 6-6"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="dropdown-list-7 w-dropdown-list" id="dropdownReasonGroupList" role="listbox" tabindex="-1">
+                    <div class="dropdown-option-item selected" data-value="" role="option" aria-selected="true">
+                      <span>All Groups</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="Documents" role="option">
+                      <span>Documents</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="Rules" role="option">
+                      <span>Rules</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="Data and context" role="option">
+                      <span>Data and context</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="Output" role="option">
+                      <span>Output</span>
+                    </div>
+                    <div class="dropdown-option-item" data-value="Other" role="option">
+                      <span>Other</span>
+                    </div>
+                  </div>
+                  <input type="hidden" id="filterReasonGroup" value="">
+                </div>
+              </div>
+            </div>
+            <div class="input_wrap">
+              <div class="red-only">STATUS<br></div>
+              <div class="dropdown-3 w-dropdown" id="dropdownReasonStatus" data-dropdown="reasonStatus">
+                <div class="input_labelup-_login w-dropdown-toggle" id="dropdownReasonStatusToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" style="min-width: 150px;">
+                  <div class="text-block-8" id="dropdownReasonStatusSelected">All Statuses</div>
+                  <div class="code-embed-16 w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="dropdown-list-7 w-dropdown-list" id="dropdownReasonStatusList" role="listbox" tabindex="-1">
+                  <div class="dropdown-option-item selected" data-value="" role="option" aria-selected="true">
+                    <span>All Statuses</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Active" role="option">
+                    <span>Active</span>
+                  </div>
+                  <div class="dropdown-option-item" data-value="Inactive" role="option">
+                    <span>Inactive</span>
+                  </div>
+                </div>
+                <input type="hidden" id="filterReasonStatus" value="">
+              </div>
+            </div>
+            <div class="input_wrap">
+              <div class="button_wrap">
+                <a href="#" class="button_gn_sec w-inline-block" id="btnFilterReasonsClear">
+                  <div>Clear</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Box -->
+        <div class="object-box-copy">
+          <div class="box_label_wrap space">
+            <div class="side-wrap-left">
+              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag-icon lucide-tag">
+                  <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path>
+                  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                </svg></div>
+              <div class="text-block-2">Reason Taxonomy Catalog</div>
+              <div class="status-badge" id="reasonsCountBadge" style="margin-left: 10px;">15 reasons</div>
+            </div>
+            <div class="button_wrap">
+              <div class="search_input _40">
+                <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
+                    <path d="m21 21-4.34-4.34"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                  </svg></div>
+                <input type="text" class="search-input-field" placeholder="Quick search..." data-table-filter="reasonsTable">
+              </div>
+              <a href="#" class="button_gn icon w-inline-block" id="btnOpenCreateReason">
+                <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5v14"></path>
+                  </svg></div>
+                <div>CREATE&nbsp;NEW&nbsp;REASON</div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Semantic Responsive Table -->
+          <div class="table-responsive">
+            <table class="table_rules table_hitl_reasons" id="reasonsTable">
+              <thead>
+                <tr>
+                  <th><div class="badge-label">CODE</div></th>
+                  <th><div class="badge-label">GROUP</div></th>
+                  <th><div class="badge-label">NAME</div></th>
+                  <th><div class="badge-label">DESCRIPTION</div></th>
+                  <th style="text-align: center;"><div class="badge-label">ORDER</div></th>
+                  <th style="text-align: center;"><div class="badge-label">STATUS</div></th>
+                  <th style="text-align: right;"><div class="badge-label">USAGE</div></th>
+                  <th style="text-align: right;"><div class="badge-label">ACTIONS</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Group 1: Documents -->
+                <tr class="clean" data-code="DOC_MISSING_NOT_FLAGGED" data-group="Documents" data-status="Active" data-usage="64">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">DOC_MISSING_NOT_FLAGGED</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge doc">Documents</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Missing document not flagged</div></td>
+                  <td><div class="text-block-3">A required document is missing from the case but the system did not identify it as missing</div></td>
+                  <td style="text-align: center;"><span class="low_data">1</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">64 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="DOC_MISSING_NOT_FLAGGED" data-usage="64"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="DOC_MISSING_FALSE" data-group="Documents" data-status="Active" data-usage="38">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">DOC_MISSING_FALSE</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge doc">Documents</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Document flagged as missing but present</div></td>
+                  <td><div class="text-block-3">System flagged a document as missing, but it is already attached in the case</div></td>
+                  <td style="text-align: center;"><span class="low_data">2</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">38 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="DOC_MISSING_FALSE" data-usage="38"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="DOC_TYPE_WRONG" data-group="Documents" data-status="Active" data-usage="51">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">DOC_TYPE_WRONG</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge doc">Documents</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Document classified as wrong type</div></td>
+                  <td><div class="text-block-3">The document type was misclassified (e.g., invoice marked as claim report)</div></td>
+                  <td style="text-align: center;"><span class="low_data">3</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">51 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="DOC_TYPE_WRONG" data-usage="51"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="DOC_CONTENT_MISREAD" data-group="Documents" data-status="Active" data-usage="29">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">DOC_CONTENT_MISREAD</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge doc">Documents</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Document content misread</div></td>
+                  <td><div class="text-block-3">OCR or extraction misread key data or values within the document</div></td>
+                  <td style="text-align: center;"><span class="low_data">4</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">29 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="DOC_CONTENT_MISREAD" data-usage="29"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Group 2: Rules -->
+                <tr class="clean" data-code="RULE_WRONG_APPLIED" data-group="Rules" data-status="Active" data-usage="45">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">RULE_WRONG_APPLIED</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge rule">Rules</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Wrong rule applied</div></td>
+                  <td><div class="text-block-3">An inapplicable business rule was evaluated for this coverage or condition</div></td>
+                  <td style="text-align: center;"><span class="low_data">1</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">45 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="RULE_WRONG_APPLIED" data-usage="45"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="RULE_RESULT_WRONG" data-group="Rules" data-status="Active" data-usage="72">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">RULE_RESULT_WRONG</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge rule">Rules</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Rule evaluated incorrectly</div></td>
+                  <td><div class="text-block-3">The condition logic produced a false positive or false negative result</div></td>
+                  <td style="text-align: center;"><span class="low_data">2</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">72 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="RULE_RESULT_WRONG" data-usage="72"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="RULE_UNRESOLVABLE_SOLVABLE" data-group="Rules" data-status="Active" data-usage="19">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">RULE_UNRESOLVABLE_SOLVABLE</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge rule">Rules</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Marked unresolvable although evidence exists</div></td>
+                  <td><div class="text-block-3">Rule was flagged as unresolvable despite necessary evidence being present in files</div></td>
+                  <td style="text-align: center;"><span class="low_data">3</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">19 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="RULE_UNRESOLVABLE_SOLVABLE" data-usage="19"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="RULE_MISSING" data-group="Rules" data-status="Active" data-usage="14">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">RULE_MISSING</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge rule">Rules</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Applicable rule missing from evaluation</div></td>
+                  <td><div class="text-block-3">A mandatory business rule was not triggered or evaluated in the polycontext</div></td>
+                  <td style="text-align: center;"><span class="low_data">4</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">14 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="RULE_MISSING" data-usage="14"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Group 3: Data and context -->
+                <tr class="clean" data-code="META_MISMATCH" data-group="Data and context" data-status="Active" data-usage="33">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">META_MISMATCH</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge data">Data and context</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Metadata does not match documents</div></td>
+                  <td><div class="text-block-3">Claim or policy metadata contradicts information in physical documents</div></td>
+                  <td style="text-align: center;"><span class="low_data">1</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">33 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="META_MISMATCH" data-usage="33"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="POLICY_CONTEXT_WRONG" data-group="Data and context" data-status="Active" data-usage="22">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">POLICY_CONTEXT_WRONG</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge data">Data and context</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Wrong policy context</div></td>
+                  <td><div class="text-block-3">Associated policy terms, effective dates, or limits are incorrect</div></td>
+                  <td style="text-align: center;"><span class="low_data">2</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">22 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="POLICY_CONTEXT_WRONG" data-usage="22"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="CONTEXT_OUTSIDE_DATA" data-group="Data and context" data-status="Active" data-usage="11">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">CONTEXT_OUTSIDE_DATA</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge data">Data and context</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Decisive fact outside available data</div></td>
+                  <td><div class="text-block-3">Crucial claim circumstances exist that are not recorded in available digital data</div></td>
+                  <td style="text-align: center;"><span class="low_data">3</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">11 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="CONTEXT_OUTSIDE_DATA" data-usage="11"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Group 4: Output -->
+                <tr class="clean" data-code="REC_UNSUPPORTED" data-group="Output" data-status="Active" data-usage="40">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">REC_UNSUPPORTED</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge output">Output</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Recommendation not supported by reasoning</div></td>
+                  <td><div class="text-block-3">The final recommendation contradicts or is unsupported by the rule reasoning</div></td>
+                  <td style="text-align: center;"><span class="low_data">1</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">40 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="REC_UNSUPPORTED" data-usage="40"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="REASONING_WRONG_SOURCE" data-group="Output" data-status="Active" data-usage="17">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">REASONING_WRONG_SOURCE</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge output">Output</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Reasoning cites the wrong source</div></td>
+                  <td><div class="text-block-3">The explanation references incorrect clauses, documents, or timestamps</div></td>
+                  <td style="text-align: center;"><span class="low_data">2</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">17 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="REASONING_WRONG_SOURCE" data-usage="17"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean" data-code="REC_UNCLEAR" data-group="Output" data-status="Active" data-usage="8">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">REC_UNCLEAR</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge output">Output</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Recommendation unclear or unusable</div></td>
+                  <td><div class="text-block-3">The output text is ambiguous, vague, or cannot be acted upon by the adjuster</div></td>
+                  <td style="text-align: center;"><span class="low_data">3</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">8 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="REC_UNCLEAR" data-usage="8"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Group 5: Other -->
+                <tr class="clean last" data-code="OTHER" data-group="Other" data-status="Active" data-usage="86">
+                  <td>
+                    <div class="column_wrap">
+                      <div class="company-tag code">OTHER</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <span class="group-badge other">Other</span>
+                    </div>
+                  </td>
+                  <td><div class="red-only data">Other (describe below)</div></td>
+                  <td><div class="text-block-3">Issue not covered by standard taxonomy; adjuster must provide detailed description</div></td>
+                  <td style="text-align: center;"><span class="low_data">1</span></td>
+                  <td style="text-align: center;"><span class="status-badge active">Active</span></td>
+                  <td style="text-align: right;"><span class="up_data">86 uses</span></td>
+                  <td style="text-align: right;">
+                    <div style="display: inline-flex; gap: 6px;">
+                      <a href="#" class="user_btn_dark w-inline-block" title="Edit Reason"><div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-pen"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"></path></svg></div></a>
+                      <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate Reason" data-code="OTHER" data-usage="86"><div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ban"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div></a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="spacer_div"></div>
+          <div class="button-wrap">
+            <div class="text-block-3">GNOTHEA automatically tracks taxonomy usage across all polycontexts. System-critical reason codes cannot be deleted.</div>
+            <a href="#" class="button_gn_sec w-inline-block">
+              <div>Export CSV</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section id="Contacts" class="s_footer">
+    <div class="w-layout-blockcontainer container w-container">
+      <div class="div-block-23">
+        <div class="div-block-29">
+          <div class="div-block-63">
+            <p class="footer-description">Status system: Nominal</p>
+          </div>
+          <div class="div-block-63">
+            <p class="footer-description">
+              <a href="#" class="link_footer">Support</a>
+            </p>
+            <p class="footer-separator hide">|</p>
+            <a href="#" class="link_footer">Documentation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal: Create New Reason -->
+  <div class="popup_wraper" id="createReasonModal">
+    <div class="popup_close_overlay"></div>
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-reason-picker" style="width: 520px;">
+      <div class="header_wrapper">
+        <div class="div-block-69">
+          <h2 class="heading-1-copy" style="font-size: 1.25rem;"><span class="text-span-4">Create New Reason</span></h2>
+          <div class="red-only">Define a new reason code for HITL feedback classification.<br></div>
+        </div>
+        <div class="div-block-68">
+          <button arial-label="close dialog" class="button btn-close-modal">
+            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 14px;">
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">CODE <span style="color: #ee3b76;">*</span></div>
+          <div class="search_input _40">
+            <input type="text" id="newReasonCode" class="search-input-field" placeholder="e.g. DOC_PAGE_BLURRY">
+          </div>
+        </div>
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">GROUP <span style="color: #ee3b76;">*</span></div>
+          <div class="dropdown-3 w-dropdown" id="dropdownNewReasonGroup" data-dropdown="newReasonGroup">
+            <div class="input_labelup-_login w-dropdown-toggle" id="dropdownNewReasonGroupToggle" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <div class="text-block-8" id="dropdownNewReasonGroupSelected">Documents</div>
+              <div class="code-embed-16 w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="dropdown-list-7 w-dropdown-list" id="dropdownNewReasonGroupList" role="listbox" tabindex="-1">
+              <div class="dropdown-option-item selected" data-value="Documents" role="option" aria-selected="true">
+                <span>Documents</span>
+              </div>
+              <div class="dropdown-option-item" data-value="Rules" role="option">
+                <span>Rules</span>
+              </div>
+              <div class="dropdown-option-item" data-value="Data and context" role="option">
+                <span>Data and context</span>
+              </div>
+              <div class="dropdown-option-item" data-value="Output" role="option">
+                <span>Output</span>
+              </div>
+              <div class="dropdown-option-item" data-value="Other" role="option">
+                <span>Other</span>
+              </div>
+            </div>
+            <input type="hidden" id="newReasonGroup" value="Documents">
+          </div>
+        </div>
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">NAME <span style="color: #ee3b76;">*</span></div>
+          <div class="search_input _40">
+            <input type="text" id="newReasonName" class="search-input-field" placeholder="Human-readable reason title">
+          </div>
+        </div>
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">DESCRIPTION</div>
+          <textarea id="newReasonDesc" class="comment-textarea" placeholder="Detailed explanation of when this reason should be selected..." rows="3"></textarea>
+        </div>
+        <div>
+          <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">ORDER IN GROUP</div>
+          <div class="search_input _40" style="width: 120px;">
+            <input type="number" id="newReasonOrder" class="search-input-field" value="5" min="1">
+          </div>
+        </div>
+      </div>
+
+      <div class="reason-picker-footer">
+        <div></div>
+        <div style="display: flex; gap: 8px;">
+          <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
+            <div>Cancel</div>
+          </a>
+          <a href="#" id="btnSaveNewReason" class="button_gn w-inline-block">
+            <div>Save Reason</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Deactivate Warning Alert -->
+  <div class="popup_wraper" id="deactivateWarningModal">
+    <div class="popup_close_overlay"></div>
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-deactivate-warning">
+      <div class="header_wrapper">
+        <div class="div-block-69">
+          <h2 class="heading-1-copy" style="font-size: 1.2rem; color: #ee3b76;">Deactivate Reason</h2>
+          <div class="red-only">Taxonomy immutability policy<br></div>
+        </div>
+        <div class="div-block-68">
+          <button arial-label="close dialog" class="button btn-close-modal">
+            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="warning-callout">
+        <strong id="deactReasonCode">REASON_CODE</strong> is used in <strong id="deactReasonCount">42</strong> records.<br><br>
+        <em>Reasons cannot be deleted, only deactivated.</em> Once deactivated, adjusters will no longer see this option for new feedback, but existing records and audit trails remain preserved.
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+        <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
+          <div>Cancel</div>
+        </a>
+        <a href="#" id="btnConfirmDeactivate" class="button_gn w-inline-block" style="background-color: #ee3b76; border-color: #ee3b76;">
+          <div>Confirm Deactivation</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
