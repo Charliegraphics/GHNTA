@@ -2005,14 +2005,6 @@ a.button_gn.disabled {
     margin-left: auto !important;
     gap: 12px !important;
   }
-}
-
-/* Hide mobile-only search item on desktop */
-@media screen and (min-width: 992px) {
-  .mobile-menu-search-item {
-    display: none !important;
-  }
-}
 
   .filter {
     grid-template-columns: 1fr 1fr;
@@ -2029,6 +2021,13 @@ a.button_gn.disabled {
   .grid_one .hitl-comment-card {
     width: 100% !important;
     justify-self: stretch !important;
+  }
+}
+
+/* Hide mobile-only search item on desktop */
+@media screen and (min-width: 992px) {
+  .mobile-menu-search-item {
+    display: none !important;
   }
 }
 
