@@ -95,7 +95,7 @@
       <div class="special_header">
         <div class="header_wrapper">
           <div class="back_wrap">
-            <a href="old-home-2.html" class="button_back w-inline-block" title="Back to Case">
+            <a href="claim-detail.html" class="button_back w-inline-block" title="Back to Case">
               <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-left-dash-icon lucide-arrow-big-left-dash">
                   <path d="M13 9a1 1 0 0 1-1-1V4.707a.707.707 0 0 0-1.207-.5l-6.94 6.94a1.207 1.207 0 0 0 0 1.707l6.94 6.94a.707.707 0 0 0 1.207-.5V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z"></path>
                   <path d="M20 9v6"></path>
@@ -646,7 +646,7 @@
   <!-- Modal: Create New Reason -->
   <div class="popup_wraper" id="createReasonModal">
     <div class="popup_close_overlay"></div>
-    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-reason-picker" style="width: 520px;">
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-md">
       <div class="header_wrapper">
         <div class="div-block-69">
           <h2 class="heading-1-copy" style="font-size: 1.25rem;"><span class="text-span-4">Create New Reason</span></h2>
@@ -662,7 +662,7 @@
         </div>
       </div>
 
-      <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 14px;">
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
         <div>
           <div class="red-only" style="margin-bottom: 6px; font-size: 0.82rem;">CODE <span style="color: #ee3b76;">*</span></div>
           <div class="search_input _40">
@@ -718,7 +718,7 @@
         </div>
       </div>
 
-      <div class="reason-picker-footer">
+      <div class="modal-footer">
         <div></div>
         <div style="display: flex; gap: 8px;">
           <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
@@ -735,7 +735,7 @@
   <!-- Modal: Deactivate Warning Alert -->
   <div class="popup_wraper" id="deactivateWarningModal">
     <div class="popup_close_overlay"></div>
-    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-deactivate-warning">
+    <div aria-labelledby="modal-title" role="dialog" aria-modal="true" class="popup modal-sm">
       <div class="header_wrapper">
         <div class="div-block-69">
           <h2 class="heading-1-copy" style="font-size: 1.2rem; color: #ee3b76;">Deactivate Reason</h2>
@@ -751,12 +751,14 @@
         </div>
       </div>
 
-      <div class="warning-callout">
-        <strong id="deactReasonCode">REASON_CODE</strong> is used in <strong id="deactReasonCount">42</strong> records.<br><br>
-        <em>Reasons cannot be deleted, only deactivated.</em> Once deactivated, adjusters will no longer see this option for new feedback, but existing records and audit trails remain preserved.
+      <div class="modal-body">
+        <div class="warning-callout">
+          <strong id="deactReasonCode">REASON_CODE</strong> is used in <strong id="deactReasonCount">42</strong> records.<br><br>
+          <em>Reasons cannot be deleted, only deactivated.</em> Once deactivated, adjusters will no longer see this option for new feedback, but existing records and audit trails remain preserved.
+        </div>
       </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+      <div class="modal-footer" style="justify-content: flex-end;">
         <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
           <div>Cancel</div>
         </a>

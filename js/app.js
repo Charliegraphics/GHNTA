@@ -1104,6 +1104,101 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // --- 11. Document Preview Modal (Markdown Viewer) ---
+  const docPreviewModal = document.getElementById('documentPreviewModal');
+  const docPreviewTitle = document.getElementById('docPreviewTitle');
+  const docPreviewTypeBadge = document.getElementById('docPreviewTypeBadge');
+  const docPreviewMeta = document.getElementById('docPreviewMeta');
+  const docKvReportId = document.getElementById('docKvReportId');
+
+  document.querySelectorAll('.btn-open-doc').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const docId = btn.getAttribute('data-doc-id') || 'DOC-264384944-001';
+      const docTitle = btn.getAttribute('data-doc-title') || 'Photo Documentation';
+      const docMeta = btn.getAttribute('data-doc-meta') || 'Created: 2026-02-17 09:15 • Filed: 2026-02-17 11:00 • Entered: 2026-02-17 11:05';
+
+      if (docPreviewTitle) docPreviewTitle.textContent = docId;
+      if (docPreviewTypeBadge) docPreviewTypeBadge.textContent = `• ${docTitle}`;
+      if (docPreviewMeta) docPreviewMeta.textContent = docMeta;
+      if (docKvReportId) docKvReportId.textContent = docId;
+
+      if (docPreviewModal) {
+        docPreviewModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  // Copy Markdown button handler
+  const btnCopyMarkdown = document.getElementById('btnCopyMarkdown');
+  if (btnCopyMarkdown) {
+    btnCopyMarkdown.addEventListener('click', (e) => {
+      e.preventDefault();
+      const currentDocId = docPreviewTitle ? docPreviewTitle.textContent.trim() : 'DOC-264384944-001';
+      const currentDocType = docPreviewTypeBadge ? docPreviewTypeBadge.textContent.replace('•', '').trim() : 'Document';
+      const currentMeta = docPreviewMeta ? docPreviewMeta.textContent.trim() : '';
+
+      const markdownContent = `# AI PRE-ASSESSMENT REPORT (POLYCONTEXT SUMMARY)
+**Document:** ${currentDocId} • ${currentDocType}
+**Metadata:** ${currentMeta}
+**Polycontext ID:** 264384944 | **Claim ID:** CLM-9902
+
+---
+
+### 1. HEADER & CLAIM/POLICY AT A GLANCE
+#### Governance & Pipeline
+- **Report ID:** \`${currentDocId}\`
+- **Pipeline Version:** \`v4.1.0\`
+- **Generated At:** 2026-02-17 11:05:00 UTC
+- **Claim Status:** Validation_Passed
+
+#### Claim Parameters
+- **Claim ID:** \`CLM-9902\`
+- **Insured Party:** Lenka Nováková
+- **Date of Loss:** 2026-02-15
+- **Incident Summary:** Water damage from severed drainage pipe.
+
+#### Policy Contract Details
+- **Policy ID:** \`POL-264384944\`
+- **Product Name:** Home Insurance Plus
+- **Policy Status:** Active
+- **Coverage Period:** 2025-01-01 to 2027-01-01
+
+#### Evaluation Model & Prompt
+- **Model Engine:** \`GPT-4-GNOTHEA-v2\`
+- **Prompt Template:** \`PTM-000042\`
+- **Trace ID:** \`4bf92f3577b34da6a3ce929d0e0e4736\`
+- **Rules Passed:** 2 / 2 Passed (100%)
+
+---
+
+### 2. PROCESS FLOW OVERVIEW (VALUE STREAM)
+[1. Registration ✓] ➔ [2. Doc Ingestion ✓] ➔ [3. Policy Match ✓] ➔ **[4. Rule Evaluation (v.3) ⚙️]** ➔ [5. HITL Validation ⚪] ➔ [6. Settlement ⚪]
+
+---
+
+### 3. EVIDENCE & REASONING LOG
+> **Inspection Finding (DOC-264384944-003):**
+> Inspection notes confirm that drainage pipes remained patent and no water ingress contributed to the structural failure, isolating the event to seismic activity covered under Clause 4.2.
+`;
+
+      navigator.clipboard.writeText(markdownContent).then(() => {
+        const origHTML = btnCopyMarkdown.innerHTML;
+        btnCopyMarkdown.innerHTML = '<div>Copied!</div>';
+        btnCopyMarkdown.style.borderColor = '#6ee7b7';
+        btnCopyMarkdown.style.color = '#6ee7b7';
+        setTimeout(() => {
+          btnCopyMarkdown.innerHTML = origHTML;
+          btnCopyMarkdown.style.borderColor = '';
+          btnCopyMarkdown.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy Markdown content:', err);
+      });
+    });
+  }
+
   // Universal close buttons inside any modal with .btn-close-modal
   document.querySelectorAll('.btn-close-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {

@@ -926,27 +926,248 @@ input[type="date"].search-input-field {
   cursor: pointer;
 }
 
+/* ==========================================================================
+   5. UNIFIED MODAL DIALOG ARCHITECTURE
+   Unified base styles for all popups across the system
+   ========================================================================== */
 .popup {
   position: relative;
   z-index: 1;
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: 88vh;
+  background-color: #1e1b2e !important;
+  border: 1px solid #49416a !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(73, 65, 106, 0.4) !important;
   display: flex !important;
   flex-direction: column !important;
   overflow: hidden !important;
+  padding: 0 !important;
+  margin: auto !important;
 }
 
-.popup > .header_wrapper {
+/* Modal size modifiers */
+.popup.modal-sm { width: 480px !important; }
+.popup.modal-md { width: 540px !important; }
+.popup.modal-lg { width: 680px !important; }
+.popup.modal-xl { width: 840px !important; }
+
+/* Pinned Header */
+.popup > .header_wrapper,
+.popup .header_wrapper {
   flex-shrink: 0 !important;
+  padding: 20px 24px 16px 24px !important;
+  border-bottom: 1px solid #49416a !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: #1e1b2e !important;
 }
 
+/* Scrollable Body */
+.modal-body {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  padding: 20px 24px !important;
+  margin: 0 !important;
+}
+
+/* Pinned Footer */
+.modal-footer {
+  flex-shrink: 0 !important;
+  padding: 16px 24px 20px 24px !important;
+  border-top: 1px solid #49416a !important;
+  background-color: #1e1b2e !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 0 !important;
+}
+
+.button[arial-label="close dialog"],
+.button.btn-close-modal {
+  cursor: pointer !important;
+}
+
+/* Legacy container compatibility */
 .popup > .div-block-86 {
   flex: 1 1 auto !important;
   overflow-y: auto !important;
+  padding: 20px 24px !important;
+  border-radius: 0 !important;
 }
 
-.button[arial-label="close dialog"] {
-  cursor: pointer;
+/* ==========================================================================
+   MARKDOWN DOCUMENT VIEWER STYLES (.markdown-view)
+   Executive dark-mode Markdown layout for documents and reports
+   ========================================================================== */
+.markdown-view {
+  color: #edecf0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.markdown-view .md-title-banner {
+  background: linear-gradient(135deg, rgba(73, 65, 106, 0.45) 0%, rgba(40, 36, 58, 0.6) 100%);
+  border: 1px solid #49416a;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+}
+
+.markdown-view .md-doc-heading {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.3px;
+  margin: 0 0 6px 0;
+}
+
+.markdown-view .md-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.markdown-view .md-section-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #ee3b76;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin: 20px 0 10px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(73, 65, 106, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.markdown-view .md-section-desc {
+  font-size: 0.82rem;
+  color: #85809b;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.markdown-view .md-group-heading {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #c5bee6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 14px 0 8px 0;
+}
+
+.markdown-view .md-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .markdown-view .md-grid-two {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.markdown-view .md-card {
+  background-color: #28243a;
+  border: 1px solid #49416a;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.markdown-view .md-kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(73, 65, 106, 0.25);
+  font-size: 0.86rem;
+}
+
+.markdown-view .md-kv-row:last-child {
+  border-bottom: none;
+}
+
+.markdown-view .md-kv-label {
+  color: #85809b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.markdown-view .md-kv-value {
+  color: #edecf0;
+  font-weight: 500;
+  text-align: right;
+}
+
+.markdown-view .md-flow-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background-color: #28243a;
+  border: 1px solid #49416a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 12px 0 18px 0;
+}
+
+.markdown-view .md-flow-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: #1e1b2e;
+  border: 1px solid #49416a;
+  color: #c5bee6;
+}
+
+.markdown-view .md-flow-step.active {
+  background-color: rgba(238, 59, 118, 0.15);
+  border-color: #ee3b76;
+  color: #fff;
+  font-weight: 700;
+}
+
+.markdown-view .md-flow-arrow {
+  color: #85809b;
+  font-size: 0.9rem;
+}
+
+.markdown-view .md-callout {
+  background-color: rgba(73, 65, 106, 0.22);
+  border-left: 3px solid #9cbdff;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin: 12px 0;
+  font-size: 0.86rem;
+  color: #edecf0;
+}
+
+.markdown-view code.md-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: #1e1b2e;
+  border: 1px solid #49416a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  color: #9cbdff;
 }
 
 /* 5b. HITL Reasons & Comments Enhancements */
