@@ -4,6 +4,35 @@
    and responsive behavior across desktop, tablet, and mobile.
    ========================================================================== */
 
+/* 0. Global Custom Slim Dark Scrollbar
+   Subtle 6px rounded scrollbar matching #49416a / #28243a dark theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #49416a transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #49416a;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #63578c;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* 1. Responsive Table Container
    Allows horizontal scrolling on screens narrower than table min-width */
 .table-responsive {
@@ -738,6 +767,8 @@ input[type="date"].search-input-field {
   z-index: 1050;
   padding: 14px;
   animation: dropdownFadeIn 0.15s ease-out;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 .custom-datepicker.w--open .datepicker-popup {
@@ -900,7 +931,18 @@ input[type="date"].search-input-field {
   z-index: 1;
   max-width: 90vw;
   max-height: 90vh;
-  overflow-y: auto;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.popup > .header_wrapper {
+  flex-shrink: 0 !important;
+}
+
+.popup > .div-block-86 {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
 }
 
 .button[arial-label="close dialog"] {
@@ -1246,8 +1288,24 @@ a.button_gn.disabled {
   background-color: #1e1b2e !important;
   border: 1px solid #49416a !important;
   border-radius: 12px !important;
-  padding: 24px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.modal-reason-picker .header_wrapper {
+  flex-shrink: 0 !important;
+  padding: 22px 24px 16px 24px !important;
+  border-bottom: 1px solid #49416a !important;
+  margin-bottom: 0 !important;
+}
+
+.modal-reason-picker .reason-picker-content {
+  flex: 1 1 auto !important;
   overflow-y: auto !important;
+  padding: 16px 24px !important;
+  margin-top: 0 !important;
 }
 
 .reason-picker-group-title {
@@ -1318,9 +1376,11 @@ a.button_gn.disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px solid #49416a;
+  margin-top: 0 !important;
+  padding: 16px 24px 20px 24px !important;
+  border-top: 1px solid #49416a !important;
+  background-color: #1e1b2e !important;
+  flex-shrink: 0 !important;
   flex-wrap: wrap;
   gap: 10px;
 }
