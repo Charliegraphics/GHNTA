@@ -1398,4 +1398,220 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- 12. Save As (PDF / Polycontext Report Download & Print) ---
+  const btnSaveAs = document.getElementById('btnSaveAs');
+  if (btnSaveAs) {
+    btnSaveAs.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.print();
+    });
+  }
+
+  // --- 13. Explainability Manual Management Modal & Dropzone ---
+  const manageExplainModal = document.getElementById('manageExplainModal');
+  const manageModalTitle = document.getElementById('manageModalTitle');
+  const manageRequestId = document.getElementById('manageRequestId');
+  const manageMetaId = document.getElementById('manageMetaId');
+  const manageMetaPoly = document.getElementById('manageMetaPoly');
+  const manageMetaDate = document.getElementById('manageMetaDate');
+  const manageStatusSelect = document.getElementById('manageStatusSelect');
+  const explainDropzone = document.getElementById('explainDropzone');
+  const explainFileInput = document.getElementById('explainFileInput');
+  const dropzonePrompt = document.getElementById('dropzonePrompt');
+  const dropzonePreview = document.getElementById('dropzonePreview');
+  const previewFileName = document.getElementById('previewFileName');
+  const previewFileSize = document.getElementById('previewFileSize');
+  const btnRemoveFile = document.getElementById('btnRemoveFile');
+  const btnSaveManageExplain = document.getElementById('btnSaveManageExplain');
+  const manageToastNotification = document.getElementById('manageToastNotification');
+  const toastRequestId = document.getElementById('toastRequestId');
+  const toastMessage = document.getElementById('toastMessage');
+  const btnCloseManageToast = document.getElementById('btnCloseManageToast');
+
+  let currentAttachedFile = null;
+
+  // Open modal on Manage button click
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-manage-request');
+    if (!btn) return;
+    e.preventDefault();
+
+    const reqId = btn.getAttribute('data-id') || 'EXP-0042';
+    const polyId = btn.getAttribute('data-poly') || '264384944';
+    const status = btn.getAttribute('data-status') || 'In progress';
+    const date = btn.getAttribute('data-date') || '2026-02-28 · 14:32:05 UTC';
+
+    if (manageRequestId) manageRequestId.value = reqId;
+    if (manageModalTitle) manageModalTitle.textContent = `Manage Request ${reqId}`;
+    if (manageMetaId) manageMetaId.textContent = reqId;
+    if (manageMetaPoly) manageMetaPoly.textContent = polyId;
+    if (manageMetaDate) manageMetaDate.textContent = date;
+    if (manageStatusSelect) manageStatusSelect.value = status;
+
+    // Reset file input & dropzone preview
+    currentAttachedFile = null;
+    if (explainFileInput) explainFileInput.value = '';
+    if (dropzonePrompt) dropzonePrompt.style.display = 'flex';
+    if (dropzonePreview) dropzonePreview.style.display = 'none';
+
+    if (manageExplainModal) {
+      manageExplainModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Dropzone file handling
+  if (explainDropzone && explainFileInput) {
+    const handleSelectedFile = (file) => {
+      if (!file) return;
+      currentAttachedFile = file;
+      if (previewFileName) previewFileName.textContent = file.name;
+      if (previewFileSize) {
+        const sizeKb = (file.size / 1024).toFixed(1);
+        previewFileSize.textContent = sizeKb > 1024 ? `${(sizeKb / 1024).toFixed(2)} MB` : `${sizeKb} KB`;
+      }
+      if (dropzonePrompt) dropzonePrompt.style.display = 'none';
+      if (dropzonePreview) dropzonePreview.style.display = 'flex';
+    };
+
+    explainFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleSelectedFile(e.target.files[0]);
+      }
+    });
+
+    explainDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      explainDropzone.classList.add('dragover');
+    });
+
+    explainDropzone.addEventListener('dragleave', () => {
+      explainDropzone.classList.remove('dragover');
+    });
+
+    explainDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      explainDropzone.classList.remove('dragover');
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleSelectedFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    if (btnRemoveFile) {
+      btnRemoveFile.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        currentAttachedFile = null;
+        explainFileInput.value = '';
+        if (dropzonePrompt) dropzonePrompt.style.display = 'flex';
+        if (dropzonePreview) dropzonePreview.style.display = 'none';
+      });
+    }
+  }
+
+  // Save changes from modal
+  if (btnSaveManageExplain) {
+    btnSaveManageExplain.addEventListener('click', (e) => {
+      e.preventDefault();
+      const reqId = manageRequestId ? manageRequestId.value : '';
+      const newStatus = manageStatusSelect ? manageStatusSelect.value : 'In progress';
+
+      if (!reqId) return;
+
+      // Find matching row in table
+      const targetRow = document.querySelector(`tr[data-id="${reqId}"]`);
+      if (targetRow) {
+        targetRow.setAttribute('data-status', newStatus);
+
+        // Update status badge
+        const statusBadgeCell = targetRow.querySelector('.column_wrap .status-badge');
+        if (statusBadgeCell) {
+          if (newStatus === 'Completed') {
+            statusBadgeCell.className = 'status-badge status-completed';
+            statusBadgeCell.innerHTML = 'Completed';
+          } else if (newStatus === 'In progress') {
+            statusBadgeCell.className = 'status-badge status-inprogress';
+            statusBadgeCell.innerHTML = '<span class="pulsing-dot"></span>In progress';
+          } else if (newStatus === 'Initial') {
+            statusBadgeCell.className = 'status-badge status-initial';
+            statusBadgeCell.innerHTML = 'Initial';
+          } else if (newStatus === 'Error') {
+            statusBadgeCell.className = 'status-badge status-error';
+            statusBadgeCell.innerHTML = 'Error';
+          }
+        }
+
+        // Update manage button data-status
+        const manageBtn = targetRow.querySelector('.btn-manage-request');
+        if (manageBtn) {
+          manageBtn.setAttribute('data-status', newStatus);
+        }
+
+        // Update result cell
+        const resultCell = targetRow.querySelector('.result-cell') || targetRow.querySelectorAll('td')[5]?.querySelector('.column_wrap');
+        if (resultCell) {
+          if (currentAttachedFile) {
+            const ext = currentAttachedFile.name.split('.').pop().toUpperCase();
+            const formatName = ext.length <= 4 ? ext : 'DOC';
+            resultCell.innerHTML = `
+              <a href="#" class="btn_download" download="${currentAttachedFile.name}" title="Download Attached ${formatName}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>${formatName}</span>
+              </a>
+            `;
+          } else if (newStatus === 'Completed') {
+            resultCell.innerHTML = `
+              <a href="#" class="btn_download" download="explain_${reqId}.pdf" title="Download PDF Explanation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>PDF</span>
+              </a>
+            `;
+          } else if (newStatus === 'In progress') {
+            resultCell.innerHTML = `<span class="red-only" style="font-size:0.85rem;"><span class="pulsing-dot"></span>In progress</span>`;
+          } else if (newStatus === 'Initial') {
+            resultCell.innerHTML = `<span class="red-only" style="font-size:0.85rem;">Queued</span>`;
+          } else if (newStatus === 'Error') {
+            resultCell.innerHTML = `
+              <div class="failed-result">
+                <span>Failed</span>
+                <div class="info-tooltip-wrap" title="Request manually marked as Error">
+                  <span class="info-tooltip-icon">i</span>
+                </div>
+              </div>
+            `;
+          }
+        }
+      }
+
+      // Close modal
+      if (manageExplainModal) {
+        manageExplainModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      // Show toast
+      if (manageToastNotification) {
+        if (toastRequestId) toastRequestId.textContent = reqId;
+        if (toastMessage) {
+          toastMessage.textContent = currentAttachedFile 
+            ? `Request ${reqId} set to "${newStatus}" with attached document "${currentAttachedFile.name}"`
+            : `Request ${reqId} status updated to "${newStatus}"`;
+        }
+        manageToastNotification.style.display = 'flex';
+        manageToastNotification.classList.add('show');
+        setTimeout(() => {
+          manageToastNotification.style.display = 'none';
+          manageToastNotification.classList.remove('show');
+        }, 4000);
+      }
+    });
+  }
+
+  if (btnCloseManageToast && manageToastNotification) {
+    btnCloseManageToast.addEventListener('click', () => {
+      manageToastNotification.style.display = 'none';
+      manageToastNotification.classList.remove('show');
+    });
+  }
 });
