@@ -158,6 +158,13 @@
           <div class="divider"></div>
           <div class="eval-context-meta-row">
             <div class="eval-context-meta-col">
+              <div class="eval-context-label">Version / Evaluation</div>
+              <div class="eval-context-value">
+                <span class="eval-context-badge-v">V1</span>
+                <span class="eval-context-badge-e">E1</span>
+              </div>
+            </div>
+            <div class="eval-context-meta-col">
               <div class="eval-context-label">Data as of</div>
               <div class="eval-context-value">2026-02-28 · 10:00 UTC</div>
             </div>
@@ -175,12 +182,12 @@
             </div>
           </div>
         </div>
-        <div class="object-box">
+        <div class="object-box" id="aiRecommendationCard">
           <div class="div-block-71">
             <div class="heading_wrap">
               <div class="badge-big">AI recommendation</div>
-              <h2 class="heading-jumb">Recommended approval — all rules passed verification.</h2>
-              <div class="text-block-3">The evidence supports approval for payment.</div>
+              <h2 class="heading-jumb" id="aiRecMainStatement">No recommendation — 49 rules could not be resolved from the available evidence.</h2>
+              <div class="text-block-3" id="aiRecSubtitle">The available evidence is insufficient to reach an automated decision.</div>
               <div class="ico-tags recommendation-disclaimer">
                 <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -191,70 +198,336 @@
               </div>
             </div>
             <div class="steps">
-              <h2 class="heading-jumbo"><span class="green big">2/2</span></h2>
+              <h2 class="heading-jumbo"><span class="big">23/72</span></h2>
               <div class="list_line">
-                <div class="badge-label small">RULES PASSED</div>
+                <div class="badge-label small">RULES PASSED</div>
               </div>
-              <div class="status-badge">All Clear</div>
+              <div class="status-badge warning" id="aiRecStatusChip">Evidence needed</div>
             </div>
           </div>
           <div class="divider"></div>
           <div class="recomend_wrap">
             <div class="number-box first">
               <div class="list_line-copy">
-                <div class="badge-label small">TOTAL RULES</div>
+                <div class="badge-label small">TOTAL RULES</div>
               </div>
-              <h2 class="big-number">2</h2>
+              <h2 class="big-number" id="counterTotalRules">72</h2>
             </div>
             <div class="number-box">
               <div class="list_line">
                 <div class="badge-label small">PASSED</div>
               </div>
-              <h2 class="heading-jumbo"><span class="green">2</span></h2>
+              <h2 class="heading-jumbo"><span class="green" id="counterPassedRules">23</span></h2>
             </div>
             <div class="number-box">
               <div class="list_line">
                 <div class="badge-label small">FAILED</div>
               </div>
-              <h2 class="heading-jumbo"><span class="red">0</span></h2>
+              <h2 class="heading-jumbo"><span class="red" id="counterFailedRules">0</span></h2>
             </div>
             <div class="number-box">
               <div class="list_line">
                 <div class="badge-label small">UNRESOLVABLE</div>
               </div>
-              <h2 class="heading-jumbo"><span class="red">0</span></h2>
-            </div>
-            <div class="number-box">
-              <div class="list_line">
-                <div class="badge-label small">MISSING INFORMATION</div>
-              </div>
-              <h2 class="heading-jumbo"><span class="red">-</span></h2>
+              <h2 class="heading-jumbo"><span class="orange" id="counterUnresolvableRules">49</span></h2>
             </div>
           </div>
+
+          <!-- Section 1: SUMMARY -->
           <div class="divider"></div>
-          <div class="ico-tags">
-            <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
-                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
-                <path d="M9 18h6"></path>
-                <path d="M10 22h4"></path>
-              </svg></div>
-            <div class="text-block-3">Prioritize settlement payment before the statutory deadline (2026-03-04).</div>
+          <div class="ai-rec-sub-section" id="aiRecSummarySection">
+            <div class="ai-rec-section-header">
+              <div class="badge-label small">SUMMARY</div>
+            </div>
+            <div class="ai-rec-summary-list">
+              <div class="ai-rec-summary-row">
+                <div class="dot green" style="margin-top: 6px; width: 6px; height: 6px; flex-shrink: 0;"></div>
+                <div class="text-block-3">Coverage verified: 4 rule(s) passed</div>
+              </div>
+              <div class="ai-rec-summary-row">
+                <div class="dot green" style="margin-top: 6px; width: 6px; height: 6px; flex-shrink: 0;"></div>
+                <div class="text-block-3">Exclusions verified: 13 rule(s) passed</div>
+              </div>
+              <div class="ai-rec-summary-row">
+                <div class="dot orange" style="margin-top: 6px; width: 6px; height: 6px; flex-shrink: 0;"></div>
+                <div class="text-block-3">Needs evidence: 18 coverage, 1 documentation, 5 document_aware, 1 eligibility, 22 exclusion, 2 valuation</div>
+              </div>
+              <div class="ai-rec-summary-row">
+                <div class="dot blue" style="margin-top: 6px; width: 6px; height: 6px; flex-shrink: 0;"></div>
+                <div class="text-block-3">Next: obtain documentation</div>
+              </div>
+              <div class="ai-rec-summary-row">
+                <div class="dot grey" style="margin-top: 6px; width: 6px; height: 6px; flex-shrink: 0;"></div>
+                <div class="text-block-3">Claim amount: <strong style="color: #edecf0;">€5,201.59</strong></div>
+              </div>
+            </div>
           </div>
-          <div class="ico-tags">
-            <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
-                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
-                <path d="M9 18h6"></path>
-                <path d="M10 22h4"></path>
-              </svg></div>
-            <div class="text-block-3">Request final contractor invoice once repair work is completed to reconcile estimated vs. actual costs.</div>
+
+          <!-- Section 2: MISSING INFORMATION -->
+          <div class="divider"></div>
+          <div class="ai-rec-sub-section" id="aiRecMissingInfoSection">
+            <div class="ai-rec-section-header">
+              <div class="badge-label small">MISSING INFORMATION — 41 rules affected</div>
+            </div>
+            <div class="missing-info-list" id="missingInfoList">
+              <!-- Category 1: Coverage -->
+              <div class="missing-info-cat-row">
+                <div class="missing-info-cat-label">
+                  <span class="missing-info-cat-title">coverage</span>
+                  <span class="missing-info-cat-badge">— 18 rules</span>
+                </div>
+                <div class="missing-info-chips-wrap">
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100313">100313</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100331">100331</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100335">100335</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100346">100346</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100350">100350</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100355">100355</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100360">100360</a>
+                </div>
+              </div>
+
+              <!-- Category 2: Eligibility -->
+              <div class="missing-info-cat-row">
+                <div class="missing-info-cat-label">
+                  <span class="missing-info-cat-title">eligibility</span>
+                  <span class="missing-info-cat-badge">— 1 rule</span>
+                </div>
+                <div class="missing-info-chips-wrap">
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100343">100343</a>
+                </div>
+              </div>
+
+              <!-- Category 3: Exclusion -->
+              <div class="missing-info-cat-row">
+                <div class="missing-info-cat-label">
+                  <span class="missing-info-cat-title">exclusion</span>
+                  <span class="missing-info-cat-badge">— 22 rules</span>
+                </div>
+                <div class="missing-info-chips-wrap">
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100370">100370</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100373">100373</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100377">100377</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100381">100381</a>
+                  <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100385">100385</a>
+                </div>
+              </div>
+
+              <!-- Extra Categories (Collapsed behind Show more) -->
+              <div class="missing-info-extra" id="missingInfoExtra" style="display: none;">
+                <div class="missing-info-cat-row">
+                  <div class="missing-info-cat-label">
+                    <span class="missing-info-cat-title">documentation</span>
+                    <span class="missing-info-cat-badge">— 1 rule</span>
+                  </div>
+                  <div class="missing-info-chips-wrap">
+                    <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100390">100390</a>
+                  </div>
+                </div>
+                <div class="missing-info-cat-row">
+                  <div class="missing-info-cat-label">
+                    <span class="missing-info-cat-title">valuation</span>
+                    <span class="missing-info-cat-badge">— 2 rules</span>
+                  </div>
+                  <div class="missing-info-chips-wrap">
+                    <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100395">100395</a>
+                    <a href="#rulesEvaluationSection" class="rule-ref-chip" data-rule-id="100398">100398</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 10px;">
+              <a href="#" class="btn_show_more btn-toggle-more" data-target="missingInfoExtra">
+                <div>... Show more</div>
+              </a>
+            </div>
           </div>
-          <div class="ico-tags">
-            <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
-                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
-                <path d="M9 18h6"></path>
-                <path d="M10 22h4"></path>
-              </svg></div>
-            <div class="text-block-3">Tag claim with catastrophic event identifier Earthquake-2026-02-16 for reinsurance reporting.</div>
+
+          <!-- Section 3: RECOMMENDATIONS -->
+          <div class="divider"></div>
+          <div class="ai-rec-sub-section" id="aiRecRecommendationsSection">
+            <div class="ai-rec-section-header">
+              <div class="badge-label small">RECOMMENDATIONS</div>
+            </div>
+            <div class="recommendations-list" id="recommendationsList">
+              <div class="ico-tags">
+                <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg></div>
+                <div class="text-block-3">Prioritize settlement payment before the statutory deadline (2026-03-04).</div>
+              </div>
+              <div class="ico-tags">
+                <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg></div>
+                <div class="text-block-3">Request final contractor invoice once repair work is completed to reconcile estimated vs. actual costs.</div>
+              </div>
+              <div class="ico-tags">
+                <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg></div>
+                <div class="text-block-3">Tag claim with catastrophic event identifier Earthquake-2026-02-16 for reinsurance reporting.</div>
+              </div>
+              <div class="ico-tags">
+                <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg></div>
+                <div class="text-block-3">Verify that no duplicate water damage claim was filed under policy PZ-HHI-7892581520 in the last 12 months.</div>
+              </div>
+              <div class="ico-tags">
+                <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                  </svg></div>
+                <div class="text-block-3">Schedule post-settlement quality audit for structural repair documentation.</div>
+              </div>
+
+              <!-- Extra Recommendations (Collapsed behind Show more) -->
+              <div class="recommendations-extra" id="recommendationsExtra" style="display: none;">
+                <div class="ico-tags" style="margin-top: 10px;">
+                  <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                      <path d="M9 18h6"></path>
+                      <path d="M10 22h4"></path>
+                    </svg></div>
+                  <div class="text-block-3">Request confirmation of bank account IBAN from insured party before authorizing payout.</div>
+                </div>
+                <div class="ico-tags" style="margin-top: 10px;">
+                  <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb-icon lucide-lightbulb">
+                      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path>
+                      <path d="M9 18h6"></path>
+                      <path d="M10 22h4"></path>
+                    </svg></div>
+                  <div class="text-block-3">Notify underwriting team if loss ratio for property exceeds seasonal threshold.</div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 10px;">
+              <a href="#" class="btn_show_more btn-toggle-more" data-target="recommendationsExtra">
+                <div>... Show more</div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="object-box-copy">
+          <div class="box_label_wrap">
+            <div class="side-wrap-left">
+              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history-icon lucide-history">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                  <path d="M3 3v5h5"></path>
+                  <path d="M12 7v5l4 2"></path>
+                </svg></div>
+              <div class="text-block-2">Evaluation history of polycontext version</div>
+            </div>
+            <div class="side-wrap smallgap">
+              <a href="#" class="link-block-2 w-inline-block collapsed" data-toggle-collapse="evalHistoryTableWrap" aria-label="Toggle evaluation history table">
+                <div class="code-embed-13 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Semantic Responsive Evaluation History Table (Default Collapsed) -->
+          <div class="table-responsive" id="evalHistoryTableWrap" style="display: none;">
+            <table class="table_dash_wrap-copy table-eval-history">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">POLYCONTEXT VERSION</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">EVALUATION</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">WHEN</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap">
+                      <div class="badge-label">USER</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap right">
+                      <div class="badge-label">VIEW</div>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="clean">
+                  <td><div class="v _3">V1</div></td>
+                  <td><div class="number">1</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">50 minutes ago</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">April 9th 2026, 11:46:43 am</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="red-only data">Sarah Jenkins</div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark btn-open-doc w-inline-block" data-doc-id="CLM-9902 (V1 - Eval 1)" data-doc-title="Evaluation Report (V1 - Eval 1)" data-doc-meta="April 9th 2026, 11:46:43 am • User: Sarah Jenkins" data-doc-type="Evaluation Report" title="View Eval 1 Report">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link">
+                            <path d="M15 3h6v6"></path>
+                            <path d="M10 14 21 3"></path>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean last">
+                  <td><div class="v _3">V1</div></td>
+                  <td><div class="number">2</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">29 minutes ago</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">April 9th 2026, 11:46:43 am</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="red-only data">Sarah Jenkins</div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark btn-open-doc w-inline-block" data-doc-id="CLM-9902 (V1 - Eval 2)" data-doc-title="Evaluation Report (V1 - Eval 2)" data-doc-meta="April 9th 2026, 11:46:43 am • User: Sarah Jenkins" data-doc-type="Evaluation Report" title="View Eval 2 Report">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link">
+                            <path d="M15 3h6v6"></path>
+                            <path d="M10 14 21 3"></path>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="object-box-copy">
@@ -266,7 +539,7 @@
                   <circle cx="6" cy="18" r="3"></circle>
                   <path d="M18 9a9 9 0 0 1-9 9"></path>
                 </svg></div>
-              <div class="text-block-2">Polycontext history</div>
+              <div class="text-block-2">Polycontext version history</div>
             </div>
             <div class="side-wrap smallgap">
               <a href="#" class="link-block-2 w-inline-block" data-toggle-collapse="historyTableWrap" aria-label="Toggle history table">
@@ -277,9 +550,10 @@
             </div>
           </div>
 
-          <!-- Semantic Responsive History Table -->
-          <div class="table-responsive" id="historyTableWrap">
-            <table class="table-history">
+          <!-- Semantic Responsive History Table Wrapper -->
+          <div id="historyTableWrap">
+            <div class="table-responsive">
+              <table class="table-history">
               <thead>
                 <tr>
                   <th><div class="div-block-89"></div></th>
@@ -447,7 +721,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr class="clean last">
+                <tr class="clean">
                   <td><div class="number">v.1</div></td>
                   <td>
                     <div class="data_wrap">
@@ -515,6 +789,212 @@
                     </div>
                   </td>
                 </tr>
+
+                <!-- Extra History Rows (Collapsed behind Show more) -->
+                <tr class="clean history-extra" style="display: none;">
+                  <td><div class="number">v.0.9</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">12 days ago</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">March 28th 2026, 09:15:20 am</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="tag-wrap">
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-icon lucide-file">
+                              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+                              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                            </svg></div>
+                          <div class="red-only">4 doc.</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-quote-icon lucide-message-square-quote">
+                              <path d="M14 14a2 2 0 0 0 2-2V8h-2"></path>
+                              <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 21.286 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
+                              <path d="M8 14a2 2 0 0 0 2-2V8H8"></path>
+                            </svg></div>
+                          <div class="red-only">12 comments</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw">
+                              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                              <path d="M3 3v5h5"></path>
+                              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                              <path d="M16 16h5v5"></path>
+                            </svg></div>
+                          <div class="red-only">4 changes</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">GPT-4-GNOTHEA-v1</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">PTM-000035</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <div class="status-badge hiden">Evaluated</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark btn-open-doc w-inline-block" data-doc-id="CLM-9902 (v.0.9)" data-doc-title="AI Pre-Assessment Report" data-doc-meta="March 28th 2026, 09:15:20 am • Model: GPT-4-GNOTHEA-v1" data-doc-type="Evaluation Report" title="View v.0.9 Report">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw-icon lucide-rotate-cw">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean history-extra" style="display: none;">
+                  <td><div class="number">v.0.8</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">18 days ago</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">March 22nd 2026, 02:40:11 pm</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="tag-wrap">
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-icon lucide-file">
+                              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+                              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                            </svg></div>
+                          <div class="red-only">3 doc.</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-quote-icon lucide-message-square-quote">
+                              <path d="M14 14a2 2 0 0 0 2-2V8h-2"></path>
+                              <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 21.286 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
+                              <path d="M8 14a2 2 0 0 0 2-2V8H8"></path>
+                            </svg></div>
+                          <div class="red-only">8 comments</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw">
+                              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                              <path d="M3 3v5h5"></path>
+                              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                              <path d="M16 16h5v5"></path>
+                            </svg></div>
+                          <div class="red-only">2 changes</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">GPT-4-GNOTHEA-v1</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">PTM-000031</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <div class="status-badge hiden">Evaluated</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark btn-open-doc w-inline-block" data-doc-id="CLM-9902 (v.0.8)" data-doc-title="AI Pre-Assessment Report" data-doc-meta="March 22nd 2026, 02:40:11 pm • Model: GPT-4-GNOTHEA-v1" data-doc-type="Evaluation Report" title="View v.0.8 Report">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw-icon lucide-rotate-cw">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="clean history-extra last" style="display: none;">
+                  <td><div class="number">v.0.5</div></td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">25 days ago</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">March 15th 2026, 10:05:44 am</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap">
+                      <div class="tag-wrap">
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-icon lucide-file">
+                              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+                              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                            </svg></div>
+                          <div class="red-only">2 doc.</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-quote-icon lucide-message-square-quote">
+                              <path d="M14 14a2 2 0 0 0 2-2V8h-2"></path>
+                              <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 21.286 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
+                              <path d="M8 14a2 2 0 0 0 2-2V8H8"></path>
+                            </svg></div>
+                          <div class="red-only">3 comments</div>
+                        </div>
+                        <div class="ico-tags">
+                          <div class="code-embed-14 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw-icon lucide-refresh-ccw">
+                              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                              <path d="M3 3v5h5"></path>
+                              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                              <path d="M16 16h5v5"></path>
+                            </svg></div>
+                          <div class="red-only">1 changes</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="data_wrap">
+                      <div class="upline_wrtap-copy">
+                        <div class="up_data">GPT-4-GNOTHEA-v1</div>
+                      </div>
+                      <div class="downline_data_wrap-copy">
+                        <div class="low_data">PTM-000028</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <div class="status-badge hiden">Evaluated</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap right">
+                      <a href="#" class="user_btn_dark btn-open-doc w-inline-block" data-doc-id="CLM-9902 (v.0.5)" data-doc-title="AI Pre-Assessment Report" data-doc-meta="March 15th 2026, 10:05:44 am • Model: GPT-4-GNOTHEA-v1" data-doc-type="Evaluation Report" title="View v.0.5 Report">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw-icon lucide-rotate-cw">
+                            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                          </svg></div>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -522,11 +1002,12 @@
           <div class="spacer_div"></div>
           <div class="button-wrap">
             <div class="text-block-3">GNOTHEA automatically saving polycontext. The current version is also backed up.</div>
-            <a href="#" class="button_gn_sec dark w-inline-block">
+            <a href="#" class="btn_show_more btn-toggle-more" data-target="history-extra">
               <div>... Show more</div>
             </a>
           </div>
         </div>
+      </div>
         <div class="div-block-83">
           <div class="object-box">
             <div class="claims-wrap">
@@ -619,7 +1100,7 @@
               <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
                   <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
                 </svg></div>
-              <div class="text-block-2">Polycontext documents</div>
+              <div class="text-block-2">Polycontext version documents</div>
             </div>
             <div class="side-wrap smallgap">
               <div class="status-badge progress">6 documents</div>
@@ -805,7 +1286,7 @@
 
           <div class="spacer_div"></div>
         </div>
-        <div class="object-box-copy">
+        <div class="object-box-copy" id="rulesEvaluationSection">
           <div class="box_label_wrap">
             <div class="side-wrap-left">
               <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-check-icon lucide-message-circle-check">
@@ -945,8 +1426,13 @@
                   <div class="red-only">30. 8. 2026<br></div>
                   <div class="chat_box" data-reasons="DOC_MISSING_NOT_FLAGGED,RULE_RESULT_WRONG">
                     <div class="div-block-87">
-                      <div class="up_data">Sarah Jenkins <span class="version-pill">v4.1.0</span></div>
-                      <div class="low_data"> 12:23</div>
+                      <div class="up_data">Sarah Jenkins <span class="version-pill">V1_E2</span></div>
+                      <div class="low_data">
+                        <span>12:23</span>
+                        <button type="button" class="btn-copy-comment" title="Copy text to comment notes" aria-label="Copy comment text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        </button>
+                      </div>
                     </div>
                     <div class="comment-reasons-wrap">
                       <span class="reason-badge doc">DOC_MISSING_NOT_FLAGGED</span>
@@ -961,8 +1447,13 @@
                   <div class="red-only">28. 7. 2026<br></div>
                   <div class="chat_box" data-reasons="REC_UNSUPPORTED">
                     <div class="div-block-87">
-                      <div class="up_data">Sarah Jenkins <span class="version-pill">v4.0.2</span></div>
-                      <div class="low_data"> 12:23</div>
+                      <div class="up_data">Sarah Jenkins <span class="version-pill">V1_E1</span></div>
+                      <div class="low_data">
+                        <span>12:23</span>
+                        <button type="button" class="btn-copy-comment" title="Copy text to comment notes" aria-label="Copy comment text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        </button>
+                      </div>
                     </div>
                     <div class="comment-reasons-wrap">
                       <span class="reason-badge output">REC_UNSUPPORTED</span>
@@ -971,8 +1462,13 @@
                   </div>
                   <div class="chat_box" data-reasons="META_MISMATCH,OTHER">
                     <div class="div-block-87">
-                      <div class="up_data">Sarah Jenkins <span class="version-pill">v4.0.0</span></div>
-                      <div class="low_data"> 12:23</div>
+                      <div class="up_data">Sarah Jenkins <span class="version-pill">V1_E1</span></div>
+                      <div class="low_data">
+                        <span>12:23</span>
+                        <button type="button" class="btn-copy-comment" title="Copy text to comment notes" aria-label="Copy comment text">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        </button>
+                      </div>
                     </div>
                     <div class="comment-reasons-wrap">
                       <span class="reason-badge data">META_MISMATCH</span>
@@ -1040,7 +1536,7 @@
                         <path d="m15 17 5-5-5-5"></path>
                         <path d="M4 18v-2a4 4 0 0 1 4-4h12"></path>
                       </svg></div>
-                    <div>send</div>
+                    <div>Send and Evaluate</div>
                   </a>
                 </div>
               </div>

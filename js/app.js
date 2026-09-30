@@ -97,19 +97,79 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- 3. Collapsible Sections (e.g. Polycontext History) ---
-  const toggleCollapseButtons = document.querySelectorAll('[data-toggle-collapse]');
-  toggleCollapseButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = btn.getAttribute('data-toggle-collapse');
-      const target = document.getElementById(targetId);
-      if (target) {
-        const isHidden = target.style.display === 'none';
-        target.style.display = isHidden ? '' : 'none';
-        btn.classList.toggle('collapsed', !isHidden);
+  // --- 3. Collapsible Sections (e.g. Polycontext History, HITL Feedback, etc.) ---
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-toggle-collapse]');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    const targetId = btn.getAttribute('data-toggle-collapse');
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const isCollapsed = btn.classList.contains('collapsed') || 
+                        target.classList.contains('is-collapsed') || 
+                        target.style.display === 'none' || 
+                        window.getComputedStyle(target).display === 'none';
+
+    if (isCollapsed) {
+      target.classList.remove('is-collapsed');
+      target.style.removeProperty('display');
+      target.style.display = 'block';
+      btn.classList.remove('collapsed');
+      btn.setAttribute('aria-expanded', 'true');
+    } else {
+      target.classList.add('is-collapsed');
+      target.style.setProperty('display', 'none', 'important');
+      btn.classList.add('collapsed');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // --- 3b. Show More / Show Less for Collapsed Sub-sections & Table Rows ---
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-toggle-more');
+    if (!btn) return;
+    e.preventDefault();
+    const targetKey = btn.getAttribute('data-target');
+    if (!targetKey) return;
+
+    // Check if targeting class (e.g. history-extra table rows)
+    const extraItems = document.querySelectorAll(`.${targetKey}`);
+    const targetEl = document.getElementById(targetKey);
+
+    if (extraItems.length > 0) {
+      const isHidden = extraItems[0].style.display === 'none' || window.getComputedStyle(extraItems[0]).display === 'none';
+      extraItems.forEach(item => {
+        item.style.display = isHidden ? (item.tagName === 'TR' ? 'table-row' : 'block') : 'none';
+      });
+      const labelDiv = btn.querySelector('div') || btn;
+      labelDiv.textContent = isHidden ? '... Show less' : '... Show more';
+      btn.classList.toggle('expanded', isHidden);
+    } else if (targetEl) {
+      const isHidden = targetEl.style.display === 'none' || window.getComputedStyle(targetEl).display === 'none';
+      targetEl.style.display = isHidden ? 'block' : 'none';
+      const labelDiv = btn.querySelector('div') || btn;
+      labelDiv.textContent = isHidden ? '... Show less' : '... Show more';
+      btn.classList.toggle('expanded', isHidden);
+    }
+  });
+
+  // --- 3c. Rule Reference Chips -> Smooth scroll to Rules Evaluation ---
+  document.addEventListener('click', (e) => {
+    const chip = e.target.closest('.rule-ref-chip');
+    if (!chip) return;
+    const rulesSection = document.getElementById('rulesEvaluationSection') || document.getElementById('rulesEvalContent');
+    if (rulesSection) {
+      // If rules section is collapsed, expand it
+      const rulesContent = document.getElementById('rulesEvalContent');
+      const rulesToggle = document.querySelector('[data-toggle-collapse="rulesEvalContent"]');
+      if (rulesContent && (rulesContent.classList.contains('is-collapsed') || rulesContent.style.display === 'none') && rulesToggle) {
+        rulesToggle.click();
       }
-    });
+      rulesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 
   // --- 4. Live Table Search Filtering ---
@@ -744,8 +804,13 @@ document.addEventListener('DOMContentLoaded', () => {
         newCommentBox.setAttribute('data-reasons', reasonCodesStr);
         newCommentBox.innerHTML = `
           <div class="div-block-87">
-            <div class="up_data">Sarah Jenkins <span class="version-pill">v4.1.0</span></div>
-            <div class="low_data">${timeStr}</div>
+            <div class="up_data">Sarah Jenkins <span class="version-pill">V1_E2</span></div>
+            <div class="low_data">
+              <span>${timeStr}</span>
+              <button type="button" class="btn-copy-comment" title="Copy text to comment notes" aria-label="Copy comment text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              </button>
+            </div>
           </div>
           <div class="comment-reasons-wrap">
             ${reasonBadgesHtml}
@@ -778,6 +843,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+
+    // Copy HITL Comment text into Comment Notes textarea
+    document.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('.btn-copy-comment');
+      if (!copyBtn) return;
+
+      e.preventDefault();
+      const chatBox = copyBtn.closest('.chat_box');
+      if (!chatBox) return;
+
+      const commentTextEl = chatBox.querySelector('.text-block-3');
+      const commentText = commentTextEl ? commentTextEl.textContent.trim() : '';
+
+      if (commentText && hitlCommentTextarea) {
+        hitlCommentTextarea.value = commentText;
+        hitlCommentTextarea.focus();
+        hitlCommentTextarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Trigger input validation so send button state updates
+        hitlCommentTextarea.dispatchEvent(new Event('input', { bubbles: true }));
+
+        // Copy to system clipboard
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(commentText).catch(() => {});
+        }
+
+        // Visual feedback
+        copyBtn.classList.add('copied');
+        const origSvg = copyBtn.innerHTML;
+        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-icon lucide-check"><path d="20 6 9 17l-5-5"/></svg>`;
+
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = origSvg;
+        }, 1500);
+      }
+    });
 
     // Comment Filter by Reason
     if (chatReasonFilter) {

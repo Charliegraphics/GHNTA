@@ -180,15 +180,17 @@ table.table_dash_wrap-copy thead th {
   white-space: nowrap;
 }
 table.table_dash_wrap-copy th:nth-child(1),
-table.table_dash_wrap-copy td:nth-child(1) { width: 16%; }
+table.table_dash_wrap-copy td:nth-child(1) { width: 15%; }
 table.table_dash_wrap-copy th:nth-child(2),
-table.table_dash_wrap-copy td:nth-child(2) { width: 22%; }
+table.table_dash_wrap-copy td:nth-child(2) { width: 20%; }
 table.table_dash_wrap-copy th:nth-child(3),
-table.table_dash_wrap-copy td:nth-child(3) { width: 12%; }
+table.table_dash_wrap-copy td:nth-child(3) { width: 10%; }
 table.table_dash_wrap-copy th:nth-child(4),
-table.table_dash_wrap-copy td:nth-child(4) { width: 38%; }
+table.table_dash_wrap-copy td:nth-child(4) { width: 30%; }
 table.table_dash_wrap-copy th:nth-child(5),
-table.table_dash_wrap-copy td:nth-child(5) { width: 12%; text-align: right; }
+table.table_dash_wrap-copy td:nth-child(5) { width: 15%; }
+table.table_dash_wrap-copy th:nth-child(6),
+table.table_dash_wrap-copy td:nth-child(6) { width: 10%; text-align: right; }
 
 /* B. Evaluation History Table (table-history) -> 40px 20% 34% 22% 14% 60px */
 table.table-history {
@@ -206,6 +208,21 @@ table.table-history th:nth-child(5),
 table.table-history td:nth-child(5) { width: 14%; text-align: right; }
 table.table-history th:nth-child(6),
 table.table-history td:nth-child(6) { width: 60px; text-align: right; }
+
+/* B2. Polycontext Version Evaluation History Table (table-eval-history) */
+table.table-eval-history {
+  min-width: 680px;
+}
+table.table-eval-history th:nth-child(1),
+table.table-eval-history td:nth-child(1) { width: 22%; }
+table.table-eval-history th:nth-child(2),
+table.table-eval-history td:nth-child(2) { width: 14%; }
+table.table-eval-history th:nth-child(3),
+table.table-eval-history td:nth-child(3) { width: 34%; }
+table.table-eval-history th:nth-child(4),
+table.table-eval-history td:nth-child(4) { width: 20%; }
+table.table-eval-history th:nth-child(5),
+table.table-eval-history td:nth-child(5) { width: 10%; text-align: right; }
 
 /* C. Documents & Attachments Table (table-head_wrap) -> 1.5fr .6fr .25fr */
 table.table-head_wrap {
@@ -2190,4 +2207,262 @@ a.button_gn.disabled {
     padding: 15px;
     width: 95vw;
   }
+}
+
+/* Version & Evaluation Badges in Evaluation Context */
+.eval-context-badge-v {
+  background: rgba(124, 57, 246, 0.2);
+  border: 1px solid rgba(124, 57, 246, 0.4);
+  color: #d1c4e9;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.eval-context-badge-e {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-left: 4px;
+  line-height: 1.2;
+}
+
+/* Copy button for HITL comments */
+.btn-copy-comment {
+  background: transparent;
+  border: none;
+  color: #85809b;
+  cursor: pointer;
+  padding: 2px 4px;
+  margin-left: 6px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  vertical-align: middle;
+}
+
+.btn-copy-comment:hover {
+  color: #ffffff;
+  background-color: rgba(73, 65, 106, 0.4);
+}
+
+.btn-copy-comment.copied {
+  color: #10b981 !important;
+}
+
+/* Status Badges for Claims Table */
+.status-badge.evaluated {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.status-badge.eval-ready {
+  background-color: rgba(69, 131, 255, 0.15);
+  color: #9cbdff;
+  border: 1px solid rgba(69, 131, 255, 0.4);
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Collapsible Section Toggles & Wrappers */
+.link-block-2 {
+  cursor: pointer;
+}
+
+.link-block-2 svg {
+  transition: transform 0.25s ease;
+}
+
+.link-block-2.collapsed svg {
+  transform: rotate(-90deg);
+}
+
+/* Ensure collapsible wrappers stretch to full container width */
+#historyTableWrap,
+#evalHistoryTableWrap,
+#docsTableWrap,
+#rulesEvalContent,
+#hitlFeedbackContent {
+  width: 100%;
+  align-self: stretch;
+}
+
+.is-collapsed {
+  display: none !important;
+}
+
+#historyTableWrap .button-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* AI Recommendation Sub-Sections */
+.ai-rec-sub-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ai-rec-section-header {
+  margin-bottom: 12px;
+}
+
+.ai-rec-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.ai-rec-summary-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ai-rec-summary-row .text-block-3 {
+  line-height: 1.4rem;
+}
+
+/* Missing Information Category Rows & Rule Chips */
+.missing-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.missing-info-cat-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(73, 65, 106, 0.35);
+}
+
+.missing-info-cat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.missing-info-cat-label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 150px;
+}
+
+.missing-info-cat-title {
+  color: #edecf0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.missing-info-cat-badge {
+  color: #85809b;
+  font-size: 0.8rem;
+}
+
+.missing-info-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.rule-ref-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background-color: #28243a;
+  border: 1px solid #49416a;
+  color: #9cbdff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.rule-ref-chip:hover {
+  background-color: #49416a;
+  color: #ffffff;
+  border-color: #9cbdff;
+  transform: translateY(-1px);
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* 12. Distinct "Show More / Show Less" Disclosure Button */
+.btn_show_more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #c5bee6;
+  background-color: rgba(40, 36, 58, 0.55);
+  border: 1px solid rgba(73, 65, 106, 0.7);
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn_show_more:hover {
+  background-color: rgba(73, 65, 106, 0.4);
+  color: #ffffff;
+  border-color: #9cbdff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.btn_show_more:active {
+  transform: translateY(1px);
+}
+
+.btn_show_more.expanded {
+  background-color: rgba(73, 65, 106, 0.25);
+  border-color: rgba(156, 189, 255, 0.4);
+  color: #9cbdff;
 }
