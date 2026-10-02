@@ -92,6 +92,116 @@ table.table_hitl_reasons thead th {
   vertical-align: middle;
 }
 
+/* Global Table Header Scale-Down (1:1 with data cell typography proportions) */
+table thead th,
+table thead th .badge-label,
+table thead th .badge-label strong,
+table.table_dash_wrap-copy thead th,
+table.table_dash_wrap-copy thead th .badge-label,
+table.table_dash_wrap-copy thead th .badge-label strong,
+table.table-history thead th,
+table.table-history thead th .badge-label,
+table.table-history thead th .badge-label strong,
+table.table-head_wrap thead th,
+table.table-head_wrap thead th .badge-label,
+table.table-head_wrap thead th .badge-label strong,
+table.table_rules thead th,
+table.table_rules thead th .badge-label,
+table.table_rules thead th .badge-label strong,
+table.table_codes thead th,
+table.table_codes thead th .badge-label,
+table.table_codes thead th .badge-label strong,
+table.table_explain thead th,
+table.table_explain thead th .badge-label,
+table.table_explain thead th .badge-label strong,
+table.table_hitl_reasons thead th,
+table.table_hitl_reasons thead th .badge-label,
+table.table_hitl_reasons thead th .badge-label strong {
+  font-size: 0.85rem !important;
+  line-height: 1.25rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em;
+}
+
+/* Universal 3-State Sorting Engine - Interactive Header States */
+th.th-sortable {
+  cursor: pointer !important;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+th.th-sortable .badge-label {
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.18s ease;
+}
+
+th.th-sortable .sort-icon-wrap,
+th.th-sortable .code-embed-18 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  color: #85809b;
+  opacity: 0.5;
+  transition: color 0.18s ease, opacity 0.18s ease;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Subtle hover effect (matches dark purple / violet UI model) */
+th.th-sortable:hover {
+  background-color: rgba(91, 81, 133, 0.3) !important;
+}
+
+th.th-sortable:hover .badge-label,
+th.th-sortable:hover .badge-label strong {
+  color: #ffffff !important;
+}
+
+th.th-sortable:hover .sort-icon-wrap,
+th.th-sortable:hover .code-embed-18 {
+  color: #ffffff !important;
+  opacity: 0.9 !important;
+}
+
+/* Active sorted column (1st click Descending, 2nd click Ascending) */
+th.th-sortable.th-sorted-desc,
+th.th-sortable.th-sorted-asc {
+  background-color: rgba(91, 81, 133, 0.55) !important;
+  box-shadow: inset 0 -2px 0 0 #7b6fb0;
+}
+
+th.th-sortable.th-sorted-desc:hover,
+th.th-sortable.th-sorted-asc:hover {
+  background-color: rgba(91, 81, 133, 0.7) !important;
+}
+
+th.th-sortable.th-sorted-desc .badge-label,
+th.th-sortable.th-sorted-desc .badge-label strong,
+th.th-sortable.th-sorted-asc .badge-label,
+th.th-sortable.th-sorted-asc .badge-label strong {
+  color: #ffffff !important;
+}
+
+th.th-sortable.th-sorted-desc .sort-icon-wrap,
+th.th-sortable.th-sorted-desc .code-embed-18,
+th.th-sortable.th-sorted-asc .sort-icon-wrap,
+th.th-sortable.th-sorted-asc .code-embed-18 {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Non-sortable column headers */
+th.th-no-sort {
+  cursor: default !important;
+}
+
+th.th-no-sort:hover {
+  background-color: transparent !important;
+}
+
 /* 10px Border Radius on table header ends (exact Webflow style) */
 table.table_dash_wrap-copy thead th:first-child,
 table.table-history thead th:first-child,
@@ -115,7 +225,7 @@ table.table_hitl_reasons thead th:last-child {
   border-bottom-right-radius: 10px;
 }
 
-/* Table Body Rows (matches Webflow .clean bottom border) */
+/* Table Body Rows (matches Webflow .clean bottom border & Zebra Striping) */
 table.table_dash_wrap-copy tbody tr,
 table.table-history tbody tr,
 table.table-head_wrap tbody tr,
@@ -127,14 +237,33 @@ table.table_hitl_reasons tbody tr {
   transition: background-color 0.15s ease;
 }
 
+/* Subtle Zebra Striping for alternating rows (very subtle 5% darkening) */
+table.table_dash_wrap-copy tbody tr:nth-child(even),
+table.table-history tbody tr:nth-child(even),
+table.table-head_wrap tbody tr:nth-child(even),
+table.table_rules tbody tr:nth-child(even),
+table.table_codes tbody tr:nth-child(even),
+table.table_explain tbody tr:nth-child(even),
+table.table_hitl_reasons tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Hover state on all rows (illuminated / brightened for high contrast) */
 table.table_dash_wrap-copy tbody tr:hover,
 table.table-history tbody tr:hover,
 table.table-head_wrap tbody tr:hover,
 table.table_rules tbody tr:hover,
 table.table_codes tbody tr:hover,
 table.table_explain tbody tr:hover,
-table.table_hitl_reasons tbody tr:hover {
-  background-color: rgba(73, 65, 106, 0.12);
+table.table_hitl_reasons tbody tr:hover,
+table.table_dash_wrap-copy tbody tr:nth-child(even):hover,
+table.table-history tbody tr:nth-child(even):hover,
+table.table-head_wrap tbody tr:nth-child(even):hover,
+table.table_rules tbody tr:nth-child(even):hover,
+table.table_codes tbody tr:nth-child(even):hover,
+table.table_explain tbody tr:nth-child(even):hover,
+table.table_hitl_reasons tbody tr:nth-child(even):hover {
+  background-color: rgba(91, 81, 133, 0.26) !important;
 }
 
 table.table_dash_wrap-copy tbody td,
@@ -152,22 +281,15 @@ table.table_hitl_reasons tbody td {
   vertical-align: middle;
 }
 
-/* Remove bottom border on last row */
+/* Remove bottom border strictly on the last row in tbody */
 table.table_dash_wrap-copy tbody tr:last-child td,
 table.table-history tbody tr:last-child td,
 table.table-head_wrap tbody tr:last-child td,
 table.table_rules tbody tr:last-child td,
 table.table_codes tbody tr:last-child td,
 table.table_explain tbody tr:last-child td,
-table.table_hitl_reasons tbody tr:last-child td,
-table.table_dash_wrap-copy tbody tr.last td,
-table.table-history tbody tr.last td,
-table.table-head_wrap tbody tr.last td,
-table.table_rules tbody tr.last td,
-table.table_codes tbody tr.last td,
-table.table_explain tbody tr.last td,
-table.table_hitl_reasons tbody tr.last td {
-  border-bottom: none;
+table.table_hitl_reasons tbody tr:last-child td {
+  border-bottom: none !important;
 }
 
 /* 3. Specific Proportions & Alignments for Each Table Type */
@@ -265,18 +387,25 @@ table.table_codes td:nth-child(3) { width: 15%; text-align: right; }
 table.table_explain {
   min-width: 820px;
 }
+table.table_explain thead th {
+  white-space: nowrap;
+}
 table.table_explain th:nth-child(1),
-table.table_explain td:nth-child(1) { width: 17%; }
+table.table_explain td:nth-child(1) { width: 10%; white-space: nowrap; }
 table.table_explain th:nth-child(2),
-table.table_explain td:nth-child(2) { width: 22%; }
+table.table_explain td:nth-child(2) { width: 14%; white-space: nowrap; }
 table.table_explain th:nth-child(3),
-table.table_explain td:nth-child(3) { width: 16%; }
+table.table_explain td:nth-child(3) { width: 12%; }
 table.table_explain th:nth-child(4),
-table.table_explain td:nth-child(4) { width: 18%; }
+table.table_explain td:nth-child(4) { width: 14%; white-space: nowrap; }
 table.table_explain th:nth-child(5),
-table.table_explain td:nth-child(5) { width: 13%; }
+table.table_explain td:nth-child(5) { width: 12%; }
 table.table_explain th:nth-child(6),
-table.table_explain td:nth-child(6) { width: 14%; text-align: right; }
+table.table_explain td:nth-child(6) { width: 16%; text-align: left; }
+table.table_explain th:nth-child(7),
+table.table_explain td:nth-child(7) { width: 17%; text-align: center; }
+table.table_explain th:nth-child(8),
+table.table_explain td:nth-child(8) { width: 5%; text-align: right; }
 
 /* G. HITL Reasons Table (table_hitl_reasons) */
 table.table_hitl_reasons {
@@ -1824,13 +1953,18 @@ a.button_gn.disabled {
   align-self: center !important;
 }
 
-/* HITL Feedback Grid Stability (Prevent column jumping/narrowing on filter) */
-#hitlFeedbackContent {
+/* HITL Feedback & Attach Explainability Grid Stability (Prevent column jumping/narrowing on filter) */
+#hitlFeedbackContent,
+#attachExplainabilityContent,
+#combinedAttachmentsContent {
   width: 100% !important;
   align-self: stretch !important;
   display: block !important;
+  box-sizing: border-box !important;
 }
 
+.object-box-copy > div,
+.object-box > div,
 .object-box-copy > .box_label_wrap,
 .object-box > .box_label_wrap {
   width: 100% !important;
@@ -2270,7 +2404,7 @@ a.button_gn.disabled {
   background-color: rgba(16, 185, 129, 0.15);
   color: #10b981;
   border: 1px solid rgba(16, 185, 129, 0.4);
-  border-radius: 5px;
+  border-radius: 100px;
   padding: 4px 10px;
   font-size: 0.82rem;
   font-weight: 500;
@@ -2282,7 +2416,7 @@ a.button_gn.disabled {
   background-color: rgba(69, 131, 255, 0.15);
   color: #9cbdff;
   border: 1px solid rgba(69, 131, 255, 0.4);
-  border-radius: 5px;
+  border-radius: 100px;
   padding: 4px 10px;
   font-size: 0.82rem;
   font-weight: 500;
@@ -2721,3 +2855,368 @@ a.button_gn.disabled {
 .btn-remove-file:hover {
   color: #ff6b6b;
 }
+
+/* 15. Header Meta Flex & Mini Status Indicator */
+.header-meta-flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.explain-mini-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(40, 36, 58, 0.45);
+  border: 1px solid rgba(73, 65, 106, 0.6);
+  padding: 3px 8px 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.explain-mini-status .mini-status-label {
+  color: #85809b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+}
+
+.explain-mini-status .status-badge {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 2px 8px;
+  font-size: 0.74rem;
+}
+
+.explain-mini-status .status-badge:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+
+/* 16. Workflow Action Buttons (Standard Gnotheia Dark Secondary Button Model, Compact) */
+.wf-action-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn_wf_action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: 5px;
+  background-color: #5b5185b3;
+  border: 1px solid #584e80;
+  color: #edecf0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.2;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn_wf_action:hover {
+  background-color: #5b5185;
+  border-color: #7b6fb0;
+  color: #ffffff;
+}
+
+.btn_wf_start:hover {
+  background-color: #4589ff;
+  border-color: #4589ff;
+  color: #ffffff;
+}
+
+.btn_wf_complete:hover {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.btn_wf_cancel:hover {
+  background-color: #ee3b76;
+  border-color: #ee3b76;
+  color: #ffffff;
+}
+
+/* Detail Page Header Actions (Full-sized buttons matching Save As / Evaluate model) */
+#detailHeaderWfActions .btn_wf_action {
+  height: 40px;
+  padding: 0 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+/* 17. Explainability Detail Page Layout */
+.modal-explain-request {
+  max-width: 580px;
+  width: 95%;
+  background-color: #171520;
+  border: 1px solid #49416a;
+  border-radius: 12px;
+}
+
+.explain-detail-body {
+  padding: 16px 20px;
+}
+
+.explain-request-user-box {
+  background-color: rgba(40, 36, 58, 0.5);
+  border: 1px solid rgba(73, 65, 106, 0.6);
+  border-left: 3px solid #9cbdff;
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: #edecf0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.textarea-custom {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  background-color: #1e1b29;
+  border: 1px solid #49416a;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.textarea-custom:focus {
+  border-color: #9cbdff;
+  box-shadow: 0 0 0 2px rgba(156, 189, 255, 0.2);
+}
+
+/* Attach Explainability Document Layout (1:1 with HITL Feedback Grid Ratio & Full Width) */
+#attachExplainabilityContent,
+#combinedAttachmentsContent {
+  width: 100% !important;
+  align-self: stretch !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+#attachExplainabilityContent > .divider,
+#combinedAttachmentsContent > .divider {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.attach-grid-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 380px !important;
+  grid-column-gap: 24px !important;
+  grid-row-gap: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  align-items: stretch !important;
+}
+
+@media screen and (max-width: 991px) {
+  .attach-grid-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.attach-staging-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 210px !important;
+  box-sizing: border-box !important;
+}
+
+.attach-dropzone-panel,
+.combined-upload-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 380px !important;
+  max-width: 100% !important;
+  justify-self: end !important;
+  box-sizing: border-box !important;
+}
+
+.attach-dropzone-panel {
+  height: 100% !important;
+}
+
+.combined-dropzone {
+  min-height: 145px !important;
+  padding: 16px 14px !important;
+}
+
+@media screen and (max-width: 991px) {
+  .attach-dropzone-panel,
+  .combined-upload-panel {
+    width: 100% !important;
+  }
+}
+
+.staging-files-list {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  flex-grow: 1 !important;
+}
+
+.staging-file-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid #49416a !important;
+  padding: 12px 0 !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.staging-file-row:last-child {
+  border-bottom: 1px solid #49416a !important;
+}
+
+.staging-file-row:hover {
+  background-color: rgba(73, 65, 106, 0.12) !important;
+}
+
+.staging-file-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  min-width: 0 !important;
+  flex-grow: 1 !important;
+}
+
+.staging-file-name {
+  color: #edecf0 !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+  word-break: break-word !important;
+}
+
+.staging-file-meta-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  margin-left: 20px !important;
+  flex-shrink: 0 !important;
+}
+
+.staging-file-size {
+  color: #85809b !important;
+  font-size: 0.82rem !important;
+  white-space: nowrap !important;
+}
+
+.staging-file-remove {
+  background: none !important;
+  border: none !important;
+  color: #85809b !important;
+  cursor: pointer !important;
+  padding: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.staging-file-remove:hover {
+  color: #ee3b76 !important;
+  background-color: rgba(238, 59, 118, 0.15) !important;
+}
+
+/* Centered Drag & Drop Dropzone docked on the right */
+.file-dropzone {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background-color: rgba(40, 36, 58, 0.35) !important;
+  border: 2px dashed #49416a !important;
+  border-radius: 8px !important;
+  padding: 24px 20px !important;
+  min-height: 210px !important;
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.file-dropzone:hover,
+.file-dropzone.dragover {
+  border-color: #9cbdff !important;
+  background-color: rgba(156, 189, 255, 0.08) !important;
+}
+
+.file-input-hidden {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+}
+
+.dropzone-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  pointer-events: none !important;
+  width: 100% !important;
+}
+
+.dropzone-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2px !important;
+}
+
+.dropzone-text {
+  color: #edecf0 !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+}
+
+.dropzone-sub {
+  color: #85809b !important;
+  font-size: 0.78rem !important;
+}
+
+#btnUploadStagedFiles:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+
+
+
+
+
+
+

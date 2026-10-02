@@ -225,13 +225,6 @@
               <div class="status-badge progress" id="explainCountBadge">8 requests</div>
             </div>
             <div class="button_wrap">
-              <div class="search_input _40">
-                <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search">
-                    <path d="m21 21-4.34-4.34"></path>
-                    <circle cx="11" cy="11" r="8"></circle>
-                  </svg></div>
-                <input type="text" class="search-input-field" placeholder="Quick Search Requests..." data-table-filter="explainTable">
-              </div>
               <a href="#" id="btnRefreshExplain" class="button_gn_sec dark w-inline-block" title="Refresh explanation requests">
                 <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw-icon lucide-rotate-cw">
                     <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
@@ -249,12 +242,12 @@
                 <tr>
                   <th>
                     <div class="column_wrap">
-                      <div class="badge-label">EXPLAINABILITY ID</div>
+                      <div class="badge-label">EXPL.&nbsp;ID</div>
                     </div>
                   </th>
                   <th>
                     <div class="column_wrap">
-                      <div class="badge-label">REQUEST DATE/TIME</div>
+                      <div class="badge-label">REQUESTED</div>
                     </div>
                   </th>
                   <th>
@@ -264,39 +257,44 @@
                   </th>
                   <th>
                     <div class="column_wrap">
-                      <div class="badge-label">RESPONSE TIME</div>
+                      <div class="badge-label">RESPONSE</div>
                     </div>
                   </th>
                   <th>
                     <div class="column_wrap">
-                      <div class="badge-label">POLYCONTEXT ID</div>
+                      <div class="badge-label">POLYCON.&nbsp;ID</div>
                     </div>
                   </th>
                   <th>
-                    <div class="column_wrap right">
-                      <div class="badge-label">RESULT</div>
+                    <div class="column_wrap">
+                      <div class="badge-label">REQUESTER</div>
                     </div>
                   </th>
                   <th>
-                    <div class="column_wrap right">
+                    <div class="column_wrap center">
                       <div class="badge-label">ACTION</div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="column_wrap right">
+                      <div class="badge-label">DETAIL</div>
                     </div>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="clean" data-id="EXP-0042" data-poly="264384944" data-status="In progress" data-date="2026-02-28">
+                <tr class="clean" data-id="EXP-0042" data-poly="264384944" data-status="In progress" data-requester="Sarah Jenkins" data-date="2026-02-28">
                   <td>
                     <div class="number">EXP-0042</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-28 · 14:32:05 UTC</div>
+                      <div class="red-only">14:32 · 28.02.2026</div>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="status-badge status-inprogress"><span class="pulsing-dot"></span>In progress</div>
+                      <div class="status-badge status-inprogress">In&nbsp;progress</div>
                     </div>
                   </td>
                   <td>
@@ -310,25 +308,31 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <span class="red-only" style="font-size:0.85rem;"><span class="pulsing-dot"></span>Generating...</span>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Sarah Jenkins</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <button type="button" class="btn_wf_action btn_wf_complete" data-action="complete" data-id="EXP-0042" title="Mark request as Completed">Complete</button>
+                      <button type="button" class="btn_wf_action btn_wf_cancel" data-action="cancel" data-id="EXP-0042" title="Cancel request">Cancel</button>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0042" data-poly="264384944" data-status="In progress" data-date="2026-02-28 · 14:32:05 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0042" class="user_btn_dark w-inline-block" title="View EXP-0042 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0041" data-poly="264384944" data-status="Completed" data-date="2026-02-28">
+                <tr class="clean" data-id="EXP-0041" data-poly="264384944" data-status="Completed" data-requester="Sarah Jenkins" data-date="2026-02-28">
                   <td>
                     <div class="number">EXP-0041</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-28 · 11:15:22 UTC</div>
+                      <div class="red-only">11:15 · 28.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -338,7 +342,7 @@
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-28 · 11:15:39 UTC</div>
+                      <div class="red-only">11:15 · 28.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -347,28 +351,30 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <a href="#" class="btn_download" download="explain_264384944_EXP-0041.json" title="Download JSON Explanation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        <span>JSON</span>
-                      </a>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Sarah Jenkins</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0041" data-poly="264384944" data-status="Completed" data-date="2026-02-28 · 11:15:22 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0041" class="user_btn_dark w-inline-block" title="View EXP-0041 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0040" data-poly="198273641" data-status="Completed" data-date="2026-02-27">
+                <tr class="clean" data-id="EXP-0040" data-poly="198273641" data-status="Completed" data-requester="Martin Valo" data-date="2026-02-27">
                   <td>
                     <div class="number">EXP-0040</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-27 · 16:40:10 UTC</div>
+                      <div class="red-only">16:40 · 27.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -378,7 +384,7 @@
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-27 · 16:40:24 UTC</div>
+                      <div class="red-only">16:40 · 27.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -387,38 +393,40 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <a href="#" class="btn_download" download="explain_198273641_EXP-0040.json" title="Download JSON Explanation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        <span>JSON</span>
-                      </a>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Martin Valo</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0040" data-poly="198273641" data-status="Completed" data-date="2026-02-27 · 16:40:10 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0040" class="user_btn_dark w-inline-block" title="View EXP-0040 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0039" data-poly="330918274" data-status="Error" data-date="2026-02-27">
+                <tr class="clean" data-id="EXP-0039" data-poly="330918274" data-status="Canceled" data-requester="Lenka Nováková" data-date="2026-02-27">
                   <td>
                     <div class="number">EXP-0039</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-27 · 09:12:00 UTC</div>
+                      <div class="red-only">09:12 · 27.02.2026</div>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="status-badge status-error">Error</div>
+                      <div class="status-badge status-error">Canceled</div>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-27 · 09:12:18 UTC</div>
+                      <div class="red-only">09:12 · 27.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -427,30 +435,30 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <div class="failed-result">
-                        <span>Failed</span>
-                        <div class="info-tooltip-wrap" title="Prediction vector not found in model store">
-                          <span class="info-tooltip-icon">i</span>
-                        </div>
-                      </div>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Lenka Nováková</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0039" data-poly="330918274" data-status="Error" data-date="2026-02-27 · 09:12:00 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0039" class="user_btn_dark w-inline-block" title="View EXP-0039 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0038" data-poly="552194820" data-status="Completed" data-date="2026-02-26">
+                <tr class="clean" data-id="EXP-0038" data-poly="552194820" data-status="Completed" data-requester="Sarah Jenkins" data-date="2026-02-26">
                   <td>
                     <div class="number">EXP-0038</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-26 · 18:22:45 UTC</div>
+                      <div class="red-only">18:22 · 26.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -460,7 +468,7 @@
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-26 · 18:23:01 UTC</div>
+                      <div class="red-only">18:23 · 26.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -469,28 +477,30 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <a href="#" class="btn_download" download="explain_552194820_EXP-0038.json" title="Download JSON Explanation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        <span>JSON</span>
-                      </a>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Sarah Jenkins</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0038" data-poly="552194820" data-status="Completed" data-date="2026-02-26 · 18:22:45 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0038" class="user_btn_dark w-inline-block" title="View EXP-0038 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0037" data-poly="882710394" data-status="Initial" data-date="2026-02-26">
+                <tr class="clean" data-id="EXP-0037" data-poly="882710394" data-status="Initial" data-requester="Peter Horváth" data-date="2026-02-26">
                   <td>
                     <div class="number">EXP-0037</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-26 · 14:05:12 UTC</div>
+                      <div class="red-only">14:05 · 26.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -509,25 +519,31 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <span class="red-only" style="font-size:0.85rem;">Queued</span>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Peter Horváth</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <button type="button" class="btn_wf_action btn_wf_start" data-action="start" data-id="EXP-0037" title="Start explanation">Start</button>
+                      <button type="button" class="btn_wf_action btn_wf_cancel" data-action="cancel" data-id="EXP-0037" title="Cancel request">Cancel</button>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0037" data-poly="882710394" data-status="Initial" data-date="2026-02-26 · 14:05:12 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0037" class="user_btn_dark w-inline-block" title="View EXP-0037 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean" data-id="EXP-0036" data-poly="441092837" data-status="Completed" data-date="2026-02-25">
+                <tr class="clean" data-id="EXP-0036" data-poly="441092837" data-status="Completed" data-requester="Martin Valo" data-date="2026-02-25">
                   <td>
                     <div class="number">EXP-0036</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-25 · 10:48:33 UTC</div>
+                      <div class="red-only">10:48 · 25.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -537,7 +553,7 @@
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-25 · 10:48:50 UTC</div>
+                      <div class="red-only">10:48 · 25.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -546,38 +562,40 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <a href="#" class="btn_download" download="explain_441092837_EXP-0036.json" title="Download JSON Explanation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        <span>JSON</span>
-                      </a>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Martin Valo</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0036" data-poly="441092837" data-status="Completed" data-date="2026-02-25 · 10:48:33 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0036" class="user_btn_dark w-inline-block" title="View EXP-0036 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
-                <tr class="clean last" data-id="EXP-0035" data-poly="771920381" data-status="Error" data-date="2026-02-24">
+                <tr class="clean last" data-id="EXP-0035" data-poly="771920381" data-status="Canceled" data-requester="Sarah Jenkins" data-date="2026-02-24">
                   <td>
                     <div class="number">EXP-0035</div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-24 · 13:30:19 UTC</div>
+                      <div class="red-only">13:30 · 24.02.2026</div>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="status-badge status-error">Error</div>
+                      <div class="status-badge status-error">Canceled</div>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap">
-                      <div class="red-only">2026-02-24 · 13:30:42 UTC</div>
+                      <div class="red-only">13:30 · 24.02.2026</div>
                     </div>
                   </td>
                   <td>
@@ -586,20 +604,20 @@
                     </div>
                   </td>
                   <td>
-                    <div class="column_wrap right result-cell">
-                      <div class="failed-result">
-                        <span>Failed</span>
-                        <div class="info-tooltip-wrap" title="Model artifact missing for polycontext checkpoint v3">
-                          <span class="info-tooltip-icon">i</span>
-                        </div>
-                      </div>
+                    <div class="column_wrap">
+                      <span class="white-text" style="font-size: 0.88rem; font-weight: 500;">Sarah Jenkins</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="column_wrap center wf-action-cell">
+                      <span class="red-only" style="font-size: 0.82rem;">—</span>
                     </div>
                   </td>
                   <td>
                     <div class="column_wrap right">
-                      <button type="button" class="button_gn_sec small btn-manage-request" data-id="EXP-0035" data-poly="771920381" data-status="Error" data-date="2026-02-24 · 13:30:19 UTC" title="Manage request status & document">
-                        <span>Manage</span>
-                      </button>
+                      <a href="explainability-detail.html?id=EXP-0035" class="user_btn_dark w-inline-block" title="View EXP-0035 Detail">
+                        <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -648,91 +666,7 @@
     </div>
   </section>
 
-  <!-- Manage / Upload Explainability Request Modal -->
-  <div class="popup_wraper" id="manageExplainModal">
-    <div class="popup_close_overlay"></div>
-    <div aria-labelledby="modal-title-manage-explain" role="dialog" aria-modal="true" class="popup modal-manage-explain">
-      <div class="header_wrapper">
-        <div class="div-block-69">
-          <h2 class="heading-1-copy" style="font-size: 1.25rem;"><span class="text-span-4" id="manageModalTitle">Manage Request EXP-0042</span></h2>
-          <div class="red-only">Update request status and attach explainability document.<br></div>
-        </div>
-        <div class="div-block-68">
-          <button arial-label="close dialog" class="button btn-close-modal" id="btnCloseManageExplainHeader">
-            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
-                <path d="M18 6 6 18"></path>
-                <path d="m6 6 12 12"></path>
-              </svg></div>
-          </button>
-        </div>
-      </div>
-      
-      <div class="manage-explain-content">
-        <form id="manageExplainForm" onsubmit="return false;">
-          <input type="hidden" id="manageRequestId" value="">
-          
-          <div class="manage-form-group">
-            <label class="red-only" style="margin-bottom: 6px; display: block; font-size: 0.8rem; font-weight: 600;">REQUEST DETAILS</label>
-            <div class="manage-meta-box">
-              <div class="manage-meta-line"><span class="meta-label">Request ID:</span> <span id="manageMetaId" class="white-text">EXP-0042</span></div>
-              <div class="manage-meta-line"><span class="meta-label">Polycontext ID:</span> <span id="manageMetaPoly" class="white-text">264384944</span></div>
-              <div class="manage-meta-line"><span class="meta-label">Created:</span> <span id="manageMetaDate" class="white-text">2026-02-28 14:32:05 UTC</span></div>
-            </div>
-          </div>
-          
-          <div class="manage-form-group">
-            <label for="manageStatusSelect" class="red-only" style="margin-bottom: 6px; display: block; font-size: 0.8rem; font-weight: 600;">UPDATE STATUS</label>
-            <div class="custom-select-wrap">
-              <select id="manageStatusSelect" class="search-input-field select-custom">
-                <option value="Initial">Initial (Queued)</option>
-                <option value="In progress">In progress</option>
-                <option value="Completed">Completed</option>
-                <option value="Error">Error</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="manage-form-group">
-            <label class="red-only" style="margin-bottom: 6px; display: block; font-size: 0.8rem; font-weight: 600;">ATTACH EXPLAINABILITY DOCUMENT</label>
-            <div class="file-dropzone" id="explainDropzone">
-              <input type="file" id="explainFileInput" class="file-input-hidden" accept=".pdf,.docx,.json,.md,.txt">
-              <div class="dropzone-inner" id="dropzonePrompt">
-                <div class="dropzone-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9cbdff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                </div>
-                <div class="dropzone-text">Click or drag file to attach document</div>
-                <div class="dropzone-sub">Supported formats: PDF, DOCX, MD, JSON (Max 25MB)</div>
-              </div>
-              <div class="dropzone-file-preview" id="dropzonePreview" style="display: none;">
-                <div class="file-preview-info">
-                  <div class="file-preview-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9cbdff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                  </div>
-                  <div class="file-preview-names">
-                    <span class="file-name" id="previewFileName">document.pdf</span>
-                    <span class="file-size" id="previewFileSize">1.2 MB</span>
-                  </div>
-                </div>
-                <button type="button" class="btn-remove-file" id="btnRemoveFile" title="Remove file" aria-label="Remove file">&times;</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      
-      <div class="reason-picker-footer">
-        <div class="red-only" style="font-size: 0.78rem;">Manual explanation &amp; evidence workflow</div>
-        <div style="display: flex; gap: 8px;">
-          <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
-            <div>Cancel</div>
-          </a>
-          <button type="button" id="btnSaveManageExplain" class="button_gn w-inline-block" style="border: none; cursor: pointer;">
-            <div>Save Changes</div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Toast Notification for Explainability Page -->
   <div id="manageToastNotification" class="explain-toast-notification" style="display: none;">

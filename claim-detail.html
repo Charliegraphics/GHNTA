@@ -108,8 +108,16 @@
       <div class="special_header">
         <div class="header_wrapper">
           <div class="div-block-69">
-            <h2 class="heading-1-copy">CLAIM ID: <span class="text-span-4">CLM-9902: Accident Loss</span></h2>
-            <div class="red-only">POLYCONTEXT ID: <span class="white-text">264384944</span><br></div>
+            <h2 class="heading-1-copy">CLAIM ID: <span class="text-span-4">CLM-9902: Accident Loss</span></h2>
+            <div class="header-meta-flex">
+              <div class="red-only">POLYCONTEXT ID: <span class="white-text">264384944</span></div>
+              <div class="explain-mini-status" id="claimExplainMiniStatus">
+                <span class="mini-status-label">Explainability:</span>
+                <a href="explainability-detail.html?id=EXP-0042" class="status-badge status-inprogress" id="claimMiniStatusBadge" title="View Explainability Request EXP-0042">
+                  <span class="pulsing-dot"></span>EXP-0042 · In progress &rarr;
+                </a>
+              </div>
+            </div>
           </div>
           <div class="button_wrap">
             <button type="button" id="btnExplain" class="button_gn_sec tertiary w-inline-block" title="Request Explainability Analysis">
@@ -1864,6 +1872,48 @@ Rules Passed:          2 / 2 Passed (100%)
       </div>
     </div>
   </div>
+
+  <!-- Modal: Please specify your request -->
+  <div class="popup_wraper" id="explainRequestModal">
+    <div class="popup_close_overlay"></div>
+    <div aria-labelledby="modal-title-explain-request" role="dialog" aria-modal="true" class="popup modal-explain-request">
+      <div class="header_wrapper">
+        <div class="div-block-69">
+          <h2 class="heading-1-copy" style="font-size: 1.25rem;"><span class="text-span-4">Please specify your request</span></h2>
+        </div>
+        <div class="div-block-68">
+          <button arial-label="close dialog" class="button btn-close-modal" id="btnCloseExplainRequestHeader">
+            <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg></div>
+          </button>
+        </div>
+      </div>
+      
+      <div class="manage-explain-content">
+        <form id="explainRequestForm" onsubmit="return false;">
+          <div class="manage-form-group">
+            <label for="explainUserComment" class="red-only" style="margin-bottom: 8px; display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;">EXPLAIN YOUR REQUEST COMMENT</label>
+            <textarea id="explainUserComment" class="search-input-field textarea-custom" rows="6" style="min-height: 140px;" placeholder="e.g. Please clarify why rule #49 was marked as unresolvable when document DOC-264384944-003 contains pipeline inspection records..."></textarea>
+          </div>
+        </form>
+      </div>
+      
+      <div class="reason-picker-footer">
+        <div class="red-only" style="font-size: 0.78rem;"></div>
+        <div style="display: flex; gap: 8px;">
+          <a href="#" class="button_gn_sec btn-close-modal w-inline-block">
+            <div>Cancel</div>
+          </a>
+          <a href="#" id="btnSubmitExplainRequest" class="button_gn w-inline-block">
+            <div>Submit request</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -50,6 +50,260 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Universal 3-State Table Sorting Engine ---
+  const SVG_NEUTRAL = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-up"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>`;
+  const SVG_DESC = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>`;
+  const SVG_ASC = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>`;
+
+  const parseFileSize = (str) => {
+    if (!str) return NaN;
+    const match = str.trim().match(/^([\d.]+)\s*(bytes?|b|kb|mb|gb|tb)$/i);
+    if (!match) return NaN;
+    const num = parseFloat(match[1]);
+    const unit = match[2].toLowerCase();
+    if (unit === 'b' || unit.startsWith('byte')) return num;
+    if (unit === 'kb') return num * 1024;
+    if (unit === 'mb') return num * 1024 * 1024;
+    if (unit === 'gb') return num * 1024 * 1024 * 1024;
+    if (unit === 'tb') return num * 1024 * 1024 * 1024 * 1024;
+    return num;
+  };
+
+  const parseDateValue = (str) => {
+    if (!str) return NaN;
+    const cleaned = str.replace(/[·]/g, ' ').replace(/\s+UTC\b/i, '').trim();
+    // 1. Time first European: HH:mm(:ss)? DD.MM.YYYY
+    const timeFirst = cleaned.match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s+(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+    if (timeFirst) {
+      return new Date(+timeFirst[6], +timeFirst[5] - 1, +timeFirst[4], +timeFirst[1], +timeFirst[2], timeFirst[3] ? +timeFirst[3] : 0).getTime();
+    }
+    // 2. Date first European: DD.MM.YYYY HH:mm(:ss)?
+    const dateFirst = cleaned.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?/);
+    if (dateFirst) {
+      return new Date(+dateFirst[3], +dateFirst[2] - 1, +dateFirst[1], dateFirst[4] ? +dateFirst[4] : 0, dateFirst[5] ? +dateFirst[5] : 0, dateFirst[6] ? +dateFirst[6] : 0).getTime();
+    }
+    // 3. ISO / YYYY-MM-DD (with optional HH:mm:ss)
+    const isoMatch = cleaned.match(/(\d{4})-(\d{1,2})-(\d{1,2})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?/);
+    if (isoMatch) {
+      return new Date(+isoMatch[1], +isoMatch[2] - 1, +isoMatch[3], isoMatch[4] ? +isoMatch[4] : 0, isoMatch[5] ? +isoMatch[5] : 0, isoMatch[6] ? +isoMatch[6] : 0).getTime();
+    }
+    return NaN;
+  };
+
+  const parseVersion = (str) => {
+    if (!str) return NaN;
+    const match = str.trim().match(/^v\.?\s*(\d+(\.\d+)?)/i);
+    if (!match) return NaN;
+    return parseFloat(match[1]);
+  };
+
+  const parseUsage = (str) => {
+    if (!str) return NaN;
+    const match = str.trim().match(/^(\d+)\s+uses?$/i);
+    if (!match) return NaN;
+    return parseInt(match[1], 10);
+  };
+
+  const getCellValue = (td) => {
+    if (!td) return '';
+    if (td.dataset && td.dataset.sortVal) return td.dataset.sortVal.trim();
+    return (td.innerText || td.textContent || '').trim();
+  };
+
+  const compareValues = (valA, valB, dir) => {
+    const aEmpty = (valA === '' || valA === '—' || valA === '-' || valA === null || valA === undefined);
+    const bEmpty = (valB === '' || valB === '—' || valB === '-' || valB === null || valB === undefined);
+    if (aEmpty && bEmpty) return 0;
+    if (aEmpty) return 1;
+    if (bEmpty) return -1;
+
+    // 1. File size
+    const sizeA = parseFileSize(valA);
+    const sizeB = parseFileSize(valB);
+    if (!isNaN(sizeA) && !isNaN(sizeB)) {
+      return dir === 'asc' ? sizeA - sizeB : sizeB - sizeA;
+    }
+
+    // 2. Date / Datetime
+    const dateA = parseDateValue(valA);
+    const dateB = parseDateValue(valB);
+    if (!isNaN(dateA) && !isNaN(dateB)) {
+      return dir === 'asc' ? dateA - dateB : dateB - dateA;
+    }
+
+    // 3. Version
+    const verA = parseVersion(valA);
+    const verB = parseVersion(valB);
+    if (!isNaN(verA) && !isNaN(verB)) {
+      return dir === 'asc' ? verA - verB : verB - verA;
+    }
+
+    // 4. Usage
+    const useA = parseUsage(valA);
+    const useB = parseUsage(valB);
+    if (!isNaN(useA) && !isNaN(useB)) {
+      return dir === 'asc' ? useA - useB : useB - useA;
+    }
+
+    // 5. Pure numeric
+    const numA = Number(valA);
+    const numB = Number(valB);
+    if (!isNaN(numA) && !isNaN(numB) && valA !== '' && valB !== '') {
+      return dir === 'asc' ? numA - numB : numB - numA;
+    }
+
+    // 6. Natural alphanumeric string comparison
+    return dir === 'asc'
+      ? valA.localeCompare(valB, 'sk', { numeric: true, sensitivity: 'base' })
+      : valB.localeCompare(valA, 'sk', { numeric: true, sensitivity: 'base' });
+  };
+
+  const NON_SORTABLE_TITLES = ['DETAIL', 'ACTION', 'ACTIONS', 'VIEW', 'DOWNLOAD'];
+
+  const initUniversalTableSorting = () => {
+    const tableSelectors = [
+      'table.table_dash_wrap-copy',
+      'table.table_rules',
+      'table.table-head_wrap',
+      'table.table_codes',
+      'table.table-history'
+    ];
+
+    const tables = document.querySelectorAll(tableSelectors.join(','));
+
+    tables.forEach((table) => {
+      const thead = table.querySelector('thead');
+      const tbody = table.querySelector('tbody');
+      if (!thead || !tbody) return;
+
+      const tagRows = () => {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.forEach((row, idx) => {
+          if (!row.dataset.originalIndex) {
+            row.dataset.originalIndex = idx;
+          }
+        });
+      };
+      tagRows();
+
+      if (table.dataset.sortInitialized === 'true') {
+        return;
+      }
+      table.dataset.sortInitialized = 'true';
+
+      const headerRow = thead.querySelector('tr');
+      if (!headerRow) return;
+
+      const ths = Array.from(headerRow.querySelectorAll('th'));
+
+      let activeColIndex = null;
+      let sortState = 'none'; // 'none' | 'desc' | 'asc'
+
+      ths.forEach((th, colIdx) => {
+        const rawTitle = (th.innerText || th.textContent || '').trim().toUpperCase().replace(/[:\s]/g, '');
+        const isExplicitNoSort = th.dataset.sortable === 'false' || th.classList.contains('th-no-sort');
+        const isNonSortableTitle = NON_SORTABLE_TITLES.some(title => rawTitle === title || rawTitle.startsWith(title));
+        const isEmptyTh = rawTitle === '';
+
+        if (isExplicitNoSort || isNonSortableTitle || isEmptyTh) {
+          th.classList.add('th-no-sort');
+          return;
+        }
+
+        th.classList.add('th-sortable');
+
+        let iconWrap = th.querySelector('.sort-icon-wrap, .code-embed-18');
+        if (!iconWrap) {
+          iconWrap = document.createElement('span');
+          iconWrap.className = 'sort-icon-wrap';
+          iconWrap.innerHTML = SVG_NEUTRAL;
+
+          const colWrap = th.querySelector('.column_wrap');
+          const badgeLabel = th.querySelector('.badge-label');
+          if (colWrap) {
+            colWrap.appendChild(iconWrap);
+          } else if (badgeLabel) {
+            badgeLabel.appendChild(iconWrap);
+          } else {
+            th.appendChild(iconWrap);
+          }
+        } else {
+          iconWrap.classList.add('sort-icon-wrap');
+          iconWrap.innerHTML = SVG_NEUTRAL;
+        }
+
+        th.addEventListener('click', (e) => {
+          if (e.target.closest('button, a, input, select')) return;
+
+          tagRows();
+
+          if (activeColIndex === colIdx) {
+            // Cycle: desc -> asc -> none
+            if (sortState === 'desc') {
+              sortState = 'asc';
+            } else if (sortState === 'asc') {
+              sortState = 'none';
+            } else {
+              sortState = 'desc';
+            }
+          } else {
+            // Reset other columns
+            ths.forEach(otherTh => {
+              otherTh.classList.remove('th-sorted-desc', 'th-sorted-asc');
+              const otherIcon = otherTh.querySelector('.sort-icon-wrap, .code-embed-18');
+              if (otherIcon) otherIcon.innerHTML = SVG_NEUTRAL;
+            });
+            activeColIndex = colIdx;
+            sortState = 'desc';
+          }
+
+          // Update header visual state
+          th.classList.remove('th-sorted-desc', 'th-sorted-asc');
+          if (sortState === 'desc') {
+            th.classList.add('th-sorted-desc');
+            iconWrap.innerHTML = SVG_DESC;
+          } else if (sortState === 'asc') {
+            th.classList.add('th-sorted-asc');
+            iconWrap.innerHTML = SVG_ASC;
+          } else {
+            iconWrap.innerHTML = SVG_NEUTRAL;
+            activeColIndex = null;
+          }
+
+          // Sort rows
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+
+          if (sortState === 'none') {
+            rows.sort((a, b) => {
+              const idxA = parseInt(a.dataset.originalIndex, 10);
+              const idxB = parseInt(b.dataset.originalIndex, 10);
+              return idxA - idxB;
+            });
+          } else {
+            rows.sort((a, b) => {
+              const cellA = a.children[colIdx];
+              const cellB = b.children[colIdx];
+              const valA = getCellValue(cellA);
+              const valB = getCellValue(cellB);
+              return compareValues(valA, valB, sortState);
+            });
+          }
+
+          rows.forEach(row => tbody.appendChild(row));
+        });
+      });
+    });
+  };
+
+  window.initUniversalTableSorting = initUniversalTableSorting;
+  window.refreshTableSorting = (tableElem) => {
+    if (!tableElem) return;
+    delete tableElem.dataset.sortInitialized;
+    initUniversalTableSorting();
+  };
+
+  initUniversalTableSorting();
+
   // --- 2. Popup Modals (.popup_wraper) ---
   const popups = document.querySelectorAll('.popup_wraper');
 
@@ -485,35 +739,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 5. Explainability Action & Toast Simulation ---
+  // --- 5. Explainability Action & Request Modal ---
   const btnExplain = document.getElementById('btnExplain');
+  const explainRequestModal = document.getElementById('explainRequestModal');
+  const btnSubmitExplainRequest = document.getElementById('btnSubmitExplainRequest');
+  const explainUserComment = document.getElementById('explainUserComment');
   const toast = document.getElementById('explainToastNotification');
   const btnCloseToast = document.getElementById('btnCloseExplainToast');
+  const claimMiniStatus = document.getElementById('claimExplainMiniStatus');
+  const claimMiniStatusBadge = document.getElementById('claimMiniStatusBadge');
 
-  if (btnExplain) {
+  if (btnExplain && explainRequestModal) {
     btnExplain.addEventListener('click', (e) => {
       e.preventDefault();
       if (btnExplain.disabled) return;
+      explainRequestModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (explainUserComment) {
+        setTimeout(() => explainUserComment.focus(), 60);
+      }
+    });
 
-      const btnText = btnExplain.querySelector('.btn-text');
-      const btnSpinner = btnExplain.querySelector('.btn-spinner');
+    if (btnSubmitExplainRequest) {
+      btnSubmitExplainRequest.addEventListener('click', (e) => {
+        e.preventDefault();
+        const userComment = explainUserComment ? explainUserComment.value.trim() : '';
+        const requestId = 'EXP-0042';
 
-      if (btnSpinner) btnSpinner.style.display = 'inline-block';
-      if (btnText) btnText.textContent = 'REQUESTING...';
-      btnExplain.disabled = true;
+        // Save to localStorage
+        const requestData = {
+          id: requestId,
+          claimId: 'CLM-9902',
+          polyId: '264384944',
+          requester: 'Sarah Jenkins',
+          comment: userComment || 'Please clarify why rule #49 was marked as unresolvable when document DOC-264384944-003 contains pipeline inspection records verifying structural integrity.',
+          status: 'Initial',
+          created: '14:32 · 28.02.2026',
+          analystComment: '',
+          attachments: [
+            {
+              name: 'explain_264384944_EXP-0042_evidence.pdf',
+              size: '1.4 MB',
+              uploader: 'Explanation Analyst',
+              date: '15:10 · 28.02.2026'
+            }
+          ]
+        };
+        localStorage.setItem(`gnotheia_explain_${requestId}`, JSON.stringify(requestData));
 
-      setTimeout(() => {
-        if (btnSpinner) btnSpinner.style.display = 'none';
+        // Update mini status on claim-detail
+        if (claimMiniStatusBadge) {
+          claimMiniStatusBadge.className = 'status-badge status-initial';
+          claimMiniStatusBadge.innerHTML = `<span class="pulsing-dot"></span>${requestId} · Initial &rarr;`;
+          claimMiniStatusBadge.href = `explainability-detail.html?id=${requestId}`;
+        }
+
+        // Close modal
+        explainRequestModal.classList.remove('open');
+        document.body.style.overflow = '';
+
+        // Update button
+        const btnText = btnExplain.querySelector('.btn-text');
         if (btnText) btnText.textContent = 'EXPLAIN REQUESTED';
-        btnExplain.title = 'Explain request already running for this version';
-        btnExplain.style.opacity = '0.6';
-        btnExplain.style.cursor = 'not-allowed';
+        btnExplain.title = 'Explain request submitted and queued for offline analysis';
+        btnExplain.style.opacity = '0.7';
 
+        // Show toast
         if (toast) {
           toast.style.display = 'flex';
+          toast.classList.add('show');
+          const toastLink = toast.querySelector('.explain-toast-link');
+          if (toastLink) toastLink.href = `explainability-detail.html?id=${requestId}`;
+          setTimeout(() => {
+            toast.style.display = 'none';
+            toast.classList.remove('show');
+          }, 5000);
         }
-      }, 850);
-    });
+      });
+    }
   }
 
   if (btnCloseToast && toast) {
@@ -1408,210 +1711,467 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 13. Explainability Manual Management Modal & Dropzone ---
-  const manageExplainModal = document.getElementById('manageExplainModal');
-  const manageModalTitle = document.getElementById('manageModalTitle');
-  const manageRequestId = document.getElementById('manageRequestId');
-  const manageMetaId = document.getElementById('manageMetaId');
-  const manageMetaPoly = document.getElementById('manageMetaPoly');
-  const manageMetaDate = document.getElementById('manageMetaDate');
-  const manageStatusSelect = document.getElementById('manageStatusSelect');
-  const explainDropzone = document.getElementById('explainDropzone');
-  const explainFileInput = document.getElementById('explainFileInput');
-  const dropzonePrompt = document.getElementById('dropzonePrompt');
-  const dropzonePreview = document.getElementById('dropzonePreview');
-  const previewFileName = document.getElementById('previewFileName');
-  const previewFileSize = document.getElementById('previewFileSize');
-  const btnRemoveFile = document.getElementById('btnRemoveFile');
-  const btnSaveManageExplain = document.getElementById('btnSaveManageExplain');
-  const manageToastNotification = document.getElementById('manageToastNotification');
-  const toastRequestId = document.getElementById('toastRequestId');
-  const toastMessage = document.getElementById('toastMessage');
-  const btnCloseManageToast = document.getElementById('btnCloseManageToast');
-
-  let currentAttachedFile = null;
-
-  // Open modal on Manage button click
+  // --- 13. Explainability Queue Workflow Actions (explainability.html) ---
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn-manage-request');
+    const btn = e.target.closest('.btn_wf_action');
     if (!btn) return;
     e.preventDefault();
 
-    const reqId = btn.getAttribute('data-id') || 'EXP-0042';
-    const polyId = btn.getAttribute('data-poly') || '264384944';
-    const status = btn.getAttribute('data-status') || 'In progress';
-    const date = btn.getAttribute('data-date') || '2026-02-28 · 14:32:05 UTC';
+    const action = btn.getAttribute('data-action');
+    const reqId = btn.getAttribute('data-id');
+    if (!action || !reqId) return;
 
-    if (manageRequestId) manageRequestId.value = reqId;
-    if (manageModalTitle) manageModalTitle.textContent = `Manage Request ${reqId}`;
-    if (manageMetaId) manageMetaId.textContent = reqId;
-    if (manageMetaPoly) manageMetaPoly.textContent = polyId;
-    if (manageMetaDate) manageMetaDate.textContent = date;
-    if (manageStatusSelect) manageStatusSelect.value = status;
+    // Check if on table row or detail page header
+    const row = document.querySelector(`tr[data-id="${reqId}"]`);
+    let newStatus = '';
 
-    // Reset file input & dropzone preview
-    currentAttachedFile = null;
-    if (explainFileInput) explainFileInput.value = '';
-    if (dropzonePrompt) dropzonePrompt.style.display = 'flex';
-    if (dropzonePreview) dropzonePreview.style.display = 'none';
+    if (action === 'start') {
+      newStatus = 'In progress';
+    } else if (action === 'complete') {
+      newStatus = 'Completed';
+    } else if (action === 'cancel') {
+      newStatus = 'Canceled';
+    }
 
-    if (manageExplainModal) {
-      manageExplainModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
+    if (!newStatus) return;
+
+    // 1. Update row if present (explainability.html)
+    if (row) {
+      row.setAttribute('data-status', newStatus);
+      const statusCell = row.querySelector('.column_wrap .status-badge');
+      const actionCell = row.querySelector('.wf-action-cell');
+
+      if (statusCell) {
+        if (newStatus === 'In progress') {
+          statusCell.className = 'status-badge status-inprogress';
+          statusCell.innerHTML = 'In&nbsp;progress';
+        } else if (newStatus === 'Completed') {
+          statusCell.className = 'status-badge status-completed';
+          statusCell.innerHTML = 'Completed';
+        } else if (newStatus === 'Canceled') {
+          statusCell.className = 'status-badge status-error';
+          statusCell.innerHTML = 'Canceled';
+        }
+      }
+
+      if (actionCell) {
+        if (newStatus === 'In progress') {
+          actionCell.innerHTML = `
+            <button type="button" class="btn_wf_action btn_wf_complete" data-action="complete" data-id="${reqId}" title="Mark request as Completed">Complete</button>
+            <button type="button" class="btn_wf_action btn_wf_cancel" data-action="cancel" data-id="${reqId}" title="Cancel request">Cancel</button>
+          `;
+        } else {
+          actionCell.innerHTML = `<span class="red-only" style="font-size: 0.82rem;">—</span>`;
+        }
+      }
+    }
+
+    // 2. Update detail page elements if present (explainability-detail.html)
+    const detailBadge = document.getElementById('detailStatusBadge');
+    if (detailBadge) {
+      if (newStatus === 'In progress') {
+        detailBadge.className = 'status-badge status-inprogress';
+        detailBadge.innerHTML = 'In&nbsp;progress';
+      } else if (newStatus === 'Completed') {
+        detailBadge.className = 'status-badge status-completed';
+        detailBadge.innerHTML = 'Completed';
+      } else if (newStatus === 'Canceled') {
+        detailBadge.className = 'status-badge status-error';
+        detailBadge.innerHTML = 'Canceled';
+      }
+    }
+
+    // 3. Persist update to localStorage
+    const saved = localStorage.getItem(`gnotheia_explain_${reqId}`);
+    let reqObj = saved ? JSON.parse(saved) : {};
+    reqObj.status = newStatus;
+    localStorage.setItem(`gnotheia_explain_${reqId}`, JSON.stringify(reqObj));
+
+    // 4. Show toast notification
+    const toastElem = document.getElementById('detailToastNotification') || document.getElementById('manageToastNotification');
+    if (toastElem) {
+      const msgElem = toastElem.querySelector('#detailToastMessage') || toastElem.querySelector('#toastMessage');
+      const badgeElem = toastElem.querySelector('#detailToastBadge') || toastElem.querySelector('#toastRequestId');
+      if (badgeElem) badgeElem.textContent = reqId;
+      if (msgElem) msgElem.textContent = `Request status transitioned to "${newStatus}"`;
+      toastElem.style.display = 'flex';
+      toastElem.classList.add('show');
+      setTimeout(() => {
+        toastElem.style.display = 'none';
+        toastElem.classList.remove('show');
+      }, 3500);
     }
   });
 
-  // Dropzone file handling
-  if (explainDropzone && explainFileInput) {
-    const handleSelectedFile = (file) => {
-      if (!file) return;
-      currentAttachedFile = file;
-      if (previewFileName) previewFileName.textContent = file.name;
-      if (previewFileSize) {
-        const sizeKb = (file.size / 1024).toFixed(1);
-        previewFileSize.textContent = sizeKb > 1024 ? `${(sizeKb / 1024).toFixed(2)} MB` : `${sizeKb} KB`;
+  // --- 14. Explainability Detail Page Logic (explainability-detail.html) ---
+  const detailHeading = document.getElementById('detailHeading');
+  if (detailHeading) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const reqId = urlParams.get('id') || 'EXP-0042';
+
+    // Elements
+    const kvExplainId = document.getElementById('detailKvExplainId');
+    const kvPolyId = document.getElementById('detailKvPolyId');
+    const kvCreated = document.getElementById('detailKvCreated');
+    const kvClaimId = document.getElementById('detailKvClaimId');
+    const statusBadge = document.getElementById('detailStatusBadge');
+    const requesterName = document.getElementById('detailRequesterName');
+    const requesterComment = document.getElementById('detailRequesterComment');
+    const fileInput = document.getElementById('detailFileInput');
+    const dropzone = document.getElementById('detailFileDropzone');
+    const stagingContainer = document.getElementById('stagingFilesContainer');
+    const btnUploadStaged = document.getElementById('btnUploadStagedFiles');
+    const attachmentsTbody = document.getElementById('detailAttachmentsTbody');
+    const attachmentsCountBadge = document.getElementById('detailAttachmentsCount');
+    const stagedCountBadge = document.getElementById('stagedFilesCount');
+
+    // Default mock store if nothing in localStorage
+    const mockDatabase = {
+      'EXP-0042': {
+        id: 'EXP-0042',
+        claimId: 'CLM-9902',
+        polyId: '264384944',
+        requester: 'Sarah Jenkins',
+        comment: 'Please clarify why rule #49 was marked as unresolvable when document DOC-264384944-003 contains pipeline inspection records verifying structural integrity prior to the seismic incident.',
+        status: 'In progress',
+        created: '14:32 · 28.02.2026',
+        attachments: [
+          {
+            name: 'explain_264384944_EXP-0042_evidence.pdf',
+            size: '1.4 MB',
+            type: 'Explainability Evidence',
+            uploader: 'Explanation Analyst',
+            date: '15:10 · 28.02.2026'
+          }
+        ]
+      },
+      'EXP-0041': {
+        id: 'EXP-0041',
+        claimId: 'CLM-9902',
+        polyId: '264384944',
+        requester: 'Sarah Jenkins',
+        comment: 'Explain contradictory policy exclusion clauses for accidental loss vs maintenance default.',
+        status: 'Completed',
+        created: '11:15 · 28.02.2026',
+        attachments: [
+          {
+            name: 'explain_264384944_EXP-0041.json',
+            size: '28 KB',
+            type: 'Reasoning Log',
+            uploader: 'System Service',
+            date: '11:15 · 28.02.2026'
+          }
+        ]
+      },
+      'EXP-0037': {
+        id: 'EXP-0037',
+        claimId: 'CLM-9810',
+        polyId: '882710394',
+        requester: 'Peter Horváth',
+        comment: 'Need mathematical breakdown of depreciation deduction for plumbing fittings.',
+        status: 'Initial',
+        created: '14:05 · 26.02.2026',
+        attachments: []
       }
-      if (dropzonePrompt) dropzonePrompt.style.display = 'none';
-      if (dropzonePreview) dropzonePreview.style.display = 'flex';
     };
 
-    explainFileInput.addEventListener('change', (e) => {
-      if (e.target.files && e.target.files[0]) {
-        handleSelectedFile(e.target.files[0]);
+    // Load from storage or mock
+    const savedJson = localStorage.getItem(`gnotheia_explain_${reqId}`);
+    let reqData = savedJson ? JSON.parse(savedJson) : (mockDatabase[reqId] || {
+      id: reqId,
+      claimId: 'CLM-9902',
+      polyId: '264384944',
+      requester: 'Sarah Jenkins',
+      comment: 'Please provide full chain of evidence evaluation for this polycontext version.',
+      status: 'In progress',
+      created: '14:32 · 28.02.2026',
+      attachments: []
+    });
+
+    // Populate UI
+    detailHeading.textContent = `${reqData.id} detail`;
+    if (kvExplainId) kvExplainId.textContent = reqData.id;
+    if (kvPolyId) {
+      kvPolyId.textContent = reqData.polyId;
+      kvPolyId.href = `claim-detail.html?id=${reqData.polyId}`;
+    }
+    if (kvCreated) kvCreated.textContent = reqData.created;
+    if (kvClaimId) kvClaimId.textContent = reqData.claimId;
+    if (requesterName) requesterName.textContent = reqData.requester;
+    if (requesterComment) requesterComment.textContent = reqData.comment;
+
+    const commentDateElem = document.getElementById('detailCommentDate');
+    const commentTimeElem = document.getElementById('detailCommentTime');
+    if (reqData.created) {
+      const parts = reqData.created.split('·').map(s => s.trim());
+      if (parts.length === 2) {
+        if (commentTimeElem) commentTimeElem.textContent = parts[0];
+        if (commentDateElem) commentDateElem.innerHTML = `${parts[1]}<br>`;
       }
-    });
+    }
 
-    explainDropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      explainDropzone.classList.add('dragover');
-    });
-
-    explainDropzone.addEventListener('dragleave', () => {
-      explainDropzone.classList.remove('dragover');
-    });
-
-    explainDropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      explainDropzone.classList.remove('dragover');
-      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
-        handleSelectedFile(e.dataTransfer.files[0]);
+    // Status UI
+    const applyStatusUI = (st) => {
+      if (statusBadge) {
+        if (st === 'Initial') {
+          statusBadge.className = 'status-badge status-initial';
+          statusBadge.innerHTML = 'Initial';
+        } else if (st === 'In progress' || st === 'Explanation in progress') {
+          statusBadge.className = 'status-badge status-inprogress';
+          statusBadge.innerHTML = 'In&nbsp;progress';
+        } else if (st === 'Completed') {
+          statusBadge.className = 'status-badge status-completed';
+          statusBadge.innerHTML = 'Completed';
+        } else if (st === 'Canceled') {
+          statusBadge.className = 'status-badge status-error';
+          statusBadge.innerHTML = 'Canceled';
+        }
       }
-    });
+    };
+    applyStatusUI(reqData.status);
 
-    if (btnRemoveFile) {
-      btnRemoveFile.addEventListener('click', (e) => {
+    // Staging state with sample/fictitious staged files for immediate preview
+    let stagedFiles = [
+      { name: 'inspection_report_annex_A.pdf', size: 860160 },
+      { name: 'pipeline_stress_diagram_2026.docx', size: 1258291 }
+    ];
+
+    const renderStagingUI = () => {
+      if (!stagingContainer) return;
+      const count = stagedFiles.length;
+      if (stagedCountBadge) {
+        stagedCountBadge.textContent = `${count} file${count === 1 ? '' : 's'}`;
+      }
+      if (stagedFiles.length === 0) {
+        stagingContainer.innerHTML = `
+          <div style="padding: 24px 8px; color: #85809b; font-size: 0.86rem; text-align: center; border-bottom: 1px solid #49416a;">
+            No files staged for upload. Drop files above.
+          </div>
+        `;
+        if (btnUploadStaged) btnUploadStaged.disabled = true;
+      } else {
+        stagingContainer.innerHTML = stagedFiles.map((file, idx) => {
+          const sizeKb = (file.size / 1024).toFixed(1);
+          const sizeStr = sizeKb > 1024 ? `${(sizeKb / 1024).toFixed(2)} MB` : `${sizeKb} KB`;
+          return `
+            <div class="staging-file-row" data-index="${idx}">
+              <div class="staging-file-info">
+                <div class="staging-file-name" title="${file.name}" style="font-size: 0.88rem;">${file.name}</div>
+              </div>
+              <div class="staging-file-meta-right">
+                <div class="staging-file-size" style="font-size: 0.78rem;">${sizeStr}</div>
+                <button type="button" class="staging-file-remove btn-remove-staged" data-index="${idx}" title="Remove file" aria-label="Remove file">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+        if (btnUploadStaged) btnUploadStaged.disabled = false;
+      }
+    };
+    renderStagingUI();
+
+    // Staging container remove handler
+    if (stagingContainer) {
+      stagingContainer.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.btn-remove-staged');
+        if (!removeBtn) return;
         e.preventDefault();
-        e.stopPropagation();
-        currentAttachedFile = null;
-        explainFileInput.value = '';
-        if (dropzonePrompt) dropzonePrompt.style.display = 'flex';
-        if (dropzonePreview) dropzonePreview.style.display = 'none';
+        const idx = parseInt(removeBtn.getAttribute('data-index'), 10);
+        if (!isNaN(idx) && idx >= 0 && idx < stagedFiles.length) {
+          stagedFiles.splice(idx, 1);
+          renderStagingUI();
+        }
       });
     }
-  }
 
-  // Save changes from modal
-  if (btnSaveManageExplain) {
-    btnSaveManageExplain.addEventListener('click', (e) => {
-      e.preventDefault();
-      const reqId = manageRequestId ? manageRequestId.value : '';
-      const newStatus = manageStatusSelect ? manageStatusSelect.value : 'In progress';
+    // Render permanent List of Attachments Table (3 Columns: FILE NAME, FILE SIZE, DOWNLOAD)
+    const renderAttachmentsTable = (list) => {
+      if (!attachmentsTbody) return;
+      const count = list ? list.length : 0;
+      if (attachmentsCountBadge) {
+        attachmentsCountBadge.textContent = `${count} document${count === 1 ? '' : 's'}`;
+      }
 
-      if (!reqId) return;
+      if (count === 0) {
+        attachmentsTbody.innerHTML = `
+          <tr class="clean">
+            <td colspan="3" style="text-align: center; padding: 24px 16px;">
+              <span class="red-only" style="font-size: 0.88rem;">No explainability documents attached yet.</span>
+            </td>
+          </tr>
+        `;
+        return;
+      }
 
-      // Find matching row in table
-      const targetRow = document.querySelector(`tr[data-id="${reqId}"]`);
-      if (targetRow) {
-        targetRow.setAttribute('data-status', newStatus);
-
-        // Update status badge
-        const statusBadgeCell = targetRow.querySelector('.column_wrap .status-badge');
-        if (statusBadgeCell) {
-          if (newStatus === 'Completed') {
-            statusBadgeCell.className = 'status-badge status-completed';
-            statusBadgeCell.innerHTML = 'Completed';
-          } else if (newStatus === 'In progress') {
-            statusBadgeCell.className = 'status-badge status-inprogress';
-            statusBadgeCell.innerHTML = '<span class="pulsing-dot"></span>In progress';
-          } else if (newStatus === 'Initial') {
-            statusBadgeCell.className = 'status-badge status-initial';
-            statusBadgeCell.innerHTML = 'Initial';
-          } else if (newStatus === 'Error') {
-            statusBadgeCell.className = 'status-badge status-error';
-            statusBadgeCell.innerHTML = 'Error';
-          }
-        }
-
-        // Update manage button data-status
-        const manageBtn = targetRow.querySelector('.btn-manage-request');
-        if (manageBtn) {
-          manageBtn.setAttribute('data-status', newStatus);
-        }
-
-        // Update result cell
-        const resultCell = targetRow.querySelector('.result-cell') || targetRow.querySelectorAll('td')[5]?.querySelector('.column_wrap');
-        if (resultCell) {
-          if (currentAttachedFile) {
-            const ext = currentAttachedFile.name.split('.').pop().toUpperCase();
-            const formatName = ext.length <= 4 ? ext : 'DOC';
-            resultCell.innerHTML = `
-              <a href="#" class="btn_download" download="${currentAttachedFile.name}" title="Download Attached ${formatName}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span>${formatName}</span>
-              </a>
-            `;
-          } else if (newStatus === 'Completed') {
-            resultCell.innerHTML = `
-              <a href="#" class="btn_download" download="explain_${reqId}.pdf" title="Download PDF Explanation">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span>PDF</span>
-              </a>
-            `;
-          } else if (newStatus === 'In progress') {
-            resultCell.innerHTML = `<span class="red-only" style="font-size:0.85rem;"><span class="pulsing-dot"></span>In progress</span>`;
-          } else if (newStatus === 'Initial') {
-            resultCell.innerHTML = `<span class="red-only" style="font-size:0.85rem;">Queued</span>`;
-          } else if (newStatus === 'Error') {
-            resultCell.innerHTML = `
-              <div class="failed-result">
-                <span>Failed</span>
-                <div class="info-tooltip-wrap" title="Request manually marked as Error">
-                  <span class="info-tooltip-icon">i</span>
+      attachmentsTbody.innerHTML = list.map((item, idx) => {
+        const isLast = idx === list.length - 1;
+        const ext = (item.name.split('.').pop() || 'PDF').toUpperCase();
+        return `
+          <tr class="clean ${isLast ? 'last' : ''}">
+            <td>
+              <div class="data_wrap">
+                <div class="upline_wrtap-copy">
+                  <div class="up_data">${item.name}</div>
+                </div>
+                <div class="downline_data_wrap-copy">
+                  <div class="low_data">Uploaded: ${item.date || '15:10 · 28.02.2026'}</div>
+                  <div class="mini-tag"><strong>${ext}</strong></div>
                 </div>
               </div>
-            `;
+            </td>
+            <td>
+              <div class="column_wrap">
+                <div class="low_data" style="font-size: 0.82rem; color: #85809b;">${item.size}</div>
+              </div>
+            </td>
+            <td>
+              <div class="column_wrap right">
+                <a href="#" class="btn_popup w-inline-block" download="${item.name}" title="Download ${item.name}">
+                  <div class="code-embed-8 w-embed">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      if (window.refreshTableSorting) {
+        window.refreshTableSorting(document.getElementById('detailAttachmentsTable'));
+      }
+    };
+    renderAttachmentsTable(reqData.attachments || []);
+
+    // File selection / staging via dropzone and input
+    const stageSelectedFiles = (files) => {
+      if (!files || files.length === 0) return;
+      for (let i = 0; i < files.length; i++) {
+        stagedFiles.push(files[i]);
+      }
+      renderStagingUI();
+    };
+
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files) {
+          stageSelectedFiles(e.target.files);
+          fileInput.value = ''; // Reset so same file can be chosen again if needed
+        }
+      });
+    }
+
+    if (dropzone) {
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+      });
+
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer && e.dataTransfer.files) {
+          stageSelectedFiles(e.dataTransfer.files);
+        }
+      });
+    }
+
+    // Upload Staged Files Button Handler
+    if (btnUploadStaged) {
+      btnUploadStaged.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (stagedFiles.length === 0) return;
+
+        const now = new Date();
+        const dateStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} · ${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
+
+        if (!reqData.attachments) reqData.attachments = [];
+
+        stagedFiles.forEach(file => {
+          const sizeKb = (file.size / 1024).toFixed(1);
+          const sizeStr = sizeKb > 1024 ? `${(sizeKb / 1024).toFixed(2)} MB` : `${sizeKb} KB`;
+          const ext = file.name.split('.').pop().toUpperCase();
+          const docType = ext === 'JSON' || ext === 'MD' ? 'Reasoning Log' : 'Explainability Evidence';
+
+          reqData.attachments.unshift({
+            name: file.name,
+            size: sizeStr,
+            type: docType,
+            uploader: 'Explanation Analyst',
+            date: dateStr
+          });
+        });
+
+        localStorage.setItem(`gnotheia_explain_${reqId}`, JSON.stringify(reqData));
+
+        const uploadedCount = stagedFiles.length;
+        stagedFiles = [];
+        renderStagingUI();
+        renderAttachmentsTable(reqData.attachments);
+        const toastElem = document.getElementById('detailToastNotification');
+        if (toastElem) {
+          const msg = toastElem.querySelector('#detailToastMessage');
+          if (msg) msg.textContent = `${uploadedCount} document${uploadedCount === 1 ? '' : 's'} successfully uploaded`;
+          toastElem.style.display = 'flex';
+          toastElem.classList.add('show');
+          setTimeout(() => {
+            toastElem.style.display = 'none';
+            toastElem.classList.remove('show');
+          }, 3500);
+        }
+      });
+    }
+
+    // Copy Requester Comment text into Clipboard
+    const btnCopyComment = document.getElementById('btnCopyRequesterComment');
+    if (btnCopyComment) {
+      btnCopyComment.addEventListener('click', (e) => {
+        e.preventDefault();
+        const commentText = reqData.comment || (requesterComment ? requesterComment.textContent.trim() : '');
+        if (!commentText) return;
+
+        navigator.clipboard.writeText(commentText).then(() => {
+          btnCopyComment.classList.add('copied');
+          setTimeout(() => {
+            btnCopyComment.classList.remove('copied');
+          }, 1500);
+
+          const toastElem = document.getElementById('detailToastNotification');
+          if (toastElem) {
+            const msg = toastElem.querySelector('#detailToastMessage');
+            if (msg) msg.textContent = 'Comment copied to clipboard';
+            toastElem.style.display = 'flex';
+            toastElem.classList.add('show');
+            setTimeout(() => {
+              toastElem.style.display = 'none';
+              toastElem.classList.remove('show');
+            }, 3000);
           }
+        }).catch(err => {
+          console.error('Failed to copy comment: ', err);
+        });
+      });
+    }
+
+    // Close detail toast
+    const btnCloseDetailToast = document.getElementById('btnCloseDetailToast');
+    if (btnCloseDetailToast) {
+      btnCloseDetailToast.addEventListener('click', () => {
+        const toastElem = document.getElementById('detailToastNotification');
+        if (toastElem) {
+          toastElem.style.display = 'none';
+          toastElem.classList.remove('show');
         }
-      }
-
-      // Close modal
-      if (manageExplainModal) {
-        manageExplainModal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-
-      // Show toast
-      if (manageToastNotification) {
-        if (toastRequestId) toastRequestId.textContent = reqId;
-        if (toastMessage) {
-          toastMessage.textContent = currentAttachedFile 
-            ? `Request ${reqId} set to "${newStatus}" with attached document "${currentAttachedFile.name}"`
-            : `Request ${reqId} status updated to "${newStatus}"`;
-        }
-        manageToastNotification.style.display = 'flex';
-        manageToastNotification.classList.add('show');
-        setTimeout(() => {
-          manageToastNotification.style.display = 'none';
-          manageToastNotification.classList.remove('show');
-        }, 4000);
-      }
-    });
-  }
-
-  if (btnCloseManageToast && manageToastNotification) {
-    btnCloseManageToast.addEventListener('click', () => {
-      manageToastNotification.style.display = 'none';
-      manageToastNotification.classList.remove('show');
-    });
+      });
+    }
   }
 });
