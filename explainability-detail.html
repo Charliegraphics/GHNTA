@@ -194,11 +194,40 @@
           </div>
         </div>
 
-        <!-- 3. Attach Explainability Document Section (Unified 2-in-1 Layout) -->
+        <!-- 3. Explanation Results Section (New Section) -->
+        <div class="object-box-copy" id="explanationResultsCard">
+          <div class="box_label_wrap">
+            <div class="side-wrap-left">
+              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-text-icon lucide-message-square-text">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  <path d="M13 8H7"></path>
+                  <path d="M17 12H7"></path>
+                </svg></div>
+              <div class="text-block-2">Explanation results</div>
+            </div>
+            <div class="side-wrap smallgap">
+              <span class="red-only" id="analystCommentMeta" style="font-size: 0.78rem; text-transform: none;">Explanation Analyst · 15:10 · 28.02.2026</span>
+            </div>
+          </div>
+          <div id="explanationResultsContent" style="width: 100% !important; align-self: stretch !important; display: block !important;">
+            <div class="divider" style="width: 100% !important;"></div>
+            <div class="eval-context-label" style="margin-bottom: 10px; font-size: 0.78rem; letter-spacing: 0.05em; text-align: left;">EXPLANATION COMMENT</div>
+            <div style="background: #242034; border: 1px solid #49416a; border-radius: 8px; padding: 14px; box-sizing: border-box;">
+              <textarea id="detailAnalystCommentInput" class="analyst-textarea" rows="4" placeholder="Enter explanation commentary, findings, or conclusion for this request..." style="width: 100%; box-sizing: border-box; background: #28243a; border: 1px solid #49416a; border-radius: 6px; color: #edecf0; font-size: 0.88rem; padding: 10px 12px; resize: vertical; min-height: 90px; outline: none; font-family: inherit; line-height: 1.45;"></textarea>
+              <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 10px;">
+                <button type="button" class="button_gn_sec dark" id="btnSaveAnalystComment" style="height: 34px; padding: 0 16px; font-size: 0.8rem; display: inline-flex; align-items: center;">
+                  <div>Save comment</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Attach Explainability Document Section (Untouched 2-in-1 Layout) -->
         <div class="object-box-copy" id="attachExplainabilityCard">
           <div class="box_label_wrap">
             <div class="side-wrap-left">
-              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
+              <div class="ico-header w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip-icon lucide-paperclip">
                   <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
                 </svg></div>
               <div class="text-block-2">Attach explainability document</div>

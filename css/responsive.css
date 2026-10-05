@@ -3213,6 +3213,17 @@ a.button_gn.disabled {
   pointer-events: none !important;
 }
 
+/* Analyst Comment in Explanation Results */
+.analyst-textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analyst-textarea:focus {
+  border-color: #9cbdff !important;
+  box-shadow: 0 0 0 2px rgba(156, 189, 255, 0.2) !important;
+}
+
+
 
 
 

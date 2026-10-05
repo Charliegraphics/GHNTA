@@ -1835,6 +1835,9 @@ document.addEventListener('DOMContentLoaded', () => {
         comment: 'Please clarify why rule #49 was marked as unresolvable when document DOC-264384944-003 contains pipeline inspection records verifying structural integrity prior to the seismic incident.',
         status: 'In progress',
         created: '14:32 · 28.02.2026',
+        analystComment: 'Re-evaluated structural integrity records from document DOC-264384944-003. Verified pipeline maintenance logs pre-dating seismic incident; evidence confirms rule #49 criteria met.',
+        analystCommentDate: '15:10 · 28.02.2026',
+        analystName: 'Explanation Analyst',
         attachments: [
           {
             name: 'explain_264384944_EXP-0042_evidence.pdf',
@@ -1853,6 +1856,9 @@ document.addEventListener('DOMContentLoaded', () => {
         comment: 'Explain contradictory policy exclusion clauses for accidental loss vs maintenance default.',
         status: 'Completed',
         created: '11:15 · 28.02.2026',
+        analystComment: 'Resolved policy conflict. Accidental loss clause 12.B supersedes general maintenance exclusion 4.A per precedent claim case CLM-9701.',
+        analystCommentDate: '11:15 · 28.02.2026',
+        analystName: 'System Service',
         attachments: [
           {
             name: 'explain_264384944_EXP-0041.json',
@@ -1871,6 +1877,9 @@ document.addEventListener('DOMContentLoaded', () => {
         comment: 'Need mathematical breakdown of depreciation deduction for plumbing fittings.',
         status: 'Initial',
         created: '14:05 · 26.02.2026',
+        analystComment: '',
+        analystCommentDate: '',
+        analystName: 'Explanation Analyst',
         attachments: []
       }
     };
@@ -1885,6 +1894,9 @@ document.addEventListener('DOMContentLoaded', () => {
       comment: 'Please provide full chain of evidence evaluation for this polycontext version.',
       status: 'In progress',
       created: '14:32 · 28.02.2026',
+      analystComment: '',
+      analystCommentDate: '',
+      analystName: 'Explanation Analyst',
       attachments: []
     });
 
@@ -1899,6 +1911,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (kvClaimId) kvClaimId.textContent = reqData.claimId;
     if (requesterName) requesterName.textContent = reqData.requester;
     if (requesterComment) requesterComment.textContent = reqData.comment;
+
+    // Populate Analyst Explanation Comment
+    const analystCommentInput = document.getElementById('detailAnalystCommentInput');
+    const btnSaveAnalystComment = document.getElementById('btnSaveAnalystComment');
+    const analystCommentMeta = document.getElementById('analystCommentMeta');
+
+    if (analystCommentInput) {
+      analystCommentInput.value = reqData.analystComment || '';
+    }
+    if (analystCommentMeta) {
+      if (reqData.analystCommentDate) {
+        analystCommentMeta.textContent = `${reqData.analystName || 'Explanation Analyst'} · ${reqData.analystCommentDate}`;
+      } else {
+        analystCommentMeta.textContent = `${reqData.analystName || 'Explanation Analyst'} · Not yet submitted`;
+      }
+    }
 
     const commentDateElem = document.getElementById('detailCommentDate');
     const commentTimeElem = document.getElementById('detailCommentTime');
@@ -2121,6 +2149,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (toastElem) {
           const msg = toastElem.querySelector('#detailToastMessage');
           if (msg) msg.textContent = `${uploadedCount} document${uploadedCount === 1 ? '' : 's'} successfully uploaded`;
+          toastElem.style.display = 'flex';
+          toastElem.classList.add('show');
+          setTimeout(() => {
+            toastElem.style.display = 'none';
+            toastElem.classList.remove('show');
+          }, 3500);
+        }
+      });
+    }
+
+    // Save Analyst Explanation Comment
+    if (btnSaveAnalystComment && analystCommentInput) {
+      btnSaveAnalystComment.addEventListener('click', (e) => {
+        e.preventDefault();
+        const newComment = analystCommentInput.value.trim();
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        const formattedDate = `${pad(now.getHours())}:${pad(now.getMinutes())} · ${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
+
+        reqData.analystComment = newComment;
+        reqData.analystCommentDate = formattedDate;
+        reqData.analystName = 'Explanation Analyst';
+
+        localStorage.setItem(`gnotheia_explain_${reqId}`, JSON.stringify(reqData));
+
+        if (analystCommentMeta) {
+          analystCommentMeta.textContent = `Explanation Analyst · ${formattedDate}`;
+        }
+
+        // Button feedback
+        const origBtnText = btnSaveAnalystComment.innerHTML;
+        btnSaveAnalystComment.innerHTML = '<div>Saved! ✓</div>';
+        setTimeout(() => {
+          btnSaveAnalystComment.innerHTML = origBtnText;
+        }, 2000);
+
+        // Toast feedback
+        const toastElem = document.getElementById('detailToastNotification');
+        if (toastElem) {
+          const msg = toastElem.querySelector('#detailToastMessage');
+          const badge = toastElem.querySelector('#detailToastBadge');
+          if (badge) badge.textContent = reqId;
+          if (msg) msg.textContent = 'Explanation comment saved successfully';
           toastElem.style.display = 'flex';
           toastElem.classList.add('show');
           setTimeout(() => {
