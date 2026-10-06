@@ -294,7 +294,7 @@ table.table_hitl_reasons tbody tr:last-child td {
 
 /* 3. Specific Proportions & Alignments for Each Table Type */
 
-/* A. Dashboard Claims Table (table_dash_wrap-copy) -> .5fr .5fr .5fr 1fr .25fr */
+/* A. Dashboard Claims Table (table_dash_wrap-copy) - 5 Columns Layout */
 table.table_dash_wrap-copy {
   min-width: 760px;
 }
@@ -302,17 +302,50 @@ table.table_dash_wrap-copy thead th {
   white-space: nowrap;
 }
 table.table_dash_wrap-copy th:nth-child(1),
-table.table_dash_wrap-copy td:nth-child(1) { width: 15%; }
+table.table_dash_wrap-copy td:nth-child(1) {
+  width: 20%;
+}
 table.table_dash_wrap-copy th:nth-child(2),
-table.table_dash_wrap-copy td:nth-child(2) { width: 20%; }
+table.table_dash_wrap-copy td:nth-child(2) {
+  width: 22%;
+}
 table.table_dash_wrap-copy th:nth-child(3),
-table.table_dash_wrap-copy td:nth-child(3) { width: 10%; }
+table.table_dash_wrap-copy td:nth-child(3) {
+  width: 38%;
+  white-space: nowrap;
+}
+table.table_dash_wrap-copy td:nth-child(3) .ico-tags,
+table.table_dash_wrap-copy td:nth-child(3) .red-only {
+  white-space: nowrap !important;
+}
 table.table_dash_wrap-copy th:nth-child(4),
-table.table_dash_wrap-copy td:nth-child(4) { width: 30%; }
+table.table_dash_wrap-copy td:nth-child(4) {
+  width: 12%;
+  text-align: right;
+}
+table.table_dash_wrap-copy th:nth-child(4) .column_wrap {
+  justify-content: flex-end;
+}
+table.table_dash_wrap-copy td:nth-child(4) .data-wrap,
+table.table_dash_wrap-copy td:nth-child(4) .data_wrap,
+table.table_dash_wrap-copy td:nth-child(4) .column_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
 table.table_dash_wrap-copy th:nth-child(5),
-table.table_dash_wrap-copy td:nth-child(5) { width: 15%; }
-table.table_dash_wrap-copy th:nth-child(6),
-table.table_dash_wrap-copy td:nth-child(6) { width: 10%; text-align: right; }
+table.table_dash_wrap-copy td:nth-child(5) {
+  width: 8%;
+  min-width: 70px;
+  max-width: 90px;
+  text-align: right;
+  white-space: nowrap;
+}
+table.table_dash_wrap-copy th:nth-child(5) .column_wrap,
+table.table_dash_wrap-copy td:nth-child(5) .column_wrap {
+  justify-content: flex-end;
+}
 
 /* B. Evaluation History Table (table-history) -> 40px 20% 34% 22% 14% 60px */
 table.table-history {
@@ -2631,41 +2664,273 @@ a.button_gn.disabled {
 }
 
 .modal-model-env {
-  max-width: 680px;
-  width: 95%;
-  background-color: #171520;
-  border: 1px solid #49416a;
-  border-radius: 12px;
+  max-width: 780px !important;
+  width: 95% !important;
+  background-color: #242034 !important;
+  border: 1px solid #49416a !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 60px rgba(10, 8, 20, 0.65) !important;
+  overflow: hidden !important;
 }
 
-.model-env-content {
-  padding: 16px 20px;
-  max-height: 70vh;
+.model-env-ctx-bar {
+  padding: 10px 24px;
+  background: #1b1827;
+  border-bottom: 1px solid #38324f;
+  font-size: 0.82rem;
+  color: #c4bee3;
+  line-height: 1.4;
+}
+
+.model-env-ctx-bar b {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.model-env-body {
+  padding: 20px 24px 10px;
+  max-height: calc(85vh - 170px);
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
-.model-env-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px 20px;
-}
-
-.model-env-item {
+/* Level 1: Key Rows for Claims Handler */
+.model-env-rows {
   display: flex;
   flex-direction: column;
-  gap: 4px;
 }
 
-.model-env-item.full-width {
+.model-env-row {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 11px 0;
+  border-bottom: 1px solid #38324f;
+}
+
+.model-env-row:last-child {
+  border-bottom: none;
+}
+
+.model-env-rk {
+  flex: 0 0 132px;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #85809b;
+  padding-top: 3px;
+  font-weight: 600;
+}
+
+.model-env-rv {
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  color: #edecf0;
+  line-height: 1.45;
+}
+
+.model-env-rv small {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.8rem;
+  color: #85809b;
+  line-height: 1.35;
+}
+
+.model-env-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+
+.model-env-dot.g {
+  background: #03ffac;
+  box-shadow: 0 0 6px rgba(3, 255, 172, 0.4);
+}
+
+.model-env-dot.o {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+.model-env-dot.r {
+  background: #ee3b76;
+  box-shadow: 0 0 6px rgba(238, 59, 118, 0.4);
+}
+
+.text-ok {
+  color: #03ffac !important;
+  font-weight: 600;
+}
+
+.text-warn {
+  color: #f59e0b !important;
+  font-weight: 600;
+}
+
+.text-bad {
+  color: #ee3b76 !important;
+  font-weight: 600;
+}
+
+.pill-onprem {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: rgba(3, 255, 172, 0.14);
+  border: 1px solid rgba(3, 255, 172, 0.4);
+  color: #03ffac;
+}
+
+/* Toggle Show More Button */
+.btn-toggle-audit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 14px;
+  padding: 10px 16px;
+  background: #28243a;
+  border: 1px solid #49416a;
+  border-radius: 8px;
+  color: #c4bee3;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-audit:hover {
+  background: #393352;
+  border-color: #7b6fb0;
+  color: #ffffff;
+}
+
+.btn-toggle-audit.active {
+  background: #1b1827;
+  border-color: #584e80;
+  color: #ffffff;
+}
+
+/* Level 2: Detailed Audit Groups */
+.model-env-level2 {
+  display: none;
+  margin-top: 8px;
+  border-top: 1px solid #38324f;
+  padding-top: 4px;
+}
+
+.model-env-level2.show {
+  display: block;
+}
+
+.audit-grp {
+  margin-top: 18px;
+}
+
+.audit-grp-h {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #85809b;
+  font-weight: 700;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #38324f;
+  margin-bottom: 4px;
+}
+
+.audit-pairs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+
+.audit-pair {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(73, 65, 106, 0.45);
+}
+
+.audit-pair.full {
   grid-column: 1 / -1;
-  padding-top: 8px;
-  border-top: 1px solid rgba(73, 65, 106, 0.4);
 }
 
-@media screen and (max-width: 600px) {
-  .model-env-grid {
+.audit-pk {
+  flex: 0 0 46%;
+  font-size: 0.8rem;
+  color: #85809b;
+}
+
+.audit-pair.full .audit-pk {
+  flex: 0 0 23%;
+}
+
+.audit-pv {
+  flex: 1 1 auto;
+  font-size: 0.84rem;
+  color: #c4bee3;
+  word-break: break-word;
+}
+
+.audit-pv.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.78rem !important;
+  color: #9cbdff !important;
+}
+
+.audit-pv.none {
+  color: #6e6a84 !important;
+  font-style: italic;
+}
+
+.audit-hint {
+  margin-top: 9px;
+  font-size: 0.8rem;
+  color: #d8d3ec;
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.audit-hint .hint-icon {
+  color: #f59e0b;
+  flex-shrink: 0;
+  font-size: 0.88rem;
+  margin-top: 1px;
+}
+
+.audit-hint b {
+  color: #ffd25d;
+}
+
+@media screen and (max-width: 760px) {
+  .audit-pairs {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 0;
+  }
+  .audit-pair.full .audit-pk {
+    flex: 0 0 46%;
+  }
+  .model-env-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .model-env-rk {
+    flex: 0 0 auto;
   }
 }
 
@@ -3222,6 +3487,34 @@ a.button_gn.disabled {
   border-color: #9cbdff !important;
   box-shadow: 0 0 0 2px rgba(156, 189, 255, 0.2) !important;
 }
+
+/* Claims Table: Polycontext Version, Evaluations & Dash */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: #28243a !important;
+  color: #9cbdff !important;
+  border: 1px solid #49416a !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+  font-size: 0.84rem !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.02em !important;
+}
+
+.of {
+  color: #85809b;
+  font-size: 0.82rem;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.dash {
+  color: #85809b;
+  font-size: 0.95rem;
+}
+
 
 
 

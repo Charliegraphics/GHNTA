@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html data-wf-page="styleguide" data-wf-site="69aa2784ca12161ae1c2893b" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gnotheia Design System & Style Guide</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/gnotheia.webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/responsive.css" rel="stylesheet" type="text/css">
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <style>
+    /* Dedicated Style Guide Layout Styles */
+    .sg-page {
+      background-color: #1c182b;
+      color: #edecf0;
+      min-height: 100vh;
+      padding: 32px 24px 80px;
+      font-family: inherit;
+    }
+    .sg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sg-header {
+      padding: 24px 30px;
+      background: #242034;
+      border: 1px solid #49416a;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .sg-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 6px 0;
+      letter-spacing: 0.02em;
+    }
+    .sg-subtitle {
+      color: #85809b;
+      font-size: 0.88rem;
+      margin: 0;
+    }
+    .sg-nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sg-nav-link {
+      color: #c4bee3;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #28243a;
+      border: 1px solid #49416a;
+      transition: all 0.2s;
+    }
+    .sg-nav-link:hover {
+      background: #5b5185;
+      color: #fff;
+    }
+    .sg-section {
+      background: #242034;
+      border: 1px solid #38324f;
+      border-radius: 12px;
+      padding: 28px 30px;
+      margin-bottom: 28px;
+    }
+    .sg-section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffd25d;
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sg-section-desc {
+      color: #85809b;
+      font-size: 0.88rem;
+      margin: 0 0 24px 0;
+      line-height: 1.5;
+    }
+    .sg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .sg-card {
+      background: #1c182b;
+      border: 1px solid #38324f;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sg-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      border-bottom: 1px solid rgba(73, 65, 106, 0.4);
+      padding-bottom: 10px;
+    }
+    .sg-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+    }
+    .sg-card-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      color: #9cbdff;
+      background: #28243a;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #49416a;
+    }
+    .sg-preview-box {
+      background: #28243a;
+      border: 1px dashed #49416a;
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sg-usage {
+      font-size: 0.82rem;
+      color: #c4bee3;
+      line-height: 1.45;
+    }
+    .sg-usage strong {
+      color: #ffd25d;
+    }
+    .sg-code-wrap {
+      position: relative;
+      margin-top: auto;
+    }
+    .sg-code {
+      background: #141122;
+      border: 1px solid #38324f;
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.76rem;
+      color: #9cbdff;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin: 0;
+    }
+    .sg-copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #28243a;
+      border: 1px solid #49416a;
+      color: #edecf0;
+      padding: 3px 8px;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sg-copy-btn:hover {
+      background: #5b5185;
+      color: #fff;
+    }
+    .sg-rule-box {
+      background: rgba(238, 59, 118, 0.08);
+      border: 1px solid rgba(238, 59, 118, 0.35);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 16px;
+    }
+    .sg-rule-box h4 {
+      margin: 0 0 6px;
+      color: #ee3b76;
+      font-size: 0.95rem;
+    }
+    .sg-rule-box p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: #edecf0;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body class="body sg-page">
+  <div class="sg-container">
+
+    <!-- Header -->
+    <header class="sg-header">
+      <div>
+        <h1 class="sg-title">Gnotheia UI Design System & Style Guide</h1>
+        <p class="sg-subtitle">Jediný záväzný zdroj pravdy (Single Source of Truth) pre tlačidlá, modály a komponenty naprieč celým projektom.</p>
+      </div>
+      <nav class="sg-nav">
+        <a href="#buttons" class="sg-nav-link">1. Tlačidlá</a>
+        <a href="#modals" class="sg-nav-link">2. Modálne pätičky</a>
+        <a href="#badges" class="sg-nav-link">3. Štítky & Tagy</a>
+        <a href="#keyvalues" class="sg-nav-link">4. Kľúč-hodnota</a>
+        <a href="#rules" class="sg-nav-link">5. Záväzné pravidlá</a>
+      </nav>
+    </header>
+
+    <!-- 1. TLAČIDLÁ (BUTTONS) -->
+    <section id="buttons" class="sg-section">
+      <h2 class="sg-section-title">1. Tlačidlá a akčné prvky (Buttons & Action Elements)</h2>
+      <p class="sg-section-desc">
+        V projekte existujú presne definované typy tlačidiel. Je <strong>prísne zakázané</strong> vytvárať nové ad-hoc triedy alebo inline štýly pre tlačidlá, ktoré už majú nižšie uvedený ekvivalent.
+      </p>
+
+      <div class="sg-grid">
+
+        <!-- Type 1: Primary Action Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">1. Primary Action Button</h3>
+            <span class="sg-card-tag">.button_gn</span>
+          </div>
+          <div class="sg-preview-box">
+            <a href="#" class="button_gn w-inline-block" onclick="return false;">
+              <div>Evaluate</div>
+            </a>
+            <a href="#" class="button_gn disabled w-inline-block" onclick="return false;">
+              <div>Disabled</div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Hlavná prioritná akcia na stránke alebo potvrdzovacie tlačidlo v modále (napr. <em>Evaluate</em>, <em>Save Reason</em>, <em>Submit request</em>, <em>Apply Reasons</em>).<br>
+            <strong>Vizuál:</strong> Fialovo-ružovo-oranžový gradient, ružový tieň, biele písmo.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;a href="#" class="button_gn w-inline-block"&gt;
+  &lt;div&gt;Evaluate&lt;/div&gt;
+&lt;/a&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 2: Secondary Modal & Cancel Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">2. Secondary / Modal Cancel Button</h3>
+            <span class="sg-card-tag">.button_gn_sec</span>
+          </div>
+          <div class="sg-preview-box">
+            <a href="#" class="button_gn_sec w-inline-block" onclick="return false;">
+              <div>Cancel</div>
+            </a>
+            <a href="#" class="button_gn_sec btn-close-modal w-inline-block" onclick="return false;">
+              <div>Close</div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Zrušenie alebo zatvorenie modálneho okna (ľavé tlačidlo v pätičke modálu napr. <em>Cancel</em>, <em>Close</em>).<br>
+            <strong>Vizuál:</strong> Priehľadné v pokojovom stave, na hover fialové podfarbenie (<code>#5b5185</code>), text <code>#edecf0</code>.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;a href="#" class="button_gn_sec btn-close-modal w-inline-block"&gt;
+  &lt;div&gt;Cancel&lt;/div&gt;
+&lt;/a&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 3: Secondary Dark Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">3. Secondary Dark / Utility Button</h3>
+            <span class="sg-card-tag">.button_gn_sec.dark</span>
+          </div>
+          <div class="sg-preview-box">
+            <a href="#" class="button_gn_sec dark w-inline-block" onclick="return false;">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div>
+              <div>Save as</div>
+            </a>
+            <a href="#" class="button_gn_sec dark w-inline-block" onclick="return false;">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></div>
+              <div>Copy as JSON</div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Sekundárne funkčné tlačidlo s orámovaním (napr. <em>Save as</em>, <em>Copy as JSON</em>, aktívny tab <em>Reference data</em>, <em>Clear filters</em>).<br>
+            <strong>Vizuál:</strong> Tmavofialové pozadie <code>#5b5185b3</code>, orámovanie <code>#584e80</code>, hover <code>#5b5185</code>.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;a href="#" class="button_gn_sec dark w-inline-block"&gt;
+  &lt;div class="code-embed-8 w-embed"&gt;&lt;svg ...&gt;&lt;/svg&gt;&lt;/div&gt;
+  &lt;div&gt;Save as&lt;/div&gt;
+&lt;/a&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 4: Tertiary Outline Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">4. Tertiary / Outline Action Button</h3>
+            <span class="sg-card-tag">.button_gn_sec.tertiary</span>
+          </div>
+          <div class="sg-preview-box">
+            <button type="button" class="button_gn_sec tertiary w-inline-block">
+              <span class="btn-text">EXPLAIN</span>
+            </button>
+            <button type="button" class="button_gn_sec tertiary disabled w-inline-block" disabled>
+              <span class="btn-text">EXPLAIN</span>
+              <span class="btn-spinner"></span>
+            </button>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Špeciálna akcia tretej priority, napr. tlačidlo <em>EXPLAIN</em> v hlavičke detailu nároku (CLM-9902).<br>
+            <strong>Vizuál:</strong> Úplne priehľadné, orámovanie <code>#49416a</code>, text <code>#c5bee6</code>, hover svetlejšie orámovanie a podfarbenie.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;button type="button" class="button_gn_sec tertiary w-inline-block"&gt;
+  &lt;span class="btn-text"&gt;EXPLAIN&lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 5: Clear / Ghost Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">5. Clear / Ghost Toggle Button</h3>
+            <span class="sg-card-tag">.button_gn_sec.clear</span>
+          </div>
+          <div class="sg-preview-box">
+            <div class="toggle_menu" style="margin: 0;">
+              <a href="#" class="button_gn_sec dark w-inline-block" onclick="return false;"><div>Active Tab</div></a>
+              <a href="#" class="button_gn_sec clear w-inline-block" onclick="return false;"><div>Clear Tab</div></a>
+            </div>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Prepínače v toggle lište (napr. <em>Rules Management</em> a <em>HITL reasons</em> v toggle_menu), neaktívne taby.<br>
+            <strong>Vizuál:</strong> Bez orámovania, bez pozadia v pokojovom stave, jemné priesvitné podfarbenie pri hoveri.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;a href="#" class="button_gn_sec clear w-inline-block"&gt;
+  &lt;div&gt;Rules Management&lt;/div&gt;
+&lt;/a&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 6: Full-Width Audit Toggle Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">6. Audit Detail Toggle Button</h3>
+            <span class="sg-card-tag">.btn-toggle-audit</span>
+          </div>
+          <div class="sg-preview-box" style="flex-direction: column; width: 100%;">
+            <button type="button" class="btn-toggle-audit" style="width: 100%;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span>SHOW MORE (AUDIT DETAIL)</span>
+            </button>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Plnošírkové rozbalenie auditu alebo technických parametrov (napr. Model inference environment).<br>
+            <strong>Vizuál:</strong> 100% šírka, tmavofialový podklad <code>#28243a</code>, <code>#49416a</code> border, rotujúca chevron SVG ikona.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;button type="button" class="btn-toggle-audit" id="btnToggleModelAudit"&gt;
+  &lt;svg ...&gt;&lt;polyline points="6 9 12 15 18 9"/&gt;&lt;/svg&gt;
+  &lt;span&gt;SHOW MORE (AUDIT DETAIL)&lt;/span&gt;
+&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 7: Compact Show More Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">7. Compact Show More Card Button</h3>
+            <span class="sg-card-tag">.btn_show_more</span>
+          </div>
+          <div class="sg-preview-box">
+            <button type="button" class="btn_show_more">
+              <span>Show 7 more conditions</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Kompaktné rozbalenie skrytých položiek vnútri kariet (napr. zoznam podmienok pravidla).<br>
+            <strong>Vizuál:</strong> Zaoblené pill tlačidlo, tmavé pozadie, jemný okraj.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;button type="button" class="btn_show_more"&gt;
+  &lt;span&gt;Show 7 more conditions&lt;/span&gt;
+  &lt;svg ...&gt;&lt;polyline points="6 9 12 15 18 9"/&gt;&lt;/svg&gt;
+&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 8: Icon & Circle Utility Buttons -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">8. Icon & Utility Circle Buttons</h3>
+            <span class="sg-card-tag">.user_btn, .btn-model-details, .btn-deactivate</span>
+          </div>
+          <div class="sg-preview-box">
+            <!-- Nav / Settings user button -->
+            <a href="#" class="user_btn w-inline-block" title="Settings" onclick="return false;">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
+            </a>
+            <!-- Model info "i" button -->
+            <button type="button" class="btn-model-details" title="Model details" onclick="return false;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+            </button>
+            <!-- Table Deactivate button -->
+            <a href="#" class="user_btn_dark w-inline-block btn-deactivate" title="Deactivate" onclick="return false;">
+              <div class="code-embed-8 w-embed" style="color: #ee3b76;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m4.9 4.9 14.2 14.2"></path></svg></div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Hlavičková navigácia (<code>.user_btn</code>), inline info íčko k modelu (<code>.btn-model-details</code>), tabuľkové akcie (<code>.user_btn_dark</code>).
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;!-- Info "i" ikona --&gt;
+&lt;button type="button" class="btn-model-details" data-open-popup="modelEnvModal"&gt;
+  &lt;svg ...&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;path d="M12 16v-4"/&gt;&lt;path d="M12 8h.01"/&gt;&lt;/svg&gt;
+&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Type 9: Header Close "X" Button -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">9. Modal Close "X" Button</h3>
+            <span class="sg-card-tag">.btn-close-modal</span>
+          </div>
+          <div class="sg-preview-box">
+            <button aria-label="close dialog" class="button btn-close-modal" onclick="return false;">
+              <div class="code-embed-15 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></div>
+            </button>
+          </div>
+          <div class="sg-usage">
+            <strong>Kedy použiť:</strong> Krížik v pravom hornom rohu každého modálneho okna.<br>
+            <strong>Vizuál:</strong> Priehľadné tlačidlo s bielou/svetlofialovou ikonou, automaticky napojené na univerzálny zatvárací skript.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;button aria-label="close dialog" class="button btn-close-modal"&gt;
+  &lt;div class="code-embed-15 w-embed"&gt;
+    &lt;svg ... class="lucide-x"&gt;&lt;path d="M18 6 6 18"/&gt;&lt;path d="m6 6 12 12"/&gt;&lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/button&gt;</pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. PRAVIDLÁ MODÁLNYCH PÄTIČIEK (MODAL FOOTERS) -->
+    <section id="modals" class="sg-section">
+      <h2 class="sg-section-title">2. Pravidlá pätičiek modálnych okien (Modal Footers)</h2>
+      <p class="sg-section-desc">
+        Všetky modálne okná (Reason Picker, Add HITL Reason, Model Inference Environment, Explain Request, Document Preview) musia dodržiavať jednotné usporiadanie pätičky:
+      </p>
+
+      <div class="sg-grid">
+        <!-- Footer Pattern A: Cancel + Primary Submit -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">Vzor A: Cancel + Primárna akcia</h3>
+            <span class="sg-card-tag">Form / Potvrdenie</span>
+          </div>
+          <div class="sg-preview-box" style="justify-content: flex-end; width: 100%;">
+            <a href="#" class="button_gn_sec btn-close-modal w-inline-block" onclick="return false;">
+              <div>Cancel</div>
+            </a>
+            <a href="#" class="button_gn w-inline-block" onclick="return false;">
+              <div>Save Reason</div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Pravidlo poradia:</strong>
+            <ul>
+              <li><strong>VĽAVO:</strong> <code>.button_gn_sec.btn-close-modal</code> (Cancel)</li>
+              <li><strong>VPRAVO:</strong> <code>.button_gn</code> (Hlavná potvrdzovacia akcia)</li>
+            </ul>
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px;"&gt;
+  &lt;a href="#" class="button_gn_sec btn-close-modal w-inline-block"&gt;
+    &lt;div&gt;Cancel&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="button_gn w-inline-block"&gt;
+    &lt;div&gt;Save Reason&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Footer Pattern B: Cancel + Utility Action -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">Vzor B: Cancel + Sekundárna akcia</h3>
+            <span class="sg-card-tag">Info / Audit</span>
+          </div>
+          <div class="sg-preview-box" style="justify-content: flex-end; width: 100%;">
+            <a href="#" class="button_gn_sec btn-close-modal w-inline-block" onclick="return false;">
+              <div>Cancel</div>
+            </a>
+            <a href="#" class="button_gn_sec dark w-inline-block" onclick="return false;">
+              <div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></div>
+              <div>Copy as JSON</div>
+            </a>
+          </div>
+          <div class="sg-usage">
+            <strong>Pravidlo poradia:</strong>
+            <ul>
+              <li><strong>VĽAVO:</strong> <code>.button_gn_sec.btn-close-modal</code> (Cancel)</li>
+              <li><strong>VPRAVO:</strong> <code>.button_gn_sec.dark</code> (Utility akcia ako Copy as JSON / Export)</li>
+            </ul>
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;div class="reason-picker-footer" style="display: flex; justify-content: flex-end; gap: 10px;"&gt;
+  &lt;a href="#" class="button_gn_sec btn-close-modal w-inline-block"&gt;
+    &lt;div&gt;Cancel&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;a href="#" class="button_gn_sec dark w-inline-block" id="btnCopyModelEnvJson"&gt;
+    &lt;div class="code-embed-8 w-embed"&gt;&lt;svg ...&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;div&gt;Copy as JSON&lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ŠTÍTKY, ODZNAKY A TAGY -->
+    <section id="badges" class="sg-section">
+      <h2 class="sg-section-title">3. Štítky, odznaky a tagy (Badges & Tags)</h2>
+      <p class="sg-section-desc">
+        Jednotné triedy pre statusy, kódy pravidiel a indikátory prostredia.
+      </p>
+
+      <div class="sg-grid">
+        <!-- Status Badges -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">Status Badges</h3>
+            <span class="sg-card-tag">.status-badge</span>
+          </div>
+          <div class="sg-preview-box">
+            <span class="status-badge active">Active</span>
+            <span class="status-badge inactive">Inactive</span>
+            <span class="status-badge status-inprogress"><span class="pulsing-dot"></span>In progress</span>
+          </div>
+          <div class="sg-usage">
+            Používa sa v tabuľkách pre stav pravidiel, dôvodov a požiadaviek explainability.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;span class="status-badge active"&gt;Active&lt;/span&gt;
+&lt;span class="status-badge inactive"&gt;Inactive&lt;/span&gt;
+&lt;span class="status-badge status-inprogress"&gt;
+  &lt;span class="pulsing-dot"&gt;&lt;/span&gt;In progress
+&lt;/span&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Code Pills & Tags -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">Code Tags & Deployment Pills</h3>
+            <span class="sg-card-tag">.company-tag.code, .pill-onprem</span>
+          </div>
+          <div class="sg-preview-box">
+            <div class="company-tag code">CLM_RULE_042</div>
+            <span class="pill-onprem">On-premise (vLLM)</span>
+          </div>
+          <div class="sg-usage">
+            Pre systémové kódy pravidiel (modré monospace písmo) a špecifikáciu on-premise nasadenia.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;div class="company-tag code"&gt;CLM_RULE_042&lt;/div&gt;
+&lt;span class="pill-onprem"&gt;On-premise (vLLM)&lt;/span&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Polycontext Version & Evaluation Pills -->
+        <div class="sg-card">
+          <div class="sg-card-header">
+            <h3 class="sg-card-title">Polycontext Version & Evaluations</h3>
+            <span class="sg-card-tag">.pill, .of, .dash</span>
+          </div>
+          <div class="sg-preview-box">
+            <span class="pill">PC-260000043-03</span>
+            <div><span class="pill">E2</span><span class="of">of 2</span></div>
+            <span class="dash">—</span>
+          </div>
+          <div class="sg-usage">
+            V tabuľke záznamov (Claim records) pre označenie verzie polycontextu a počtu evaluácií.
+          </div>
+          <div class="sg-code-wrap">
+            <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+            <pre class="sg-code">&lt;!-- Polycontext verzia --&gt;
+&lt;span class="pill"&gt;PC-260000043-03&lt;/span&gt;
+
+&lt;!-- Evaluácia s poradím --&gt;
+&lt;span class="pill"&gt;E2&lt;/span&gt;&lt;span class="of"&gt;of 2&lt;/span&gt;
+
+&lt;!-- Prázdny stav bez evaluácie --&gt;
+&lt;span class="dash"&gt;—&lt;/span&gt;</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. KĽÚČ-HODNOTA RIADKY -->
+    <section id="keyvalues" class="sg-section">
+      <h2 class="sg-section-title">4. Kľúč-hodnota riadky (Key-Value Grid)</h2>
+      <p class="sg-section-desc">
+        Riadky pre zobrazenie údajov naprieč celým systémom používajú jednotný grid <code>.div-block-81</code>.
+      </p>
+
+      <div class="sg-card" style="width: 100%;">
+        <div class="sg-preview-box" style="flex-direction: column; align-items: stretch; gap: 8px;">
+          <div class="div-block-81">
+            <div class="red-only">INSURED PERSON</div>
+            <div class="red-only data">Jan Novák (r.č. 850412/1234)</div>
+          </div>
+          <div class="div-block-81">
+            <div class="red-only">DATE OF LOSS</div>
+            <div class="red-only data">14.02.2026</div>
+          </div>
+          <div class="div-block-81">
+            <div class="red-only">CLAIM STATUS</div>
+            <div class="red-only data"><span class="status-badge active">Open</span></div>
+          </div>
+        </div>
+        <div class="sg-code-wrap">
+          <button class="sg-copy-btn" onclick="copySnippet(this)">Kopírovať</button>
+          <pre class="sg-code">&lt;div class="div-block-81"&gt;
+  &lt;div class="red-only"&gt;INSURED PERSON&lt;/div&gt;
+  &lt;div class="red-only data"&gt;Jan Novák&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ZÁVÄZNÉ PRAVIDLÁ PRE AGENTOV -->
+    <section id="rules" class="sg-section">
+      <h2 class="sg-section-title">5. Záväzné pravidlá pre AI agentov (Design System Rules)</h2>
+      
+      <div class="sg-rule-box">
+        <h4>1. ZÁKAZ VYTVÁRANIA NOVÝCH TRIED PRE TLAČIDLÁ (No Ad-Hoc Button Classes)</h4>
+        <p>Každé nové tlačidlo MUSÍ použiť existujúce triedy: <code>.button_gn</code>, <code>.button_gn_sec</code>, <code>.button_gn_sec.dark</code>, <code>.button_gn_sec.tertiary</code>, <code>.button_gn_sec.clear</code> alebo <code>.btn-toggle-audit</code>. Nikdy nevymýšľať vlastné farby a vlastné triedy pre tlačidlá.</p>
+      </div>
+
+      <div class="sg-rule-box" style="margin-top: 12px; background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.35);">
+        <h4 style="color: #38bdf8;">2. PORADIE V PÄTIČKÁCH MODÁLOV (Strict Modal Footer Order)</h4>
+        <p>V každom modálnom okne patrí <strong>Cancel / Close VĽAVO</strong> (trieda <code>.button_gn_sec.btn-close-modal</code>) a potvrdzovacie či funkčné tlačidlo (Save / Submit / Copy) <strong>VPRAVO</strong>.</p>
+      </div>
+
+      <div class="sg-rule-box" style="margin-top: 12px; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.35);">
+        <h4 style="color: #10b981;">3. ZÁKAZ INICIATÍVNYCH ÚPRAV (Zero Scope Creep)</h4>
+        <p>Vždy meniť len to, čo používateľ explicitne požaduje. Nikdy nenahrádzať viacero komponentov jedným a zachovávať 1:1 pixel paritu.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function copySnippet(btn) {
+      const codeBlock = btn.parentElement.querySelector('.sg-code');
+      if (!codeBlock) return;
+      navigator.clipboard.writeText(codeBlock.textContent.trim()).then(() => {
+        const origText = btn.textContent;
+        btn.textContent = 'Skopírované!';
+        btn.style.background = '#10b981';
+        btn.style.borderColor = '#10b981';
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>

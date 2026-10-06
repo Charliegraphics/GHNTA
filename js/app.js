@@ -1595,6 +1595,133 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // --- 10b. Model Inference Environment Modal (Two-Level Audit Toggle & Copy JSON) ---
+  const btnToggleModelAudit = document.getElementById('btnToggleModelAudit');
+  const modelEnvAuditDetail = document.getElementById('modelEnvAuditDetail');
+  const txtToggleModelAudit = document.getElementById('txtToggleModelAudit');
+  const iconToggleModelAudit = document.getElementById('iconToggleModelAudit');
+
+  if (btnToggleModelAudit && modelEnvAuditDetail) {
+    btnToggleModelAudit.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = modelEnvAuditDetail.classList.toggle('show');
+      btnToggleModelAudit.classList.toggle('active', isExpanded);
+      if (isExpanded) {
+        if (txtToggleModelAudit) txtToggleModelAudit.textContent = 'SHOW LESS (HIDE AUDIT DETAIL)';
+        if (iconToggleModelAudit) {
+          iconToggleModelAudit.innerHTML = '<polyline points="18 15 12 9 6 15"/>';
+        }
+      } else {
+        if (txtToggleModelAudit) txtToggleModelAudit.textContent = 'SHOW MORE (AUDIT DETAIL)';
+        if (iconToggleModelAudit) {
+          iconToggleModelAudit.innerHTML = '<polyline points="6 9 12 15 18 9"/>';
+        }
+      }
+    });
+  }
+
+  const btnCopyModelEnvJson = document.getElementById('btnCopyModelEnvJson');
+  if (btnCopyModelEnvJson) {
+    btnCopyModelEnvJson.addEventListener('click', (e) => {
+      e.preventDefault();
+      const auditPayload = {
+        evaluation_context: {
+          version: "V3",
+          edition: "E2",
+          execution_id: 184,
+          timestamp: "2026-02-28T14:30:00Z"
+        },
+        model_overview: {
+          model: "Mistral Small 3.2 (24B Instruct)",
+          model_name: "Mistral-Small-3.2-24B-Instruct",
+          served_model: "Mistral-Small-3.2-24B-Instruct",
+          model_string: "hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16",
+          model_id: "c814bed6-5cb1-4155-8158-30fde6639e0d",
+          quantization: "AWQ W4A16 (4-bit weights, 16-bit activations)",
+          deployment: "On-premise (vLLM)",
+          repeatable: false,
+          sampling_temperature: 0.5,
+          fixed_seed: null
+        },
+        deployment: {
+          provider: "hosted_vllm",
+          registered_in_litellm: true,
+          api_base: "http://172.25.2.8:5003/v1",
+          blocked: false,
+          guardrails: null
+        },
+        vllm_runtime: {
+          dtype: "bfloat16",
+          quantization_method: "auto_round",
+          kv_cache_dtype: "fp8_e4m3",
+          tensor_parallel_size: 1,
+          gpu_memory_utilization: 0.96,
+          max_model_len: 131072,
+          max_num_seqs: 32,
+          max_num_batched_tokens: 8192,
+          enable_prefix_caching: true,
+          chunked_prefill: true
+        },
+        request_parameters: {
+          temperature: 0.5,
+          top_p: null,
+          max_tokens: 100000,
+          seed: null,
+          stop: null,
+          timeout: 600
+        },
+        limits_and_capabilities: {
+          max_input_tokens: 131072,
+          max_output_tokens: 32768,
+          vision: true,
+          reasoning: true,
+          function_calling: true,
+          tool_choice: true,
+          vision_usage_note: "Vision is supported but not used — photographic evidence submitted as markdown extracts"
+        },
+        run_metrics: {
+          prompt_tokens: 18432,
+          completion_tokens: 1204,
+          total_tokens: 19636,
+          duration_seconds: 42.2,
+          retries: 0,
+          status: "success",
+          validation_diff: null,
+          trace_id: "4bf92f3577b34da6a3ce929d0e0e4736",
+          snapshot_taken: "2026-02-28 14:30 UTC",
+          model_info_synced: "2026-02-28 05:03 UTC"
+        }
+      };
+
+      navigator.clipboard.writeText(JSON.stringify(auditPayload, null, 2)).then(() => {
+        const origHtml = btnCopyModelEnvJson.innerHTML;
+        btnCopyModelEnvJson.innerHTML = `<div class="code-embed-8 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><polyline points="20 6 9 17 4 12"/></svg></div> <div>Copied as JSON!</div>`;
+        btnCopyModelEnvJson.style.borderColor = '#16a34a';
+        btnCopyModelEnvJson.style.color = '#4ade80';
+
+        const toastElem = document.getElementById('detailToastNotification');
+        if (toastElem) {
+          const msg = toastElem.querySelector('#detailToastMessage');
+          if (msg) msg.textContent = 'Audit parameters copied to clipboard as JSON';
+          toastElem.style.display = 'flex';
+          toastElem.classList.add('show');
+          setTimeout(() => {
+            toastElem.style.display = 'none';
+            toastElem.classList.remove('show');
+          }, 3500);
+        }
+
+        setTimeout(() => {
+          btnCopyModelEnvJson.innerHTML = origHtml;
+          btnCopyModelEnvJson.style.borderColor = '';
+          btnCopyModelEnvJson.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy audit JSON:', err);
+      });
+    });
+  }
+
   // --- 11. Document Preview Modal (Markdown Viewer) ---
   const docPreviewModal = document.getElementById('documentPreviewModal');
   const docPreviewTitle = document.getElementById('docPreviewTitle');
