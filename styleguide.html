@@ -44,7 +44,7 @@
       letter-spacing: 0.02em;
     }
     .sg-subtitle {
-      color: #85809b;
+      color: #c4bee3;
       font-size: 0.88rem;
       margin: 0;
     }
@@ -85,7 +85,7 @@
       gap: 10px;
     }
     .sg-section-desc {
-      color: #85809b;
+      color: #c4bee3;
       font-size: 0.88rem;
       margin: 0 0 24px 0;
       line-height: 1.5;
@@ -188,9 +188,10 @@
       padding: 16px 20px;
       margin-top: 16px;
     }
+    .sg-rule-box h3,
     .sg-rule-box h4 {
       margin: 0 0 6px;
-      color: #ee3b76;
+      color: #f472b6;
       font-size: 0.95rem;
     }
     .sg-rule-box p {
@@ -668,17 +669,17 @@
       <h2 class="sg-section-title">5. Záväzné pravidlá pre AI agentov (Design System Rules)</h2>
       
       <div class="sg-rule-box">
-        <h4>1. ZÁKAZ VYTVÁRANIA NOVÝCH TRIED PRE TLAČIDLÁ (No Ad-Hoc Button Classes)</h4>
+        <h3>1. ZÁKAZ VYTVÁRANIA NOVÝCH TRIED PRE TLAČIDLÁ (No Ad-Hoc Button Classes)</h3>
         <p>Každé nové tlačidlo MUSÍ použiť existujúce triedy: <code>.button_gn</code>, <code>.button_gn_sec</code>, <code>.button_gn_sec.dark</code>, <code>.button_gn_sec.tertiary</code>, <code>.button_gn_sec.clear</code> alebo <code>.btn-toggle-audit</code>. Nikdy nevymýšľať vlastné farby a vlastné triedy pre tlačidlá.</p>
       </div>
 
       <div class="sg-rule-box" style="margin-top: 12px; background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.35);">
-        <h4 style="color: #38bdf8;">2. PORADIE V PÄTIČKÁCH MODÁLOV (Strict Modal Footer Order)</h4>
+        <h3 style="color: #38bdf8;">2. PORADIE V PÄTIČKÁCH MODÁLOV (Strict Modal Footer Order)</h3>
         <p>V každom modálnom okne patrí <strong>Cancel / Close VĽAVO</strong> (trieda <code>.button_gn_sec.btn-close-modal</code>) a potvrdzovacie či funkčné tlačidlo (Save / Submit / Copy) <strong>VPRAVO</strong>.</p>
       </div>
 
       <div class="sg-rule-box" style="margin-top: 12px; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.35);">
-        <h4 style="color: #10b981;">3. ZÁKAZ INICIATÍVNYCH ÚPRAV (Zero Scope Creep)</h4>
+        <h3 style="color: #10b981;">3. ZÁKAZ INICIATÍVNYCH ÚPRAV (Zero Scope Creep)</h3>
         <p>Vždy meniť len to, čo používateľ explicitne požaduje. Nikdy nenahrádzať viacero komponentov jedným a zachovávať 1:1 pixel paritu.</p>
       </div>
     </section>

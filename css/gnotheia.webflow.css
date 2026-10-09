@@ -47,7 +47,7 @@
   background-repeat: repeat;
   background-size: auto;
   font-size: 1rem;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   list-style-type: disc;
 }
 
@@ -89,7 +89,8 @@
 
 .section {
   z-index: 2;
-  background-image: radial-gradient(circle farthest-side at 50% 160%, #ee3b76, #fff0 73%), linear-gradient(#1f1b2d, #1f1b2d);
+  background-color: #1f1b2d;
+  background-image: linear-gradient(#1f1b2d, #1f1b2d);
   justify-content: center;
   align-items: center;
   height: 100svh;
@@ -252,7 +253,7 @@
   color: #c5bee6;
   text-align: left;
   font-size: .9rem;
-  line-height: 1.2rem;
+  line-height: 1.5;
 }
 
 .text-block-3._14 {
@@ -343,7 +344,7 @@
 
 .gradiend_background {
   z-index: 1;
-  background-image: radial-gradient(circle closest-side, #423b60, #28243a00);
+  background-image: none;
   width: 100%;
   max-width: 1200px;
   height: 1200px;
@@ -795,7 +796,7 @@
 
 .s_work_packages {
   background-color: #28243a;
-  background-image: radial-gradient(circle closest-corner at 50% 0, #423b60, #423b6000);
+  background-image: linear-gradient(#28243a, #28243a);
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -1176,56 +1177,56 @@
   display: flex;
   position: absolute;
   top: -30px;
-  box-shadow: 0 0 0 6px #0003, 0 7px 20px 6px #ee3b7666;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.green {
   background-color: #b9c825;
   background-image: linear-gradient(#b9c825, #7f880a);
   border-color: #ecff34;
-  box-shadow: 0 7px 20px 6px #b9c82566;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.red {
   background-color: #c82525;
   background-image: linear-gradient(#c82525, #880a0a);
   border-color: #ff3434;
-  box-shadow: 0 7px 20px 6px #ee3b3b66;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.orange {
   background-color: #00bdfc;
   background-image: linear-gradient(#00bdfc, #017ae4);
   border-color: #65d6fc;
-  box-shadow: 0 7px 20px 6px #00bdfc66;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.pending {
   background-color: #858585;
   background-image: linear-gradient(#979797, #575757);
   border-color: #a3a3a3;
-  box-shadow: 0 0 0 6px #0003, 0 7px 20px 6px #8f8f8f66;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.green2 {
   background-color: #10b981;
   background-image: linear-gradient(#10b981, #096949);
   border-color: #10b981;
-  box-shadow: 0 0 0 6px #0003, 0 7px 20px 6px #10b98166;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.blue2 {
   background-color: #4583ff;
   background-image: linear-gradient(#4583ff, #203e78);
   border-color: #4583ff;
-  box-shadow: 0 0 0 6px #0003, 0 7px 20px 6px #4583ff66;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .progress_icon.red2 {
   background-color: #ef4444;
   background-image: linear-gradient(#ef4444, #7f2424);
   border-color: #ef4444;
-  box-shadow: 0 0 0 6px #0003, 0 7px 20px 6px #ef444466;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .step {
@@ -1844,7 +1845,7 @@
   align-items: center;
   font-size: .9rem;
   font-weight: 400;
-  line-height: 1.2rem;
+  line-height: 1.4rem;
   display: flex;
 }
 
@@ -2719,7 +2720,7 @@
   text-transform: none;
   font-size: .9rem;
   font-weight: 400;
-  line-height: 1.1rem;
+  line-height: 1.4rem;
 }
 
 .red-only-copy.data {
@@ -2943,7 +2944,7 @@
   background-repeat: repeat;
   background-size: auto;
   font-size: 1rem;
-  line-height: 1.2rem;
+  line-height: 1.5rem;
   list-style-type: decimal;
 }
 
