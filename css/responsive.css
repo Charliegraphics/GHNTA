@@ -35,7 +35,7 @@ html, body {
 }
 
 body {
-  background-color: #1c182b !important;
+  background-color: #28243a !important;
   background-image: none !important;
 }
 
@@ -3590,13 +3590,13 @@ a.button_gn.disabled {
 
 /* Submenu Navigation (.toggle_menu) - Authentic Webflow box matching side_menu */
 .toggle_menu {
-  background-color: #1e1a2e !important;
+  background-color: #221f32 !important;
   border: none !important;
   border-radius: 10px !important;
-  padding: 8px 10px !important;
+  padding: 10px !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 5px !important;
   box-shadow: none !important;
 }
 
@@ -3604,10 +3604,10 @@ a.button_gn.disabled {
 .toggle_menu .button_gn_sec {
   border: none !important;
   border-radius: 5px !important;
-  height: 38px !important;
-  padding-left: 18px !important;
-  padding-right: 18px !important;
-  font-size: 0.88rem !important;
+  height: 40px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-size: 0.9rem !important;
   line-height: 1rem !important;
   text-transform: uppercase !important;
   display: inline-flex !important;
@@ -3619,14 +3619,14 @@ a.button_gn.disabled {
 
 .toggle_menu a.button_gn_sec.dark,
 .toggle_menu .button_gn_sec.dark {
-  background-color: #5b5185 !important;
+  background-color: #5b5185b3 !important;
   border: none !important;
   color: #ffffff !important;
 }
 
 .toggle_menu a.button_gn_sec.dark:hover,
 .toggle_menu .button_gn_sec.dark:hover {
-  background-color: #685d96 !important;
+  background-color: #5b5185 !important;
   border: none !important;
   color: #ffffff !important;
 }
@@ -3640,7 +3640,7 @@ a.button_gn.disabled {
 
 .toggle_menu a.button_gn_sec.clear:hover,
 .toggle_menu .button_gn_sec.clear:hover {
-  background-color: rgba(91, 81, 133, 0.3) !important;
+  background-color: #5b51854d !important;
   border: none !important;
   color: #ffffff !important;
 }
