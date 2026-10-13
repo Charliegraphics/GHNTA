@@ -3588,3 +3588,51 @@ a.button_gn.disabled {
   box-sizing: border-box !important;
 }
 
+/* Submenu Navigation (.toggle_menu) - Authentic Webflow box matching side_menu */
+.toggle_menu {
+  background-color: #28243a !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  box-shadow: none !important;
+}
+
+.toggle_menu a.button_gn_sec,
+.toggle_menu .button_gn_sec {
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.toggle_menu a.button_gn_sec.dark,
+.toggle_menu .button_gn_sec.dark {
+  background-color: #5b5185b3 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.toggle_menu a.button_gn_sec.dark:hover,
+.toggle_menu .button_gn_sec.dark:hover {
+  background-color: #5b5185 !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+.toggle_menu a.button_gn_sec.clear,
+.toggle_menu .button_gn_sec.clear {
+  background-color: transparent !important;
+  border: none !important;
+  color: #edecf0 !important;
+}
+
+.toggle_menu a.button_gn_sec.clear:hover,
+.toggle_menu .button_gn_sec.clear:hover {
+  background-color: #5b51854d !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
