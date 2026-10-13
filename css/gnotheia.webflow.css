@@ -796,7 +796,7 @@
 
 .s_work_packages {
   background-color: #28243a;
-  background-image: linear-gradient(#28243a, #28243a);
+  background-image: radial-gradient(circle closest-corner at 50% 0, #423b60, #423b6000);
   justify-content: center;
   align-items: center;
   width: 100%;

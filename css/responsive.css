@@ -3604,6 +3604,15 @@ a.button_gn.disabled {
 .toggle_menu .button_gn_sec {
   border: none !important;
   border-radius: 5px !important;
+  height: 40px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-size: 0.9rem !important;
+  line-height: 1rem !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   box-shadow: none !important;
   text-decoration: none !important;
 }
