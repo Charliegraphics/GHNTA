@@ -184,7 +184,7 @@
             <div class="eval-context-meta-col">
               <div class="eval-context-label">Model</div>
               <div class="eval-context-value" style="display: flex; align-items: center; gap: 6px;">
-                <span>Mistral-Small-3.2-24B-Instruct</span>
+                <span>Mistral Small 3.2 (24B Instruct)</span>
                 <button type="button" class="btn-model-details" data-open-popup="modelEnvModal" title="View Model inference environment" aria-label="Model inference environment">
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
                 </button>
@@ -1834,7 +1834,7 @@ Rules Passed:          2 / 2 Passed (100%)
           <div class="model-env-row">
             <div class="model-env-rk">Model</div>
             <div class="model-env-rv">
-              Mistral Small 3.2 (24B Instruct)
+              <div>Mistral Small 3.2 (24B Instruct)</div>
               <small>24B instruct model, 4-bit quantized, deployed on-premise</small>
             </div>
           </div>
@@ -1842,35 +1842,30 @@ Rules Passed:          2 / 2 Passed (100%)
             <div class="model-env-rk">Deployment</div>
             <div class="model-env-rv">
               <span class="pill-onprem">On-premise (vLLM)</span>
-              <small>Claim data did not leave the insurer's infrastructure.</small>
             </div>
           </div>
           <div class="model-env-row">
             <div class="model-env-rk">Repeatable</div>
             <div class="model-env-rv">
-              <span class="model-env-dot o"></span><span class="text-warn">No</span> — re-running this evaluation may produce a different result
-              <small>Sampling temperature is 0.5 and no fixed seed was used.</small>
+              <span class="model-env-dot o"></span><span class="text-warn">No</span> — re-running may produce a different result
             </div>
           </div>
           <div class="model-env-row">
             <div class="model-env-rk">Input</div>
             <div class="model-env-rv">
-              <span class="model-env-dot g"></span><span class="text-ok">Complete</span> — 18 432 of 131 072 tokens used
-              <small>The whole polycontext fitted into the model's context window.</small>
+              <span class="model-env-dot g"></span><span class="text-ok">Complete</span> — <b>18 432</b> of <b>131 072</b> tokens used
             </div>
           </div>
           <div class="model-env-row">
             <div class="model-env-rk">Output</div>
             <div class="model-env-rv">
-              1 204 tokens
-              <small>Well below the 32 768 token limit; the answer was not cut off.</small>
+              <span class="model-env-dot g"></span><span class="text-ok">Complete</span> — 1 204 tokens
             </div>
           </div>
           <div class="model-env-row">
             <div class="model-env-rk">Run</div>
             <div class="model-env-rv">
               <span class="model-env-dot g"></span>Completed in 42.2 s
-              <small>No retries. Response passed the immutability check.</small>
             </div>
           </div>
         </div>
@@ -1878,102 +1873,113 @@ Rules Passed:          2 / 2 Passed (100%)
         <!-- Toggle Button: Show More / Audit Detail -->
         <button type="button" class="btn-toggle-audit" id="btnToggleModelAudit">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" id="iconToggleModelAudit"><polyline points="6 9 12 15 18 9"/></svg>
-          <span id="txtToggleModelAudit">SHOW MORE (AUDIT DETAIL)</span>
+          <span id="txtToggleModelAudit">AUDIT DETAIL</span>
         </button>
 
-        <!-- Level 2: Detailed Audit Groups (Collapsible) -->
+        <!-- Level 2: Detailed Audit Groups (5 groups, 29 displayed fields) -->
         <div class="model-env-level2" id="modelEnvAuditDetail">
-          <!-- Group 1: Model identity -->
+
+          <!-- Group 1: Model identity (8 polí) -->
           <div class="audit-grp">
-            <div class="audit-grp-h">Model identity</div>
+            <div class="audit-grp-h">
+              <span>Model identity</span>
+              <span class="audit-grp-num">8 polí</span>
+            </div>
             <div class="audit-pairs">
               <div class="audit-pair"><span class="audit-pk">Model name</span><span class="audit-pv">Mistral-Small-3.2-24B-Instruct</span></div>
               <div class="audit-pair"><span class="audit-pk">Served model</span><span class="audit-pv">Mistral-Small-3.2-24B-Instruct</span></div>
               <div class="audit-pair full"><span class="audit-pk">Model string</span><span class="audit-pv mono">hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16</span></div>
-              <div class="audit-pair full"><span class="audit-pk">Model ID</span><span class="audit-pv mono">c814bed6-5cb1-4155-8158-30fde6639e0d</span></div>
-              <div class="audit-pair full"><span class="audit-pk">Quantization</span><span class="audit-pv">AWQ W4A16 — 4-bit weights, 16-bit activations; lower memory, small accuracy cost</span></div>
+              <div class="audit-pair full"><span class="audit-pk">Model key</span><span class="audit-pv mono">hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16</span></div>
+              <div class="audit-pair full"><span class="audit-pk">Model id</span><span class="audit-pv mono">c814bed6-5cb1-4155-8158-30fde6639e0d</span></div>
+              <div class="audit-pair"><span class="audit-pk">Quantization</span><span class="audit-pv">auto_round</span></div>
+              <div class="audit-pair"><span class="audit-pk">Precision (dtype)</span><span class="audit-pv">bfloat16</span></div>
+              <div class="audit-pair"><span class="audit-pk">KV cache dtype</span><span class="audit-pv">fp8_e4m3</span></div>
+              <div class="audit-pair full" style="border-bottom: none; padding-top: 4px;">
+                <span class="audit-pk">&nbsp;</span>
+                <span class="audit-pv" style="color: #85809b; font-size: 0.8rem;">AWQ W4A16 — 4-bit weights, 16-bit activations; lower memory, small accuracy cost</span>
+              </div>
             </div>
           </div>
 
-          <!-- Group 2: Deployment -->
+          <!-- Group 2: Deployment (3 polia) -->
           <div class="audit-grp">
-            <div class="audit-grp-h">Deployment</div>
+            <div class="audit-grp-h">
+              <span>Deployment</span>
+              <span class="audit-grp-num">3 polia</span>
+            </div>
             <div class="audit-pairs">
               <div class="audit-pair"><span class="audit-pk">Provider</span><span class="audit-pv">hosted_vllm</span></div>
-              <div class="audit-pair"><span class="audit-pk">Registered in LiteLLM</span><span class="audit-pv">yes</span></div>
               <div class="audit-pair full"><span class="audit-pk">API base</span><span class="audit-pv mono">http://172.25.2.8:5003/v1</span></div>
-              <div class="audit-pair"><span class="audit-pk">Blocked</span><span class="audit-pv">no</span></div>
               <div class="audit-pair"><span class="audit-pk">Guardrails</span><span class="audit-pv none">None applied</span></div>
             </div>
-          </div>
-
-          <!-- Group 3: vLLM runtime -->
-          <div class="audit-grp">
-            <div class="audit-grp-h">vLLM runtime</div>
-            <div class="audit-pairs">
-              <div class="audit-pair"><span class="audit-pk">dtype</span><span class="audit-pv">bfloat16</span></div>
-              <div class="audit-pair"><span class="audit-pk">Quantization method</span><span class="audit-pv">auto_round</span></div>
-              <div class="audit-pair"><span class="audit-pk">KV cache dtype</span><span class="audit-pv">fp8_e4m3</span></div>
-              <div class="audit-pair"><span class="audit-pk">Tensor parallel size</span><span class="audit-pv">1</span></div>
-              <div class="audit-pair"><span class="audit-pk">GPU memory utilization</span><span class="audit-pv">0.96</span></div>
-              <div class="audit-pair"><span class="audit-pk">Max model length</span><span class="audit-pv">131 072</span></div>
-              <div class="audit-pair"><span class="audit-pk">Max concurrent sequences</span><span class="audit-pv">32</span></div>
-              <div class="audit-pair"><span class="audit-pk">Max batched tokens</span><span class="audit-pv">8 192</span></div>
-              <div class="audit-pair"><span class="audit-pk">Prefix caching</span><span class="audit-pv">enabled</span></div>
-              <div class="audit-pair"><span class="audit-pk">Chunked prefill</span><span class="audit-pv">enabled</span></div>
+            <div class="audit-seccallout">
+              <b>Bezpečnostné pravidlo:</b> <code>apiBase</code> je interná IP adresa infraštruktúry. Zobrazuje sa <b>len</b> v tejto auditnej úrovni — nikdy v úrovni 1, nikdy v PDF, nikdy v tooltipe.
             </div>
           </div>
 
-          <!-- Group 4: Request parameters -->
+          <!-- Group 3: Request parameters (4 polia + 1 kontrast) -->
           <div class="audit-grp">
-            <div class="audit-grp-h">Request parameters — sent by the application</div>
+            <div class="audit-grp-h">
+              <span>Request parameters</span>
+              <span class="audit-grp-num">4 polia + 1 kontrast</span>
+            </div>
             <div class="audit-pairs">
               <div class="audit-pair"><span class="audit-pk">Temperature</span><span class="audit-pv">0.5</span></div>
-              <div class="audit-pair"><span class="audit-pk">Top P</span><span class="audit-pv none">not sent</span></div>
               <div class="audit-pair"><span class="audit-pk">Max tokens</span><span class="audit-pv">100 000</span></div>
-              <div class="audit-pair"><span class="audit-pk">Seed</span><span class="audit-pv none">not sent</span></div>
-              <div class="audit-pair"><span class="audit-pk">Stop sequences</span><span class="audit-pv none">not sent</span></div>
-              <div class="audit-pair"><span class="audit-pk">Timeout</span><span class="audit-pv">600 s</span></div>
+              <div class="audit-pair"><span class="audit-pk">Timeout</span><span class="audit-pv">1200 s</span></div>
+              <div class="audit-pair"><span class="audit-pk">Response format</span><span class="audit-pv">json</span></div>
+              <div class="audit-pair full" style="border-bottom: none;">
+                <span class="audit-pk" style="color: #85809b;">Backend default</span>
+                <span class="audit-pv" style="color: #85809b; font-size: 0.82rem;">temperature 0.15 — hodnota, ktorá by platila, keby aplikácia neposlala vlastnú</span>
+              </div>
             </div>
-            <div class="audit-hint"><span class="hint-icon">&#9888;</span><span>Backend default temperature is <b>0.15</b>; the value sent by the application takes precedence.</span></div>
-            <div class="audit-hint"><span class="hint-icon">&#9888;</span><span>Requested <b>max tokens exceeds the model's output limit</b> of 32 768 — see the solution design.</span></div>
           </div>
 
-          <!-- Group 5: Limits and capabilities -->
+          <!-- Group 4: Limits (3 polia) -->
           <div class="audit-grp">
-            <div class="audit-grp-h">Limits and capabilities</div>
+            <div class="audit-grp-h">
+              <span>Limits</span>
+              <span class="audit-grp-num">3 polia</span>
+            </div>
             <div class="audit-pairs">
               <div class="audit-pair"><span class="audit-pk">Max input tokens</span><span class="audit-pv">131 072</span></div>
               <div class="audit-pair"><span class="audit-pk">Max output tokens</span><span class="audit-pv">32 768</span></div>
-              <div class="audit-pair"><span class="audit-pk">Vision</span><span class="audit-pv">supported</span></div>
-              <div class="audit-pair"><span class="audit-pk">Reasoning</span><span class="audit-pv">supported</span></div>
-              <div class="audit-pair"><span class="audit-pk">Function calling</span><span class="audit-pv">supported</span></div>
-              <div class="audit-pair"><span class="audit-pk">Tool choice</span><span class="audit-pv">supported</span></div>
+              <div class="audit-pair"><span class="audit-pk">Max model length</span><span class="audit-pv">131 072</span></div>
             </div>
-            <div class="audit-hint"><span class="hint-icon">&#9888;</span><span><b>Vision is supported but not used</b> — documents are submitted to the model as markdown extracts, so photographic evidence is not seen by the model.</span></div>
+            <div class="audit-constnote">
+              Vision: supported, but not used — documents are submitted to the model as markdown extracts. Photographic evidence is not seen by the model.
+            </div>
           </div>
 
-          <!-- Group 6: Run -->
+          <!-- Group 5: Run (11 polí + 3 z koreňa) -->
           <div class="audit-grp">
-            <div class="audit-grp-h">Run</div>
+            <div class="audit-grp-h">
+              <span>Run</span>
+              <span class="audit-grp-num">11 polí + 3 z koreňa</span>
+            </div>
             <div class="audit-pairs">
               <div class="audit-pair"><span class="audit-pk">Prompt tokens</span><span class="audit-pv">18 432</span></div>
               <div class="audit-pair"><span class="audit-pk">Completion tokens</span><span class="audit-pv">1 204</span></div>
               <div class="audit-pair"><span class="audit-pk">Total tokens</span><span class="audit-pv">19 636</span></div>
-              <div class="audit-pair"><span class="audit-pk">Duration</span><span class="audit-pv">42.2 s</span></div>
-              <div class="audit-pair"><span class="audit-pk">Retries</span><span class="audit-pv">0</span></div>
-              <div class="audit-pair"><span class="audit-pk">Evaluation status</span><span class="audit-pv">success</span></div>
-              <div class="audit-pair full"><span class="audit-pk">Validation differences</span><span class="audit-pv none">None — input sections were returned unchanged</span></div>
-              <div class="audit-pair full"><span class="audit-pk">Trace ID</span><span class="audit-pv mono">4bf92f3577b34da6a3ce929d0e0e4736</span></div>
-              <div class="audit-pair"><span class="audit-pk">Snapshot taken</span><span class="audit-pv">2026-02-28 14:30 UTC</span></div>
-              <div class="audit-pair"><span class="audit-pk">Model info synced</span><span class="audit-pv">2026-02-28 05:03 UTC</span></div>
+              <div class="audit-pair"><span class="audit-pk">Finish reason</span><span class="audit-pv">STOP</span></div>
+              <div class="audit-pair full"><span class="audit-pk">Response id</span><span class="audit-pv mono">chatcmpl-9f2a7c1e4b8d</span></div>
+              <div class="audit-pair"><span class="audit-pk">Prompt characters</span><span class="audit-pv">72 915</span></div>
+              <div class="audit-pair"><span class="audit-pk">Response characters</span><span class="audit-pv">4 802</span></div>
+              <div class="audit-pair"><span class="audit-pk">JSON from markdown</span><span class="audit-pv">true</span></div>
+              <div class="audit-pair"><span class="audit-pk root">Duration</span><span class="audit-pv">42.2 s</span></div>
+              <div class="audit-pair"><span class="audit-pk root">Rework count</span><span class="audit-pv">0</span></div>
+              <div class="audit-pair"><span class="audit-pk">Call status</span><span class="audit-pv" style="color: #03ffac;">success</span></div>
+              <div class="audit-pair full"><span class="audit-pk root">Validation differences</span><span class="audit-pv none">—</span></div>
+              <div class="audit-pair full"><span class="audit-pk">Trace id</span><span class="audit-pv mono">4bf92f3577b34da6a3ce929d0e0e4736</span></div>
+              <div class="audit-pair"><span class="audit-pk">Captured at</span><span class="audit-pv">2026-07-30 09:16:30 UTC</span></div>
+              <div class="audit-pair"><span class="audit-pk">Model info synced</span><span class="audit-pv">2026-10-05 05:03:55 UTC</span></div>
             </div>
           </div>
         </div>
       </div>
       
       <!-- Modal Footer -->
-      <div class="reason-picker-footer" style="padding: 16px 24px 18px; border-top: 1px solid #38324f; margin-top: 10px; display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
+      <div class="reason-picker-footer" style="padding: 16px 24px 18px; border-top: 1px solid #38324f; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
         <a href="#" class="button_gn_sec btn-close-modal w-inline-block" id="btnCloseModelEnvFooter">
           <div>Cancel</div>
         </a>

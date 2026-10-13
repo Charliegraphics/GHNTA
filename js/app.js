@@ -1599,23 +1599,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnToggleModelAudit = document.getElementById('btnToggleModelAudit');
   const modelEnvAuditDetail = document.getElementById('modelEnvAuditDetail');
   const txtToggleModelAudit = document.getElementById('txtToggleModelAudit');
-  const iconToggleModelAudit = document.getElementById('iconToggleModelAudit');
 
   if (btnToggleModelAudit && modelEnvAuditDetail) {
     btnToggleModelAudit.addEventListener('click', (e) => {
       e.preventDefault();
       const isExpanded = modelEnvAuditDetail.classList.toggle('show');
       btnToggleModelAudit.classList.toggle('active', isExpanded);
-      if (isExpanded) {
-        if (txtToggleModelAudit) txtToggleModelAudit.textContent = 'SHOW LESS (HIDE AUDIT DETAIL)';
-        if (iconToggleModelAudit) {
-          iconToggleModelAudit.innerHTML = '<polyline points="18 15 12 9 6 15"/>';
-        }
-      } else {
-        if (txtToggleModelAudit) txtToggleModelAudit.textContent = 'SHOW MORE (AUDIT DETAIL)';
-        if (iconToggleModelAudit) {
-          iconToggleModelAudit.innerHTML = '<polyline points="6 9 12 15 18 9"/>';
-        }
+      if (txtToggleModelAudit) {
+        txtToggleModelAudit.textContent = 'AUDIT DETAIL';
       }
     });
   }
@@ -1629,67 +1620,78 @@ document.addEventListener('DOMContentLoaded', () => {
           version: "V3",
           edition: "E2",
           execution_id: 184,
-          timestamp: "2026-02-28T14:30:00Z"
+          timestamp: "2026-07-30T09:16:30Z"
         },
-        model_overview: {
-          model: "Mistral Small 3.2 (24B Instruct)",
+        entity_root: {
+          duration: 42.2,
+          rework_count: 0,
+          validation_differences: null
+        },
+        info: {
+          // 1. Model identity & precision
           model_name: "Mistral-Small-3.2-24B-Instruct",
           served_model: "Mistral-Small-3.2-24B-Instruct",
           model_string: "hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16",
+          model_key: "hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16",
           model_id: "c814bed6-5cb1-4155-8158-30fde6639e0d",
-          quantization: "AWQ W4A16 (4-bit weights, 16-bit activations)",
-          deployment: "On-premise (vLLM)",
-          repeatable: false,
-          sampling_temperature: 0.5,
-          fixed_seed: null
-        },
-        deployment: {
-          provider: "hosted_vllm",
-          registered_in_litellm: true,
-          api_base: "http://172.25.2.8:5003/v1",
-          blocked: false,
-          guardrails: null
-        },
-        vllm_runtime: {
+          quantization: "auto_round",
           dtype: "bfloat16",
-          quantization_method: "auto_round",
           kv_cache_dtype: "fp8_e4m3",
-          tensor_parallel_size: 1,
-          gpu_memory_utilization: 0.96,
-          max_model_len: 131072,
-          max_num_seqs: 32,
-          max_num_batched_tokens: 8192,
-          enable_prefix_caching: true,
-          chunked_prefill: true
-        },
-        request_parameters: {
+
+          // 2. Deployment
+          provider: "hosted_vllm",
+          api_base: "http://172.25.2.8:5003/v1",
+          guardrails: null,
+
+          // 3. Request parameters
           temperature: 0.5,
-          top_p: null,
+          backend_temperature: 0.15,
           max_tokens: 100000,
+          timeout: 1200,
+          response_format: "json",
           seed: null,
           stop: null,
-          timeout: 600
-        },
-        limits_and_capabilities: {
+          top_p: null,
+
+          // 4. Limits & capabilities
           max_input_tokens: 131072,
           max_output_tokens: 32768,
-          vision: true,
-          reasoning: true,
-          function_calling: true,
-          tool_choice: true,
-          vision_usage_note: "Vision is supported but not used — photographic evidence submitted as markdown extracts"
-        },
-        run_metrics: {
+          max_model_len: 131072,
+          supports_vision: true,
+          supports_reasoning: false,
+          supports_function_calling: true,
+          supports_tool_choice: true,
+
+          // 5. Throughput & hardware (vLLM runtime)
+          tensor_parallel_size: 1,
+          gpu_memory_utilization: 0.96,
+          max_num_seqs: 32,
+          prefix_caching: true,
+          chunked_prefill: true,
+          max_num_batched_tokens: 8192,
+
+          // 6. LiteLLM proxy status
+          db_model: "hosted_vllm/mistral-small-3.2-24b-Instruct-AWQ-W4A16",
+          blocked: false,
+
+          // 7. Run metrics & tracing
           prompt_tokens: 18432,
           completion_tokens: 1204,
           total_tokens: 19636,
-          duration_seconds: 42.2,
-          retries: 0,
-          status: "success",
-          validation_diff: null,
+          finish_reason: "STOP",
+          response_id: "chatcmpl-9f2a7c1e4b8d",
+          prompt_characters: 72915,
+          response_characters: 4802,
+          json_from_markdown: true,
+          call_status: "success",
+          eval_status: "success",
           trace_id: "4bf92f3577b34da6a3ce929d0e0e4736",
-          snapshot_taken: "2026-02-28 14:30 UTC",
-          model_info_synced: "2026-02-28 05:03 UTC"
+          captured_at: "2026-07-30T09:16:30Z",
+          model_info_synced_at: "2026-10-05T05:03:55Z",
+          cached_input_tokens: null,
+          reasoning_tokens: null,
+          service_tier: null,
+          system_fingerprint: null
         }
       };
 

@@ -2819,6 +2819,14 @@ a.button_gn.disabled {
   color: #ffffff;
 }
 
+.btn-toggle-audit svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-toggle-audit.active svg {
+  transform: rotate(180deg);
+}
+
 /* Level 2: Detailed Audit Groups */
 .model-env-level2 {
   display: none;
@@ -2836,14 +2844,29 @@ a.button_gn.disabled {
 }
 
 .audit-grp-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #85809b;
+  color: #c5bee6;
   font-weight: 700;
   padding-bottom: 7px;
   border-bottom: 1px solid #38324f;
   margin-bottom: 4px;
+}
+
+.audit-grp-num {
+  font-weight: 400;
+  color: #85809b;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 0.72rem;
+}
+
+.audit-pk.root {
+  color: #9cbdff;
 }
 
 .audit-pairs {
@@ -2915,6 +2938,38 @@ a.button_gn.disabled {
 
 .audit-hint b {
   color: #ffd25d;
+}
+
+.audit-seccallout {
+  margin-top: 10px;
+  border: 1px solid rgba(238, 59, 118, 0.4);
+  background: rgba(238, 59, 118, 0.08);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #fca5c5;
+  line-height: 1.45;
+}
+
+.audit-seccallout b {
+  color: #ffffff;
+}
+
+.audit-seccallout code {
+  color: #9cbdff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.audit-constnote {
+  margin-top: 10px;
+  border: 1px solid rgba(156, 189, 255, 0.35);
+  background: rgba(156, 189, 255, 0.08);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #c4bee3;
+  line-height: 1.45;
 }
 
 @media screen and (max-width: 760px) {
